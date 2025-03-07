@@ -1,0 +1,12 @@
+/* 文章内容区：圆角和阴影，增加层次感 */
+.post-content {
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  /* 导航栏：深色背景 + 底部圆角，苹果风 */
+  .navbar {
+    background-color: #1e1e1e;
+    border-radius: 0 0 10px 10px;
+  }
