@@ -1,0 +1,8 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>All Posts - William&#39;s blog</title>
+        <link>http://xiaoaojianghu6.github.io/posts/</link>
+        <description>All Posts | William&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1708770266@qq.com (Willaim)</managingEditor>
+            <webMaster>1708770266@qq.com (Willaim)</webMaster><lastBuildDate>Fri, 07 Mar 2025 19:46:22 &#43;0800</lastBuildDate><atom:link href="http://xiaoaojianghu6.github.io/posts/" rel="self" type="application/rss+xml" /></channel>
+</rss>

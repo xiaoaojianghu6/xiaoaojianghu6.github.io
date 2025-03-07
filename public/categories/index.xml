@@ -1,11 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
-  <channel>
-    <title>Categories on william&#39;s blog</title>
-    <link>http://localhost:1313/categories/</link>
-    <description>Recent content in Categories on william&#39;s blog</description>
-    <generator>Hugo -- 0.145.0</generator>
-    <language>zh-cn</language>
-    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
-  </channel>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Categories - Category - William&#39;s blog</title>
+        <link>http://xiaoaojianghu6.github.io/categories/</link>
+        <description>Categories - Category - William&#39;s blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>1708770266@qq.com (Willaim)</managingEditor>
+            <webMaster>1708770266@qq.com (Willaim)</webMaster><atom:link href="http://xiaoaojianghu6.github.io/categories/" rel="self" type="application/rss+xml" /></channel>
 </rss>
