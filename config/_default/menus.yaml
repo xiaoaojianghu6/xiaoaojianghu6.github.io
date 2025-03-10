@@ -7,5 +7,5 @@ main:
     weight: 10
   - name: Topics
     url: tags/
-    weight: 20
+    weight: 30
 
