@@ -1,6 +1,16 @@
 ---
-title: "My first blog post"
-date: "2025-03-10"
+title: My first blog post 👀
+summary: Nice~
+date: 2025-03-10
+authors:
+  - william
+tags:
+  - guide
+  - First try
+# Featured image
+# Place an image named `featured.jpg/png` in this page's folder and customize its options here.
+image:
+  caption: 'Image credit: [**Unsplash**](https://unsplash.com)'
 ---
 
-HELLO WORLD 🌏
+# HELLO WORLD 🌏
