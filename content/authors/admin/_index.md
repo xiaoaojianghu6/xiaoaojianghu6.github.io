@@ -15,10 +15,7 @@ superuser: true
 
 # Role/position/tagline role: Professor of Artificial Intelligence
 
-# Organizations/Affiliations to show in About widget 
-organizations: 
-- name: HUST 
-url: https://www.hust.edu.cn/
+# Organizations/Affiliations to show in About widget organizations: - name: HUST url: https://www.hust.edu.cn/
 
 # Short bio (displayed in user profile at end of posts)
 bio: The journey of a thousand miles begins with one step.
