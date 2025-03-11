@@ -10,26 +10,26 @@ tags:
 
 ---
     这是分割线
-    # biaoti
-    ## fubiaoti
-    *xieti*
-    **cuti**
-    - wuxubiao
-      - fubiao
-    1. diyi
-    2. dier
+    # 标题
+    ## 副标题
+    *斜体*
+    **粗体**
+    - 无序标题
+      - 次
+    1. 第一
+    2. 第二
 ---
 
 ---
 这是分割线
-# biaoti
-## fubiaoti
-*xieti*
-**cuti**
-- wuxubiao
-  - fubiao
-1. diyi
-2. dier
+# 标题
+## 副标题
+*斜体*
+**粗体**
+- 无序标题
+  - 次
+1. 第一
+2. 第二
 ---
 
     `shift`+`option`+`~` or `~` in english board means code or强调
@@ -65,7 +65,7 @@ tags:
 - [x] A completed task
       
 
-    ---
+---
     这是表格
     First Header  | Second Header
     ------------- | -------------
