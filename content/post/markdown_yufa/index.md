@@ -8,6 +8,8 @@ tags:
  - guide
 ---
 
+
+
 ---
     这是分割线
     # 标题
@@ -18,7 +20,6 @@ tags:
       - 次
     1. 第一
     2. 第二
----
 
 ---
 这是分割线
@@ -30,20 +31,21 @@ tags:
   - 次
 1. 第一
 2. 第二
+
 ---
 
-    `shift`+`option`+`~` or `~` in english board means code or强调
+    `shift`+`option`+`~` or `~` in english board means code or 强调
 
-`shift`+`option`+`~` or `~` in english board means code or强调
+`shift`+`option`+`~` or `~` in english board means code or 强调
 
     [william's blog的链接](https://xiaoaojianghu6.github.io)
 
 [william's blog的链接](https://xiaoaojianghu6.github.io)
 
-    [biaoti](#biaoti "Goto biaoti")
+    [标题](#标题 "Goto 标题")
     这是文内索引
 
-[biaoti](#biaoti "Goto biaoti")
+[标题](#标题 "Goto 标题")
 这是文内索引
 
 ---
