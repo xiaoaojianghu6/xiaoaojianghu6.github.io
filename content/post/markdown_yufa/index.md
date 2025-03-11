@@ -1,10 +1,14 @@
 ---
-title: Markdown 语法
+title: Markdown 基础语法
+summary: just basic
 date: '2025-03-11'
-tages:
+authors:
+  - william
+tags:
  - guide
 ---
-    ---
+
+---
     这是分割线
     # biaoti
     ## fubiaoti
@@ -14,7 +18,7 @@ tages:
       - fubiao
     1. diyi
     2. dier
-    ---
+---
 
 ---
 这是分割线
