@@ -78,9 +78,13 @@ First Header  | Second Header
 Content Cell  | Content Cell
 Content Cell  | Content Cell
 
+---
+
 `control`+`command`+` `    for emoji
 
 like this:🥮  🎥  🎙️...
+
+---
 
 图片插入
 
