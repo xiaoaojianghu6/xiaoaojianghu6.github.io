@@ -9,7 +9,7 @@ main:
 
   - name: Topics
     url: tags/
-    weight: 10
+    weight: 20
     params:
       align: right  # 右侧对齐
 
