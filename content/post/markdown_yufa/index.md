@@ -5,7 +5,7 @@ date: '2025-03-11'
 authors:
   - william
 tags:
- - guide
+ - basic knowledge and skills
 ---
 
 
