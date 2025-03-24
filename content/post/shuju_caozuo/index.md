@@ -1,6 +1,11 @@
 ---
 title: 数据操作学习笔记
+summary: Learning Notes for Data Operation
 date: '2025-03-24'
+authors:
+ - william
+tags:
+ - basic knowledge and skills
 ---
 
 
