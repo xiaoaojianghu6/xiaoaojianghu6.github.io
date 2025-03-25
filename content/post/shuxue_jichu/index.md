@@ -22,7 +22,7 @@ Hadamard积（形状相同的矩阵）
 
     A * B
 
- ！[png](output1.png)
+ ![png](output1.png)
 
 降维
 求x所有元素的和
@@ -51,14 +51,14 @@ Hadamard积（形状相同的矩阵）
 
 矩阵矩阵（考虑A的行向量和B的列向量点积）
 
-！[png](output2.png)
+![png](output2.png)
 
     torch.mm(A, B)
 
 范数(norm) →向量范数是将向量映射到标量的函数f，对向量x满足：绝对值缩放，三角不等式，f(x)非负。
 向量的范数是表示一个向量有多大（size）不涉及维度，专指分量的大小
 
-！[png](output3.png)
+![png](output3.png)
 
 有点像距离的概念➡️欧几里得距离是一个L2范数
 一般地，Frobenius范数（Frobenius norm）是矩阵所有元素平方和的平方根：
