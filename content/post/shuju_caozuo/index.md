@@ -1,13 +1,13 @@
 ---
 title: 数据操作学习笔记
-summary: Learning Notes for Data Operation
+summary: Learning Notes (Data Operation)
 date: '2025-03-24'
 authors:
  - william
 tags:
  - basic knowledge and skills
 ---
-
+# 数据操作
 
     import torch
 
@@ -82,7 +82,7 @@ torch.exp(x) 函数是用于计算输入张量x中每个元素的自然指数（
 ---
 索引
 
-    X[-1], 第一维（如纵轴）最后一个元素（如二维矩阵取最后一行）
+    X[-1], 第一维（行）最后一个元素（如二维矩阵取最后一行）
     X[1:3]，取得是1，2（第二第三行）
 
 写入
