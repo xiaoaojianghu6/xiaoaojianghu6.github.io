@@ -11,14 +11,14 @@ tags:
 ---
 # numpy
 
-import numpy as np
+    import numpy as np
 
-## 直接创建数组
+## 创建数组
 
     arr1 = np.array([1, 2, 3, 4])
     print(arr1)  # [1 2 3 4]
 
-## 创建全零数组（默认 float64）
+创建全零数组（默认 float64）
 
     arr2 = np.zeros((2, 3))  
     print(arr2)
@@ -26,7 +26,7 @@ import numpy as np
     [[0. 0. 0.]
      [0. 0. 0.]]
 
-## 创建全一数组（int 类型）
+创建全一数组（int 类型）
     arr3 = np.ones((3, 2), dtype=int)
     print(arr3)
  
@@ -34,16 +34,16 @@ import numpy as np
      [1 1]
      [1 1]]
 
-## 创建未初始化数组（值是随机的）
+创建未初始化数组（值是随机的）
 
     arr4 = np.empty((2, 2))  
 
-## np.arange(start, stop, step) - 创建等差数列
+np.arange(start, stop, step) - 创建等差数列
 
     arr5 = np.arange(1, 10, 2)
     print(arr5)   [1 3 5 7 9]
 
-## np.linspace(start, stop, num) - 创建均匀分布的数列
+np.linspace(start, stop, num) - 创建均匀分布的数列
 
     arr6 = np.linspace(0, 1, 5)  
     print(arr6)   [0.   0.25 0.5  0.75 1.  ]
