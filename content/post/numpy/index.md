@@ -1,7 +1,7 @@
 ---
 title: NUMPY (一)
 summary: Learning Notes (numpy) 
-date: '2025-03-25'
+date: '2025-03-26'
 authors:
  - william
 tags:
@@ -194,9 +194,9 @@ print(x)  # [2. 3.]
 ## 随机数生成
 
 ```
-np.random.rand()（生成 0 到 1 的随机数）、
-np.random.randn()（生成标准正态分布随机数）、
-np.random.randint()（生成指定范围内的随机整数）。
+np.random.rand()   （生成 0 到 1 的随机数）
+np.random.randn()  （生成标准正态分布随机数）
+np.random.randint()（生成指定范围内的随机整数）
 随机种子 np.random.seed(3) 的作用(3作为举例)，用于确保结果可重复
 ```
 

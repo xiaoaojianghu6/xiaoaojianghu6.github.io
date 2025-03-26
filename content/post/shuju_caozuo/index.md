@@ -1,5 +1,5 @@
 ---
-title: 数据操作学习笔记
+title: 数据操作学习笔记（基于pytorch框架）
 summary: Learning Notes (Data Operation)
 date: '2025-03-24'
 authors:

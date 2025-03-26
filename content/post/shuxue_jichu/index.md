@@ -1,5 +1,5 @@
 ---
-title: 基础数学使用笔记（一）
+title: 基础数学使用笔记（一）（基于pytorch框架）
 summary: Learning Notes (math) 
 date: '2025-03-25'
 authors:
