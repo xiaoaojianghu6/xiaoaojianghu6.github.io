@@ -11,5 +11,10 @@ main:
     url: tags/
     weight: 20
     params:
-      align: right  # 右侧对齐
+      align: left  # 左侧对齐
 
+  - name: About
+    url: about/
+    weight: 30
+    params:
+      align: right  # 左侧对齐
