@@ -2,7 +2,7 @@
 authors:
 - william
 date: '2025-04-10'
-summary: '**决策森林 = 多棵决策树 + 集成策略**'
+summary: '决策森林 = 多棵决策树 + 集成策略'
 tags: [LM]
 title: 随机森林
 ---

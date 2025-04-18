@@ -2,7 +2,7 @@
 authors:
 - william
 date: '2025-04-18'
-summary: '| **改进** | **LightGBM 的做法** | **有什么用** |'
+summary: ' '
 tags: [LM]
 title: LightGBM
 ---

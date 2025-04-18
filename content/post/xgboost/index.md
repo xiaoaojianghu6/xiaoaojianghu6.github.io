@@ -2,7 +2,7 @@
 authors:
 - william
 date: '2025-04-16'
-summary: XGBoost 是一种**梯度提升树（GBDT）的优化版本。**
+summary: XGBoost 是一种梯度提升树（GBDT）的优化版本。
 tags: [LM]
 title: xgboost
 ---
