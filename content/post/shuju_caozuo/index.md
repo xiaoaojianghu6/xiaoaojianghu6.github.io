@@ -95,3 +95,60 @@ torch.exp(x) 函数是用于计算输入张量x中每个元素的自然指数（
 
     后续计算中没有重复使用X， 使用X[:] = X + Y或X += Y来减少内存开销。
 ---
+
+# 预处理
+
+创建一个人工数据集，存储在CSV（逗号分隔值）文件 ../data/house_tiny.csv中
+
+```
+import os
+
+os.makedirs(os.path.join('..', 'data'), exist_ok=True)
+data_file = os.path.join('..', 'data', 'house_tiny.csv')
+with open(data_file, 'w') as f:
+    f.write('NumRooms,Alley,Price\n')  # 列名
+    f.write('NA,Pave,127500\n')  # 每行表示一个数据样本
+    f.write('2,NA,106000\n')
+    f.write('4,NA,178100\n')
+    f.write('NA,NA,140000\n')
+```
+
+从创建的CSV文件中加载原始数据集，导入pandas包并调用read_csv函数
+
+```
+import pandas as pd
+
+data = pd.read_csv(data_file)
+print(data)
+
+   NumRooms Alley   Price
+0       NaN  Pave  127500
+1       2.0   NaN  106000
+2       4.0   NaN  178100
+3       NaN   NaN  140000
+```
+
+处理缺失值：用均值替代
+```
+inputs, outputs = data.iloc[:, 0:2], data.iloc[:, 2]
+inputs = inputs.fillna(inputs.mean())
+print(inputs)
+
+   NumRooms Alley
+0       3.0  Pave
+1       2.0   NaN
+2       4.0   NaN
+3       3.0   NaN
+```
+
+处理缺失值：单独分为一类
+```
+inputs = pd.get_dummies(inputs, dummy_na=True)
+print(inputs)
+
+   NumRooms  Alley_Pave  Alley_nan
+0       3.0           1          0
+1       2.0           0          1
+2       4.0           0          1
+3       3.0           0          1
+```

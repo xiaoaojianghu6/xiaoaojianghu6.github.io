@@ -28,7 +28,6 @@ cascade:
     header:
       navbar:
         enable: true
-
 ############################
 ## LANGUAGE
 ############################
