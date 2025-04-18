@@ -1,7 +1,7 @@
 ---
 authors:
 - william
-date: '2025-04-2'
+date: '2025-04-02'
 tags: [LM]
 title: 决策树
 ---
