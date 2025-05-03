@@ -13,14 +13,14 @@ title: 随机森林
 
 ## **Bagging（Bootstrap Aggregating）是什么？**
 
-### **✔ 定义：**
+### ** 定义：**
 
 > Bagging = Bootstrap + Aggregating（聚合）
 > 
 - 使用多个 bootstrap 数据集分别训练多个模型
 - 最终对输出做**投票**（分类）或**平均**（回归）
 
-### **🔧 构建流程（简化）：**
+### ** 构建流程（简化）：**
 
 1. **从训练集中有放回地抽样**（叫做 Bootstrap 采样）生成 n 个数据子集（每个训练一个树）
     ◦ 剩下没选中的可以作为“验证集” → OOB（out-of-bag）
