@@ -3,7 +3,7 @@ authors:
 - william
 date: '2025-04-18'
 summary: ' '
-tags: [LM]
+tags: [ML]
 title: LightGBM
 ---
 

@@ -3,7 +3,7 @@ authors:
 - william
 date: '2025-04-02'
 summary: ' '
-tags: [LM]
+tags: [ML]
 title: 决策树
 ---
 

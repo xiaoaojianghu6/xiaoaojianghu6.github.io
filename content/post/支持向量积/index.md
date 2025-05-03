@@ -3,7 +3,7 @@ authors:
 - william
 date: '2025-04-12'
 summary: ' '
-tags: [LM]
+tags: [ML]
 title: 支持向量积
 ---
 
