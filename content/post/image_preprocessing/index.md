@@ -3,7 +3,7 @@ title: Image Pre-processing
 date: '2025-05-03'
 author: William
 summary: opencv （1）
-tages: [ML]
+tags: [ML]
 ---
 ```python
 import cv2
