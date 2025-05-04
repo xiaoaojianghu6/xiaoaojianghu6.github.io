@@ -1,7 +1,8 @@
 ---
 title: Image Pre-processing
 date: '2025-05-03'
-author: William
+authors: 
+ -William
 summary: opencv （1）
 tags: [ML]
 ---
