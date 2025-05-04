@@ -168,8 +168,7 @@ for name in name_list:      # 遍历每一个数据文件
 annotation = wfdb.rdann('/Users/mac/Downloads/data/ECG/mit-bih-arrhythmia-database-1.0.0/' + number, 'atr')
 Rlocation = annotation.sample
 Rclass = annotation.symbol
-```
-- `wfdb.rdann()` 读取该记录的注释 (`.atr` 文件)，其中包括 R 波位置 (`annotation.sample`) 和对应的心律失常类型 (`annotation.symbol`)。
+ `wfdb.rdann()` 读取该记录的注释 (`.atr` 文件)，其中包括 R 波位置 (`annotation.sample`) 和对应的心律失常类型 (`annotation.symbol`)。
 
 ---读信号
 signal, fields = wfdb.rdsamp('path_to_dataset/sample')
