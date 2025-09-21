@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - William Liu</title>
+    <meta name="description" content="Learn more about William Liu and the purpose of this website.">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer type="module" src="js/main.js"></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <a href="/">WL.</a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/posts.html">Posts</a></li>
+                    <li><a href="/about.html">About</a></li>
+                </ul>
+                <button id="theme-toggle" class="theme-toggle" title="Toggle dark mode">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+            <div class="page-header">
+                <h1>About Me</h1>
+                <p>Curiosity, Code, and Continuous Learning.</p>
+            </div>
+            
+            <section class="about-content">
+                <div class="about-image">
+                    <!-- 
+                        >>> 图片放置说明 <<<
+                        1. 在你的项目根目录下, 创建一个 `images` 文件夹.
+                        2. 将你的个人头像图片放入 `images` 文件夹, 并命名为 `profile.jpg`.
+                        3. 下面的 `src` 路径已经为你设置好了.
+                    -->
+                    <img src="images/profile.jpg" alt="A portrait of William Liu" onerror="this.onerror=null;this.src='https://placehold.co/400x400/e5e7eb/333?text=WL';">
+                </div>
+                <div class="about-text">
+                    <h2>Hello, I'm William Liu.</h2>
+                    <p>
+                        I am a student driven by a deep passion for technology and its potential to solve real-world problems. This website serves as my digital garden—a space where I document my journey of exploration, share my findings, and solidify my knowledge through the act of writing.
+                    </p>
+                    <p>
+                        Thank you for visiting. I hope you find something useful or interesting here.
+                    </p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; <span id="current-year"></span> William Liu. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
