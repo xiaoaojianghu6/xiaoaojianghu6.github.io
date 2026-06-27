@@ -25,6 +25,10 @@ const t={preserveBehavior:!1},e=e=>{if("string"==typeof e)return[e,t];const[n,r=
 .splash-title{font-family:'Zhi Mang Xing',cursive;color:#fff;line-height:1;font-size:clamp(7rem,22vw,14rem);animation:ink-wash-in 1.4s cubic-bezier(.08,.52,.12,.98) both;text-shadow:0 0 120px rgba(255,255,255,.12),0 0 60px rgba(255,255,255,.06)}
 .splash-line{height:2px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);margin:3.5rem 0 3rem;width:clamp(200px,38vw,400px);animation:splash-line-in .9s .5s both}
 .splash-sub{font-family:Cinzel,serif;color:rgba(255,255,255,.2);font-size:clamp(1rem,3vw,1.5rem);letter-spacing:.5em;animation:splash-sub-in .6s 1s both}
+.splash-progress-wrap{width:clamp(160px,28vw,320px);margin-top:2.8rem;animation:splash-sub-in .6s 1.3s both}
+.splash-progress-track{height:1px;background:rgba(255,255,255,.06);border-radius:1px;overflow:hidden;position:relative}
+.splash-progress-fill{height:100%;width:0%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18) 60%,rgba(255,255,255,.35));transition:width .35s ease-out;position:relative}
+.splash-progress-fill::after{content:'';position:absolute;right:0;top:50%;transform:translateY(-50%);width:20px;height:3px;background:rgba(255,255,255,.15);border-radius:2px;filter:blur(2px)}
 @keyframes ink-wash-in{0%{filter:blur(20px);opacity:0;transform:scale(.92)}60%{filter:blur(2px);opacity:.85}to{filter:blur(0);opacity:1;transform:scale(1)}}
 @keyframes splash-line-in{0%{width:0;opacity:0}to{width:clamp(200px,38vw,400px);opacity:1}}
 @keyframes splash-sub-in{0%{opacity:0;letter-spacing:.8em}to{opacity:1;letter-spacing:.5em}}
@@ -36,10 +40,14 @@ const t={preserveBehavior:!1},e=e=>{if("string"==typeof e)return[e,t];const[n,r=
 <h1 class="splash-title">Hao-Z</h1>
 <div class="splash-line"></div>
 <p class="splash-sub">PORTFOLIO</p>
+<div class="splash-progress-wrap"><div class="splash-progress-track"><div class="splash-progress-fill" id="splash-progress-fill"></div></div></div>
 </div>
 </div>
 <script>
 (async function(){
+// Pseudo progress bar — reassures user during loading
+var progressFill=document.getElementById('splash-progress-fill');
+var prog=0,progTimer=setInterval(function(){prog+=Math.max(0,(88-prog)*.04);progressFill.style.width=prog+'%'},120);
 // Wait for fonts
 await document.fonts.ready;
 await document.fonts.load('54px "Zhi Mang Xing"');
@@ -51,6 +59,8 @@ if (heroVideo && heroVideo.readyState < 3) {
     new Promise(function(r){ setTimeout(r, 8000); })
   ]);
 }
+// Loading complete — snap progress to 100%
+clearInterval(progTimer);progressFill.style.transition='width .4s ease-out';progressFill.style.width='100%';
 // Immediately start background prefetch of ALL first-level pages
 // Uses fetch() for cross-browser support (Safari ignores <link rel=prefetch>)
 var pages=['/about/','/poet/','/wanderer/','/enthusiast/','/builder/'];
