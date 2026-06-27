@@ -6,7 +6,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('/fonts/zhi-mang-xing-400.ttf') format('truetype');
+  src: url('/fonts/ZhiMangXing-subset.woff2') format('truetype');
 }
 
 /* Cinzel (English serif) - 6 weights */
@@ -59,7 +59,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('/fonts/LXGWWenKai-Regular.ttf') format('truetype');
+  src: url('/fonts/LXGWWenKai-subset.woff2') format('truetype');
 }
 
 /* 方正行楷简体 (FZXingKai) */
@@ -68,7 +68,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('/fonts/方正行楷简体.ttf') format('truetype');
+  src: url('/fonts/FZXingKai-subset.woff2') format('truetype');
 }
 
 /* Override taikisato font mapping */
