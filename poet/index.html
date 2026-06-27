@@ -1,0 +1,547 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="/common/favicon.ico" sizes="32x32"><link rel="icon" href="/common/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/common/apple-touch-icon.png"><link rel="manifest" href="/manifest.webmanifest"><title>诗人 | William Liu</title><meta charset="UTF-8"><meta name="description" content="William Liu 的诗集。文字是他拿来对抗时间的方式。"><meta name="robots" content="index, follow"><link rel="stylesheet" href="/_astro/about.Cl2ZlrCQ.css"><link rel="stylesheet" href="/_astro/about.j05OPDV1.css"><link rel="stylesheet" href="/_astro/font-override.css"><link rel="preload" href="/fonts/zhi-mang-xing-400.ttf" as="font" type="font/ttf" crossorigin><script>document.fonts.ready.then(function(){document.documentElement.classList.add('wf-ready')});setTimeout(function(){document.documentElement.classList.add('wf-ready')},800)</script><style>
+body{background:#4A3E35;color:#f9f9f6}
+html{visibility:hidden}
+html.wf-ready{visibility:visible}
+.page-bg{position:fixed;left:0;top:0;z-index:-1;width:100%;height:100%}
+.poet-hero{height:100vh;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-end;padding:10rem 2.5rem 6rem;position:relative;overflow:hidden}
+.poet-hero-img{position:absolute;top:0;left:0;width:100%;max-height:100vh;object-fit:cover;object-position:top center}
+.poet-hero-content{position:relative;z-index:1}
+/* === 开篇诗区 === */
+.opening-section{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:6rem 2.5rem 4rem;text-align:center}
+.opening-label{font-family:'Zhi Mang Xing',cursive;font-size:clamp(1.8rem,4vw,2.4rem);opacity:0.35;letter-spacing:0.2em;margin-bottom:2.5rem}
+.opening-title{font-family:'Zhi Mang Xing',cursive;font-size:clamp(2.4rem,5vw,3.5rem);letter-spacing:0.15em;margin-bottom:0.5rem}
+.opening-date{font-family:'LXGW WenKai',serif;font-size:0.8rem;opacity:0.35;margin-bottom:3rem}
+.opening-line{font-family:'FZXingKai','LXGW WenKai',serif;font-size:clamp(2rem,4.5vw,3rem);line-height:2.4;opacity:0;transform:translateY(50px);filter:blur(4px);transition:opacity 1.5s ease-out,transform 1.5s ease-out,filter 1.5s ease-out;margin-bottom:0.5rem}
+.opening-line.is-revealed{opacity:0.7;transform:translateY(0);filter:blur(0)}
+/* === 图片呼吸区（期刊插图风格） === */
+.photo-breather{position:relative;z-index:1;opacity:0;transform:translateY(40px);transition:opacity 1s ease-out,transform 1s ease-out}
+.photo-breather.is-revealed{opacity:1;transform:translateY(0)}
+.photo-breather img{width:100%;display:block;opacity:0.55;transition:opacity 0.5s}
+.photo-breather:hover img{opacity:0.85}
+.photo-breather__caption{font-family:Cinzel,serif;font-size:0.65rem;letter-spacing:0.15em;opacity:0.25;display:block;margin-top:0.5rem}
+/* === 图+诗并排行（Grid：图自然高度 + 诗堆叠） === */
+.photo-poem-row{display:grid;grid-template-columns:clamp(240px,34vw,440px) 1fr;gap:clamp(2rem,5vw,3.5rem);align-items:start;max-width:1100px;margin:5rem auto;padding:0 2.5rem;position:relative;z-index:1}
+.photo-poem-row .photo-breather{grid-row:1;margin:0}
+.photo-poem-row .photo-breather img{width:100%;display:block}
+.photo-poem-row .poem-stack{display:flex;flex-direction:column;gap:1.5rem}
+.photo-poem-row .poem-stack .poem-card{margin:0}
+.photo-poem-row--img-right{grid-template-columns:1fr clamp(240px,34vw,440px)}
+.photo-poem-row--img-right .photo-breather{grid-column:2;grid-row:1}
+.photo-poem-row--img-right .poem-stack{grid-column:1;grid-row:1}
+@media(max-width:767px){.photo-poem-row{grid-template-columns:1fr;gap:1.5rem;margin:3rem auto}.photo-poem-row .photo-breather{max-width:100%}.photo-poem-row--img-right{grid-template-columns:1fr}.photo-poem-row--img-right .photo-breather{grid-column:1}.photo-poem-row--img-right .poem-stack{grid-column:1}}
+/* === 诗选容器 === */
+.poetry-zone{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:2rem 2.5rem}
+/* === 诗卡网格 === */
+.poem-grid{display:grid;grid-template-columns:1fr;gap:1.2rem}
+@media(min-width:768px){.poem-grid{grid-template-columns:1fr 1fr;gap:1.5rem}}
+/* === 诗歌卡片 === */
+.poem-card{position:relative;border-radius:10px;background:rgba(249,249,246,0.03);border:1px solid rgba(249,249,246,0.06);padding:1.5rem;cursor:pointer;transition:background 0.3s,border-color 0.3s,transform 0.2s;overflow:hidden;opacity:0;transform:translateY(30px);transition:opacity 0.8s ease-out,transform 0.8s ease-out,background 0.3s,border-color 0.3s}
+.poem-card.is-revealed{opacity:1;transform:translateY(0)}
+.poem-card:hover{background:rgba(249,249,246,0.06);border-color:rgba(249,249,246,0.12)}
+.poem-card__header{display:flex;align-items:flex-start;justify-content:space-between;gap:0.8rem;margin-bottom:0.6rem}
+.poem-card__title{font-family:'LXGW WenKai',serif;font-size:clamp(1.15rem,2.2vw,1.35rem);opacity:0.85;line-height:1.4}
+.poem-card__date{font-family:Cinzel,serif;font-size:0.7rem;opacity:0.3;letter-spacing:0.1em;flex-shrink:0;margin-top:0.15rem}
+.poem-card__excerpt{font-family:'LXGW WenKai',serif;font-size:0.95rem;opacity:0.5;line-height:1.7;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.poem-card__hint{font-family:Cinzel,serif;font-size:0.65rem;letter-spacing:0.15em;opacity:0;transform:translateY(6px);transition:opacity 0.35s,transform 0.35s;margin-top:0.8rem;color:rgba(249,249,246,0.3)}
+.poem-card:hover .poem-card__hint{opacity:1;transform:translateY(0)}
+/* === 特色全宽卡 === */
+.poem-card--featured{grid-column:1/-1;padding:2rem}
+/* === Modal Overlay === */
+.poem-overlay{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:1.5rem;overscroll-behavior:contain;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.poem-overlay.is-active{opacity:1;pointer-events:auto}
+.poem-overlay__bg{position:absolute;inset:0;background:rgba(0,0,0,0.78);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.poem-overlay__modal{position:relative;z-index:1;width:100%;max-width:720px;max-height:85vh;overflow-y:auto;border-radius:14px;background:rgba(30,28,26,0.92);border:1px solid rgba(249,249,246,0.08);padding:3rem 2rem;transform:scale(0.95) translateY(15px);transition:transform 0.35s ease-out}
+.poem-overlay.is-active .poem-overlay__modal{transform:scale(1) translateY(0)}
+.poem-overlay__close{position:absolute;top:1rem;right:1rem;width:36px;height:36px;border-radius:50%;border:none;background:rgba(249,249,246,0.06);color:rgba(249,249,246,0.5);font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s,color 0.2s;line-height:1}
+.poem-overlay__close:hover{background:rgba(249,249,246,0.12);color:rgba(249,249,246,0.8)}
+.poem-overlay__title{font-family:'LXGW WenKai',serif;font-size:clamp(1.6rem,3vw,2rem);opacity:0.9;text-align:center;line-height:1.4;margin-bottom:0.3rem}
+.poem-overlay__date{font-family:Cinzel,serif;font-size:0.8rem;opacity:0.3;text-align:center;letter-spacing:0.1em;margin-bottom:2.5rem}
+.poem-overlay__text{font-family:'LXGW WenKai',serif;font-size:clamp(1.2rem,2.2vw,1.5rem);line-height:2.4;opacity:0.8;white-space:pre-line;text-align:center}
+.poem-overlay__text .stanza-break{display:block;height:1.2rem}
+.poem-overlay__footer{text-align:center;margin-top:2rem;font-family:Cinzel,serif;font-size:0.68rem;opacity:0.25;letter-spacing:0.15em;cursor:pointer}
+/* === 长诗区 === */
+.long-poem-section{position:relative;z-index:1;max-width:800px;margin:0 auto;padding:8rem 2.5rem 5rem;text-align:center}
+.long-poem-divider{width:60px;height:1px;background:rgba(249,249,246,0.12);margin:0 auto 3rem}
+.long-poem-label{font-family:Cinzel,serif;font-size:0.7rem;letter-spacing:0.25em;opacity:0.25;text-transform:uppercase;margin-bottom:2rem}
+.long-poem-title{font-family:'Zhi Mang Xing',cursive;font-size:clamp(2.4rem,5vw,3.5rem);letter-spacing:0.12em;opacity:0.8;margin-bottom:4rem}
+.long-poem-stanza{margin-bottom:3rem}
+.long-poem-stanza p{font-family:'FZXingKai','LXGW WenKai',serif;font-size:clamp(1.6rem,3.5vw,2.4rem);line-height:2.4;opacity:0.7;margin:0}
+/* === Back link === */
+.back-link{text-align:center;padding:5rem 2.5rem 3rem;position:relative;z-index:1}
+.back-link a{font-family:Cinzel,serif;font-size:0.8rem;letter-spacing:0.2em;opacity:0.3;text-decoration:none;color:inherit;transition:opacity 0.3s}
+.back-link a:hover{opacity:0.65}
+@media(min-width:768px){
+  .poet-hero{height:100vh;padding:12rem 5rem 8rem}
+  .opening-section{padding:8rem 0 5rem}
+  .poetry-zone{padding:2rem 1rem}
+  .poem-overlay__modal{padding:3rem 3rem}
+  .long-poem-section{padding:7rem 0 5rem}
+}
+</style></head>
+<body style="background:#4A3E35;color:#f9f9f6;overflow-x:hidden">
+<div class="page-bg bg-mine-shaft-texture" style="background-color:#4A3E35"></div>
+
+<header id="header" class="group-[header] fixed left-0 top-0 z-30 w-screen transition-all" style="color:#f9f9f6" data-color="dark" data-mix-blend-mode="false" data-astro-cid-z6iz25dn>
+  <div class="container flex items-start px-5 py-5 md:px-20 md:py-10" data-astro-cid-z6iz25dn>
+    <a href="/" class="ts-logo transition-all hover:opacity-30" aria-label="William Liu" data-astro-cid-z6iz25dn>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 58" width="120" height="38" class="h-auto md:w-[180px]"><text x="0" y="30" font-family="Cinzel, serif" font-weight="600" font-size="28" fill="currentColor">William Liu</text><text x="1" y="52" font-family="Cinzel, serif" font-weight="400" font-size="11" fill="currentColor" opacity="0.5">HAO-Z</text></svg>
+    </a>
+    <ul class="ts-header-list ml-auto hidden max-h-[var(--header-list-height)] gap-8 transition-colors ease-in-out group-[header]:data-[color=dark]:text-pampas md:flex" data-astro-cid-z6iz25dn> <li class="relative" data-astro-cid-z6iz25dn" style="display:flex;flex-direction:column;align-items:center;gap:3px"> <span style="display:block;height:1px;width:14px;background:currentColor;opacity:0.25"></span> <span style="display:block;height:1px;width:14px;background:currentColor;opacity:0.25"></span> <span style="display:block;height:1px;width:14px;background:currentColor;opacity:0.25"></span> <a href="/about/" class="ts-text-link text-3xl vertical-rl md:text-2xl" data-vertical="rl" style="font-family:'Zhi Mang Xing',cursive" data-astro-cid-z6iz25dn>述己</a> <span style="display:block;height:1px;width:14px;background:currentColor;opacity:0.25"></span> <span style="display:block;height:1px;width:14px;background:currentColor;opacity:0.25"></span> <span style="display:block;height:1px;width:14px;background:currentColor;opacity:0.25"></span> </li><li class="relative" data-astro-cid-z6iz25dn" style="display:flex;flex-direction:column;align-items:center;gap:3px"> <span style="display:block;height:1px;width:14px;background:currentColor;opacity:0.25"></span> <span style="display:block;height:1px;width:14px;background:currentColor;opacity:0.25"></span> <span style="display:block;height:1px;width:14px;background:currentColor;opacity:0.25"></span> <a href="/builder/" class="ts-text-link text-3xl vertical-rl md:text-2xl" data-vertical="rl" style="font-family:'Zhi Mang Xing',cursive" data-astro-cid-z6iz25dn>创客</a> <span style="display:block;height:1px;width:14px;background:currentColor;opacity:0.25"></span> <span style="display:block;height:1px;width:14px;background:currentColor;opacity:0.25"></span> <span style="display:block;height:1px;width:14px;background:currentColor;opacity:0.25"></span> </li><li class="relative" data-astro-cid-z6iz25dn" style="display:flex;flex-direction:column;align-items:center;gap:3px"> <span style="display:block;height:1px;width:14px;background:currentColor;opacity:0.25"></span> <span style="display:block;height:1px;width:14px;background:currentColor;opacity:0.25"></span> <span style="display:block;height:1px;width:14px;background:currentColor;opacity:0.25"></span> <a href="/wanderer/" class="ts-text-link text-3xl vertical-rl md:text-2xl" data-vertical="rl" style="font-family:'Zhi Mang Xing',cursive" data-astro-cid-z6iz25dn>行者</a> <span style="display:block;height:1px;width:14px;background:currentColor;opacity:0.25"></span> <span style="display:block;height:1px;width:14px;background:currentColor;opacity:0.25"></span> <span style="display:block;height:1px;width:14px;background:currentColor;opacity:0.25"></span> </li><li class="relative" data-astro-cid-z6iz25dn" style="display:flex;flex-direction:column;align-items:center;gap:3px"> <span style="display:block;height:1px;width:14px;background:currentColor;opacity:0.25"></span> <span style="display:block;height:1px;width:14px;background:currentColor;opacity:0.25"></span> <span style="display:block;height:1px;width:14px;background:currentColor;opacity:0.25"></span> <a href="/poet/" class="ts-text-link text-3xl vertical-rl md:text-2xl" data-vertical="rl" style="font-family:'Zhi Mang Xing',cursive" data-astro-cid-z6iz25dn>诗人</a> <span style="display:block;height:1px;width:14px;background:currentColor;opacity:0.25"></span> <span style="display:block;height:1px;width:14px;background:currentColor;opacity:0.25"></span> <span style="display:block;height:1px;width:14px;background:currentColor;opacity:0.25"></span> </li><li class="relative" data-astro-cid-z6iz25dn" style="display:flex;flex-direction:column;align-items:center;gap:3px"> <span style="display:block;height:1px;width:14px;background:currentColor;opacity:0.25"></span> <span style="display:block;height:1px;width:14px;background:currentColor;opacity:0.25"></span> <span style="display:block;height:1px;width:14px;background:currentColor;opacity:0.25"></span> <a href="/enthusiast/" class="ts-text-link text-3xl vertical-rl md:text-2xl" data-vertical="rl" style="font-family:'Zhi Mang Xing',cursive" data-astro-cid-z6iz25dn>赤子</a> <span style="display:block;height:1px;width:14px;background:currentColor;opacity:0.25"></span> <span style="display:block;height:1px;width:14px;background:currentColor;opacity:0.25"></span> <span style="display:block;height:1px;width:14px;background:currentColor;opacity:0.25"></span> </li> </ul>
+    <button class="ts-menu-open ml-auto md:ml-14 group" style="display:flex;flex-direction:column;gap:6px;align-items:center;justify-content:center;background:transparent;border:none;cursor:pointer;padding:10px;color:inherit" data-astro-cid-z6iz25dn>
+      <span style="display:block;height:2.5px;width:32px;background:currentColor;transition:transform 0.3s"></span>
+      <span style="display:block;height:2.5px;width:32px;background:currentColor;transition:opacity 0.3s"></span>
+      <span style="display:block;height:2.5px;width:32px;background:currentColor;transition:transform 0.3s"></span>
+    </button>
+  </div>
+</header>
+
+<div id="menu" class="menu z-30 h-dvh w-screen bg-mine-shaft-texture" data-astro-cid-xcczry7d>
+  <div class="relative flex h-full w-full p-5 md:p-10" data-astro-cid-xcczry7d>
+    <video class="hidden h-full max-w-[50%] items-center md:mr-4 md:flex" webkit-playsinline playsinline muted autoplay loop data-astro-cid-xcczry7d><source src="/common/menu.mp4" type="video/mp4" data-astro-cid-xcczry7d></video>
+    <div class="flex w-full flex-col md:flex-1" data-astro-cid-xcczry7d>
+      <button class="ts-menu-close absolute top-5 md:top-10 right-5 md:right-20 group" style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:transparent;border:none;cursor:pointer;color:var(--color-pampas,#F9F9F6)" data-astro-cid-xcczry7d>
+        <span style="position:absolute;display:block;height:2px;width:22px;background:currentColor;transform:rotate(45deg);transition:transform 0.3s"></span>
+        <span style="position:absolute;display:block;height:2px;width:22px;background:currentColor;transform:rotate(-45deg);transition:transform 0.3s"></span>
+      </button>
+      <div class="flex w-full flex-1 flex-col items-center py-10" data-astro-cid-xcczry7d>
+        <div class="flex w-full flex-1 items-center justify-center" data-astro-cid-xcczry7d>
+          <ul style="display:flex;flex-direction:column;align-items:stretch;gap:clamp(2rem,5vh,3.5rem);padding:0;margin:0;width:100%;max-width:600px" data-astro-cid-xcczry7d> <li style="list-style:none" data-astro-cid-xcczry7d> <a href="/" class="group" style="text-decoration:none;transition:opacity 0.6s" data-stalker-color="bright" data-astro-cid-xcczry7d> <span style="display:flex;flex-direction:row;align-items:center;gap:clamp(1rem,2.5vw,2rem);width:100%"> <span style="font-size:12px;color:var(--color-taupe-gray,#B4AC97)">(一)</span> <span style="font-family:'Zhi Mang Xing',cursive;font-size:clamp(1.8rem,5vw,2.8rem);color:var(--color-pampas,#F9F9F6);line-height:1.2">归 枢</span> <span style="flex:1;height:1px;min-width:30px;background:var(--color-emperor,#4F4F4F)"></span> <span style="font-family:Cinzel,serif;font-size:13px;color:var(--color-silver-chalice,#A9A9A9);letter-spacing:0.15em">HOME</span> </span> </a> </li><li style="list-style:none" data-astro-cid-xcczry7d> <a href="/about/" class="group" style="text-decoration:none;transition:opacity 0.6s" data-stalker-color="bright" data-astro-cid-xcczry7d> <span style="display:flex;flex-direction:row;align-items:center;gap:clamp(1rem,2.5vw,2rem);width:100%"> <span style="font-size:12px;color:var(--color-taupe-gray,#B4AC97)">(二)</span> <span style="font-family:'Zhi Mang Xing',cursive;font-size:clamp(1.8rem,5vw,2.8rem);color:var(--color-pampas,#F9F9F6);line-height:1.2">述 己</span> <span style="flex:1;height:1px;min-width:30px;background:var(--color-emperor,#4F4F4F)"></span> <span style="font-family:Cinzel,serif;font-size:13px;color:var(--color-silver-chalice,#A9A9A9);letter-spacing:0.15em">ABOUT</span> </span> </a> </li><li style="list-style:none" data-astro-cid-xcczry7d> <a href="/builder/" class="group" style="text-decoration:none;transition:opacity 0.6s" data-stalker-color="bright" data-astro-cid-xcczry7d> <span style="display:flex;flex-direction:row;align-items:center;gap:clamp(1rem,2.5vw,2rem);width:100%"> <span style="font-size:12px;color:var(--color-taupe-gray,#B4AC97)">(三)</span> <span style="font-family:'Zhi Mang Xing',cursive;font-size:clamp(1.8rem,5vw,2.8rem);color:var(--color-pampas,#F9F9F6);line-height:1.2">创 客</span> <span style="flex:1;height:1px;min-width:30px;background:var(--color-emperor,#4F4F4F)"></span> <span style="font-family:Cinzel,serif;font-size:13px;color:var(--color-silver-chalice,#A9A9A9);letter-spacing:0.15em">BUILDER</span> </span> </a> </li><li style="list-style:none" data-astro-cid-xcczry7d> <a href="/wanderer/" class="group" style="text-decoration:none;transition:opacity 0.6s" data-stalker-color="bright" data-astro-cid-xcczry7d> <span style="display:flex;flex-direction:row;align-items:center;gap:clamp(1rem,2.5vw,2rem);width:100%"> <span style="font-size:12px;color:var(--color-taupe-gray,#B4AC97)">(四)</span> <span style="font-family:'Zhi Mang Xing',cursive;font-size:clamp(1.8rem,5vw,2.8rem);color:var(--color-pampas,#F9F9F6);line-height:1.2">行 者</span> <span style="flex:1;height:1px;min-width:30px;background:var(--color-emperor,#4F4F4F)"></span> <span style="font-family:Cinzel,serif;font-size:13px;color:var(--color-silver-chalice,#A9A9A9);letter-spacing:0.15em">WANDERER</span> </span> </a> </li><li style="list-style:none" data-astro-cid-xcczry7d> <a href="/poet/" class="group" style="text-decoration:none;transition:opacity 0.6s" data-stalker-color="bright" data-astro-cid-xcczry7d> <span style="display:flex;flex-direction:row;align-items:center;gap:clamp(1rem,2.5vw,2rem);width:100%"> <span style="font-size:12px;color:var(--color-taupe-gray,#B4AC97)">(五)</span> <span style="font-family:'Zhi Mang Xing',cursive;font-size:clamp(1.8rem,5vw,2.8rem);color:var(--color-pampas,#F9F9F6);line-height:1.2">诗 人</span> <span style="flex:1;height:1px;min-width:30px;background:var(--color-emperor,#4F4F4F)"></span> <span style="font-family:Cinzel,serif;font-size:13px;color:var(--color-silver-chalice,#A9A9A9);letter-spacing:0.15em">POET</span> </span> </a> </li><li style="list-style:none" data-astro-cid-xcczry7d> <a href="/enthusiast/" class="group" style="text-decoration:none;transition:opacity 0.6s" data-stalker-color="bright" data-astro-cid-xcczry7d> <span style="display:flex;flex-direction:row;align-items:center;gap:clamp(1rem,2.5vw,2rem);width:100%"> <span style="font-size:12px;color:var(--color-taupe-gray,#B4AC97)">(六)</span> <span style="font-family:'Zhi Mang Xing',cursive;font-size:clamp(1.8rem,5vw,2.8rem);color:var(--color-pampas,#F9F9F6);line-height:1.2">赤 子</span> <span style="flex:1;height:1px;min-width:30px;background:var(--color-emperor,#4F4F4F)"></span> <span style="font-family:Cinzel,serif;font-size:13px;color:var(--color-silver-chalice,#A9A9A9);letter-spacing:0.15em">ENTHUSIAST</span> </span> </a> </li><li style="list-style:none" data-astro-cid-xcczry7d> <a href="mailto:1708770266@qq.com" target="_blank" class="group" style="text-decoration:none;transition:opacity 0.6s" data-stalker-color="bright" data-astro-cid-xcczry7d> <span style="display:flex;flex-direction:row;align-items:center;gap:clamp(1rem,2.5vw,2rem);width:100%"> <span style="font-size:12px;color:var(--color-taupe-gray,#B4AC97)">(七)</span> <span style="font-family:'Zhi Mang Xing',cursive;font-size:clamp(1.8rem,5vw,2.8rem);color:var(--color-pampas,#F9F9F6);line-height:1.2">联 系</span> <span style="flex:1;height:1px;min-width:30px;background:var(--color-emperor,#4F4F4F)"></span> <span style="font-family:Cinzel,serif;font-size:13px;color:var(--color-silver-chalice,#A9A9A9);letter-spacing:0.15em">CONTACT</span> </span> </a> </li> </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+  <section class="poet-hero">
+    <img src="/top/poet/cover.png" alt="诗人封面" class="poet-hero-img">
+    <div class="poet-hero-content">
+      <p style="font-family:'Zhi Mang Xing',cursive;font-size:clamp(5rem,13vw,9rem);line-height:1.3;letter-spacing:0.15em;text-shadow:0 0 60px rgba(0,0,0,.5),0 2px 8px rgba(0,0,0,.3)">吟风弄雨<br>意在云间</p>
+    </div>
+  </section>
+
+<!-- ===== 开篇诗：背水 ===== -->
+  <section class="opening-section">
+    <div class="opening-label">开篇诗</div>
+    <p class="opening-title">背水</p>
+    <p class="opening-date">2024.04.18</p>
+    <p class="opening-line">天下风云才激荡</p>
+    <p class="opening-line">百家先手已称雄</p>
+    <p class="opening-line">割席断义抛旧己</p>
+    <p class="opening-line">人向西天马向东</p>
+    <p class="opening-line">大漠寂寥谁敢闯</p>
+    <p class="opening-line">万里秋寒送长风</p>
+    <p class="opening-line">会当箭定天山北</p>
+    <p class="opening-line">春山觐遇水朝宗</p>
+  </section>
+
+  <!-- ===== 樱花(左,竖图~587px) + 5首 ===== -->
+  <div class="photo-poem-row">
+    <div class="photo-breather">
+      <img src="/top/poet/sakura.jpg" alt="武汉东湖樱花">
+      <span class="photo-breather__caption">武汉 · 东湖樱花</span>
+    </div>
+    <div class="poem-stack">
+      <div class="poem-card poem-card--featured" data-poem-id="houru" onclick="openPoem(this)">
+        <div class="poem-card__header"><span class="poem-card__title">候鸟的诗</span></div>
+        <p class="poem-card__excerpt">野花的浪起伏，野草的背弯弯</p>
+        <div class="poem-card__hint">展开阅读 · Click to read</div>
+      </div>
+      <div class="poem-card" data-poem-id="qingchen" onclick="openPoem(this)">
+        <div class="poem-card__header"><span class="poem-card__title">清晨，独行在师大南区的小路</span></div>
+        <p class="poem-card__excerpt">灰色的泥墙，倚靠着蓊郁的大树</p>
+        <div class="poem-card__hint">展开阅读 · Click to read</div>
+      </div>
+      <div class="poem-card" data-poem-id="ruju" onclick="openPoem(this)">
+        <div class="poem-card__header"><span class="poem-card__title">入局</span></div>
+        <p class="poem-card__excerpt">晴空天下暗波涌，潜湖循江万树深</p>
+        <div class="poem-card__hint">展开阅读 · Click to read</div>
+      </div>
+      <div class="poem-card" data-poem-id="xuefuan" onclick="openPoem(this)">
+        <div class="poem-card__header"><span class="poem-card__title">雪伏案</span><span class="poem-card__date">2022.12.9</span></div>
+        <p class="poem-card__excerpt">乾坤穿白絮，山河挂雪袍</p>
+        <div class="poem-card__hint">展开阅读 · Click to read</div>
+      </div>
+      <div class="poem-card" data-poem-id="xueqing" onclick="openPoem(this)">
+        <div class="poem-card__header"><span class="poem-card__title">雪晴</span><span class="poem-card__date">2024.01.23</span></div>
+        <p class="poem-card__excerpt">开户波光暖，初阳照雪晴</p>
+        <div class="poem-card__hint">展开阅读 · Click to read</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 夕阳列车(右,~351px) + 3首 ===== -->
+  <div class="photo-poem-row photo-poem-row--img-right">
+    <div class="photo-breather">
+      <img src="/top/poet/sunset-train.jpg" alt="夕阳列车">
+      <span class="photo-breather__caption">夕阳列车</span>
+    </div>
+    <div class="poem-stack">
+      <div class="poem-card" data-poem-id="heise" onclick="openPoem(this)">
+        <div class="poem-card__header"><span class="poem-card__title">黑色静穆</span></div>
+        <p class="poem-card__excerpt">大树中了毒。夜雨送检，冬风是一把解剖刀。</p>
+        <div class="poem-card__hint">展开阅读 · Click to read</div>
+      </div>
+      <div class="poem-card" data-poem-id="wuti" onclick="openPoem(this)">
+        <div class="poem-card__header"><span class="poem-card__title">无题</span></div>
+        <p class="poem-card__excerpt">最是年少喜张扬</p>
+        <div class="poem-card__hint">展开阅读 · Click to read</div>
+      </div>
+      <div class="poem-card" data-poem-id="dengemei" onclick="openPoem(this)">
+        <div class="poem-card__header"><span class="poem-card__title">登峨眉</span><span class="poem-card__date">2023.08.14</span></div>
+        <p class="poem-card__excerpt">长风渐著，白日微曛。峨眉山岳却森森。</p>        <div class="poem-card__hint">展开阅读 · Click to read</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 树影(左,竖图~587px) + 5首 ===== -->
+  <div class="photo-poem-row">
+    <div class="photo-breather">
+      <img src="/top/poet/tree-shadow.jpg" alt="斑驳树影">
+      <span class="photo-breather__caption">斑驳树影</span>
+    </div>
+    <div class="poem-stack">
+      <div class="poem-card" data-poem-id="shizhi1" onclick="openPoem(this)">
+        <div class="poem-card__header"><span class="poem-card__title">失志其一</span></div>
+        <p class="poem-card__excerpt">当年万里觅封侯</p>
+        <div class="poem-card__hint">展开阅读 · Click to read</div>
+      </div>
+      <div class="poem-card" data-poem-id="shizhi2" onclick="openPoem(this)">
+        <div class="poem-card__header"><span class="poem-card__title">失志其二</span></div>
+        <p class="poem-card__excerpt">落暮霜林晚，秋风马蹄疾</p>
+        <div class="poem-card__hint">展开阅读 · Click to read</div>
+      </div>
+      <div class="poem-card" data-poem-id="zhiqige" onclick="openPoem(this)">
+        <div class="poem-card__header"><span class="poem-card__title">志气歌·中秋夜</span></div>
+        <p class="poem-card__excerpt">暗叶幽枝拨紫夜，清辉影里玉轮翻</p>
+        <div class="poem-card__hint">展开阅读 · Click to read</div>
+      </div>
+      <div class="poem-card" data-poem-id="daoyuanye" onclick="openPoem(this)">
+        <div class="poem-card__header"><span class="poem-card__title">悼念袁爷爷</span></div>
+        <p class="poem-card__excerpt">千里澄澄功犹在，万国默默齐哀伤</p>
+        <div class="poem-card__hint">展开阅读 · Click to read</div>
+      </div>
+      <div class="poem-card" data-poem-id="povillage" onclick="openPoem(this)">
+        <div class="poem-card__header"><span class="poem-card__title">当洪水淹没我的家乡</span></div>
+        <p class="poem-card__excerpt">我的湖城，我的鄱阳，一个刚刚脱贫的小城，是我的家乡</p>        <div class="poem-card__hint">展开阅读 · Click to read</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 诗选：西风 + 寄河南 ===== -->
+  <div class="poetry-zone">
+    <div class="poem-grid">
+      <div class="poem-card" data-poem-id="xifeng" onclick="openPoem(this)">
+        <div class="poem-card__header"><span class="poem-card__title">西风</span></div>
+        <p class="poem-card__excerpt">洪城日暮意迟迟，裁罢难题更裁诗</p>
+        <div class="poem-card__hint">展开阅读 · Click to read</div>
+      </div>
+      <div class="poem-card" data-poem-id="jihenan" onclick="openPoem(this)">
+        <div class="poem-card__header"><span class="poem-card__title">寄河南</span></div>
+        <p class="poem-card__excerpt">君不见，天神触怒拨风雨，洪波漫漫阔如潮</p>
+        <div class="poem-card__hint">展开阅读 · Click to read</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 乡村的牛(右,~351px) + 3首 ===== -->
+  <div class="photo-poem-row photo-poem-row--img-right">
+    <div class="photo-breather">
+      <img src="/top/poet/cattle.jpg" alt="乡村的牛">
+      <span class="photo-breather__caption">乡村的牛</span>
+    </div>
+    <div class="poem-stack">
+      <div class="poem-card" data-poem-id="chayanyuese" onclick="openPoem(this)">
+        <div class="poem-card__header"><span class="poem-card__title">出辛亥革命博物馆初饮茶颜悦色题</span><span class="poem-card__date">2023.12.10</span></div>
+        <p class="poem-card__excerpt">看罢博展暗出神，首义旗下闻枪声</p>
+        <div class="poem-card__hint">展开阅读 · Click to read</div>
+      </div>
+      <div class="poem-card" data-poem-id="yetu" onclick="openPoem(this)">
+        <div class="poem-card__header"><span class="poem-card__title">夜徒</span><span class="poem-card__date">2023.11.03</span></div>
+        <p class="poem-card__excerpt">飘茫秋雨漫江城，江滩渔船夜点灯</p>        <div class="poem-card__hint">展开阅读 · Click to read</div>
+      </div>
+      <div class="poem-card poem-card--featured" data-poem-id="kuanggexing" onclick="openPoem(this)">
+        <div class="poem-card__header"><span class="poem-card__title">狂歌行</span></div>
+        <p class="poem-card__excerpt">年少最是轻狂，日月心间挥日月，言笑自带岭南香</p>
+        <div class="poem-card__hint">展开阅读 · Click to read</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 长诗：我的大学是一片云 ===== -->
+  <section class="long-poem-section">
+    <div class="long-poem-divider"></div>
+    <div class="long-poem-label">Long Poem</div>
+    <h2 class="long-poem-title">我的大学是一片云</h2>
+
+    <div class="long-poem-stanza">
+      <p>秋雨。疲惫在寒风中战栗。<br>我用冷水冲刷我滚烫的脸颊，<br>在枯燥的，肃穆的，入冬下午，<br>思索，回忆。</p>
+    </div>
+    <div class="long-poem-stanza">
+      <p>人说，这日子什么时候是个头呢？<br>对呀，什么时候是个头呢？<br>窗边，我请长风穿透我的身体——</p>
+    </div>
+    <div class="long-poem-stanza">
+      <p>心跳呢喃，句点跃动，<br>长风细语。</p>
+    </div>
+    <div class="long-poem-stanza">
+      <p>是，这令人头疼的大学生活，<br>可我又何时不曾热爱。<br>何时不曾越过乏味，越过伤痛，<br>勇敢地拥抱你，做自己。</p>
+    </div>
+    <div class="long-poem-stanza">
+      <p>我攀过绝壁，溯过深溪<br>在高原望雪，在阳光下写诗<br>我坚持思考，坚持读书，<br>在无人秘处，随着音乐疯狂起舞</p>
+    </div>
+    <div class="long-poem-stanza">
+      <p>我在林间漫步，<br>听孤独伞叶上酥酥的小雨<br>我在公园路旁的双人椅上打盹，<br>舔慵懒蓝天下柔软的微风</p>
+    </div>
+    <div class="long-poem-stanza">
+      <p>我在合唱团抚摸音符的流动<br>我在实验室初窥能量魔法<br>我去商业街浸泡人间烟火<br>我在山中静默，飘然如仙</p>
+    </div>
+    <div class="long-poem-stanza">
+      <p>我关心世界政治风云激荡<br>我瞻望科技洪流滚滚向前<br>我学习3D建模，制作零件<br>我设计和制作电路板，编程操作数控机床<br>我同样劳动——<br>浇筑铝块，去焊接，去锯切</p>
+    </div>
+    <div class="long-poem-stanza">
+      <p>我让小车奔驰，让激光作画<br>我学习大语言模型，图像分割，为科技的前沿兴奋</p>
+    </div>
+    <div class="long-poem-stanza">
+      <p>我去了解生化，研究机理，<br>为生命的奥妙惊奇</p>
+    </div>
+    <div class="long-poem-stanza">
+      <p>我狂热地寻找美食<br>我在濛濛雨天点一份诱人的外卖<br>我在图书馆奖励自己一杯温热的咖啡</p>
+    </div>
+    <div class="long-poem-stanza">
+      <p>我在午夜<br>啃烧鸡，看柯南，喝橙汁，</p>
+    </div>
+    <div class="long-poem-stanza">
+      <p>我在破晓，<br>带着便当去看云烧透整个麻木的城市</p>
+    </div>
+    <div class="long-poem-stanza">
+      <p>我骑自行车，去很远的地方看花海<br>我游泳，游它几十个来回消解胸中苦闷<br>我参加乒乓球比赛，享受赛场上风姿飒飒<br>我长跑，健身，体验胸腔爆炸和酣畅淋漓</p>
+    </div>
+    <div class="long-poem-stanza">
+      <p>我一个人去放映厅享受视听震撼<br>我亦架小船在湖心漂流<br>我和三两老友，<br>抓娃娃，打台球，<br>在远离家乡的街头夜晚，再弄几瓶啤酒</p>
+    </div>
+    <div class="long-poem-stanza">
+      <p>我独自刷夜，<br>抬头搜寻那宏大深邃的夜幕下<br>有没有坚定勇敢的孤星</p>
+    </div>
+    <div class="long-poem-stanza">
+      <p>确实，我一直在寻找自己，<br>自己却飘忽不定<br>在大学，<br>总是茫然，总是怀疑，<br>总想逃避，总想放弃，</p>
+    </div>
+    <div class="long-poem-stanza">
+      <p>但我想说，我会一直淡泊从容坚定地走</p>
+    </div>
+    <div class="long-poem-stanza">
+      <p>就像我热爱的云，<br>它一直飘在人间和宇宙之间，<br>尽管，有时，它会透过阳光，<br>有时它会哭泣。</p>
+    </div>
+    <div class="long-poem-stanza">
+      <p>风说：<br>我，我的大学生活，都像云，<br>一片纯洁的云，<br>一片彩色的云，<br>一片热烈的云，<br>一片漂泊的云，<br>一片特立独行的云。</p>
+    </div>
+  </section>
+
+  <!-- Back to home -->
+  <div class="back-link">
+    <a href="/">← BACK TO HOME</a>
+  </div>
+
+  <!-- ===== 诗歌 Modal Overlay ===== -->
+  <div class="poem-overlay" id="poemOverlay" onclick="closePoem()">
+    <div class="poem-overlay__bg"></div>
+    <div class="poem-overlay__modal" onclick="event.stopPropagation()">
+      <button class="poem-overlay__close" onclick="closePoem()">&times;</button>
+      <div class="poem-overlay__title" id="modalTitle"></div>
+      <div class="poem-overlay__date" id="modalDate"></div>
+      <div class="poem-overlay__text" id="modalText"></div>
+      <div class="poem-overlay__footer" onclick="closePoem()">▲ 关闭 · Close</div>
+    </div>
+  </div>
+</main> <div style="text-align:center;padding:14rem 1rem 3rem"><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false" style="font-family:'Zhi Mang Xing',cursive;font-size:clamp(3.5rem,8vw,5.5rem);color:var(--color-taupe-gray,#B4AC97);text-decoration:none;transition:opacity 0.3s" onmouseover="this.style.opacity='0.2'" onmouseout="this.style.opacity='1'">星辰度理 · 复本归元</a></div> <div class="mt-32 h-[1px] w-screen bg-taupe-gray md:mt-72"></div> <div id="footer-wrapper" class="relative w-full overflow-hidden" data-start="bottom" data-astro-cid-iravouwq> <footer id="footer" class="absolute -top-1/2 left-0 w-full -translate-y-1/2 overflow-hidden text-pampas bg-mine-shaft-texture" data-astro-cid-iravouwq> <div class="container flex flex-col items-center px-5 pt-[9rem] md:px-20 md:pt-[22rem]" data-astro-cid-iravouwq> <div style="overflow:hidden;padding:2.5rem 0"> <style>@keyframes marqueeLoop{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}</style> <div style="display:flex;flex-wrap:nowrap;animation:marqueeLoop 18s linear infinite;width:fit-content;width:-webkit-fit-content"> <span style="display:flex;flex-shrink:0;white-space:nowrap;align-items:center"> <span style="font-family:Cinzel,serif;font-size:clamp(7rem,14vw,12rem);font-weight:600;color:var(--color-taupe-gray,#B4AC97);letter-spacing:0.03em;padding:0 5rem">WILLIAM LIU</span> <span style="font-family:Cinzel,serif;font-size:clamp(7rem,14vw,12rem);font-weight:400;color:var(--color-emperor,#4F4F4F);letter-spacing:0.03em;padding:0 5rem">HAO-Z</span> <span style="font-family:Cinzel,serif;font-size:clamp(7rem,14vw,12rem);font-weight:400;color:var(--color-taupe-gray,#B4AC97);letter-spacing:0.03em;padding:0 5rem">BUILDER</span> <span style="font-family:Cinzel,serif;font-size:clamp(7rem,14vw,12rem);font-weight:400;color:var(--color-taupe-gray,#B4AC97);letter-spacing:0.03em;padding:0 5rem">POET</span> <span style="font-family:Cinzel,serif;font-size:clamp(7rem,14vw,12rem);font-weight:400;color:var(--color-taupe-gray,#B4AC97);letter-spacing:0.03em;padding:0 5rem">WANDERER</span> <span style="font-family:Cinzel,serif;font-size:clamp(7rem,14vw,12rem);font-weight:400;color:var(--color-taupe-gray,#B4AC97);letter-spacing:0.03em;padding:0 5rem">ENTHUSIAST</span> </span> <span style="display:flex;flex-shrink:0;white-space:nowrap;align-items:center"> <span style="font-family:Cinzel,serif;font-size:clamp(7rem,14vw,12rem);font-weight:600;color:var(--color-taupe-gray,#B4AC97);letter-spacing:0.03em;padding:0 5rem">WILLIAM LIU</span> <span style="font-family:Cinzel,serif;font-size:clamp(7rem,14vw,12rem);font-weight:400;color:var(--color-emperor,#4F4F4F);letter-spacing:0.03em;padding:0 5rem">HAO-Z</span> <span style="font-family:Cinzel,serif;font-size:clamp(7rem,14vw,12rem);font-weight:400;color:var(--color-taupe-gray,#B4AC97);letter-spacing:0.03em;padding:0 5rem">BUILDER</span> <span style="font-family:Cinzel,serif;font-size:clamp(7rem,14vw,12rem);font-weight:400;color:var(--color-taupe-gray,#B4AC97);letter-spacing:0.03em;padding:0 5rem">POET</span> <span style="font-family:Cinzel,serif;font-size:clamp(7rem,14vw,12rem);font-weight:400;color:var(--color-taupe-gray,#B4AC97);letter-spacing:0.03em;padding:0 5rem">WANDERER</span> <span style="font-family:Cinzel,serif;font-size:clamp(7rem,14vw,12rem);font-weight:400;color:var(--color-taupe-gray,#B4AC97);letter-spacing:0.03em;padding:0 5rem">ENTHUSIAST</span> </span> </div> </div> </footer> </div><script>
+// ===== 诗歌数据 =====
+var poems = {
+  houru: {
+    title: "候鸟的诗",
+    date: "",
+    lines: "野花的浪起伏\n野草的背弯弯\n软乎软乎的小云\n咬一口淡淡的远山\n候鸟的人\n只敢远远地看\n\n看她修长的小腿\n挠着寂寞的沙洲\n晚风绵绵。\n看她细滑的长颈\n她灵光的小脑袋\n张望，流连。\n看她优雅的弧度\n银白色的翅羽\n划过静默的湖面。\n像轻柔的指尖\n撩动波浪的琴弦。\n\n滑翔，侧翻，俯冲，振翅\n溅起羽花\n溅起游动的落日\n\n等候，静候，问候，守候\n候鸟的人爱着候鸟\n候鸟却不曾停留\n\n她是湖水的女儿\n蓝天的初恋\n她属于绿林\n她属于夕烟\n她是属于自由的诗歌\n她是不属于人类的语言\n\n我感到\n我的记忆在闪光\n身体在融化\n我将在这一刻\n完全全地，属于纯洁的她\n\n别再问我\n诗歌降临的感觉\n我又不是诗人\n\n我就是诗\n候鸟的诗"
+  },
+  qingchen: {
+    title: "清晨，独行在师大南区的小路",
+    date: "",
+    lines: "清晨，\n独行在南区的小路\n灰色的泥墙，倚靠着蓊郁的大树\n清风徐来，\n渐晕的朝阳，轻快的脚步\n缭动的发丝，\n是镶着金边的爬山虎。\n燕儿，破着风飞翔\n雀儿，舞动着银色的翅膀\n云儿，随着蓝天的旋律，自在飘荡\n我的船儿，要去向何方？\n坚定，迷茫的双桨。\n时拿时放。\n啊，且让我追逐着明天的脚步吧！\n我要画下月光，\n走向太阳"
+  },
+  ruju: {
+    title: "入局",
+    date: "",
+    lines: "江山大浪没城村，\n湖岸微风问行人。\n晴空天下暗波涌，\n潜湖循江万树深。"
+  },
+  xuefuan: {
+    title: "雪伏案",
+    date: "2022.12.9",
+    lines: "乾坤穿白絮\n山河挂雪袍\n簌簌檐下过\n漫漫宇上飘\n梦醒终辛苦\n霜风欺年少\n挑灯按纸笔\n起坐意难消"
+  },
+  xueqing: {
+    title: "雪晴",
+    date: "2024.01.23",
+    lines: "开户波光暖\n初阳照雪晴\n登攀趋日近\n垂望九川平"
+  },
+  heise: {
+    title: "黑色静穆",
+    date: "",
+    lines: "大树中了毒。\n夜雨送检，\n冬风是一把解剖刀。\n鲜血淋漓，尊严挺立，依然。\n年轮溶解着冷漠，\n混乱裹挟无声的寒战。\n那枯枝恐怕是天空的纹理，\n落叶，不过是大地的尸斑。"
+  },
+  wuti: {
+    title: "无题",
+    date: "",
+    lines: "最是年少喜张扬，\n敢说敢做敢担当。\n抛却苦恼伤心事，\n风满和弦日满窗。"
+  },
+  dengemei: {
+    title: "登峨眉",
+    date: "2023.08.14",
+    lines: "风清日朗更疏云，\n叶隐万树兵。\n人群跃动，烟香雾横，\n佳阁好清音。\n循山而上雷洞坪，攀金顶。\n我独不语，群山回唱，\n芸生簇簇万象新。\n长风渐著，白日微曛。\n峨眉山岳却森森。\n人生百年长寂寞，\n且向青冥问一樽。\n山前仍作冷风吹。"
+  },
+  yetu: {
+    title: "夜徒",
+    date: "2023.11.03",
+    lines: "飘茫秋雨漫江城\n江滩渔船夜点灯\n循桥巡江寻粮道\n荧光夜徒到五更"
+  },
+  xifeng: {
+    title: "西风",
+    date: "",
+    lines: "洪城日暮意迟迟\n裁罢难题更裁诗\n苍鹰怒马西风烈\n还待杏花春雨时"
+  },
+  shizhi1: {
+    title: "失志其一",
+    date: "",
+    lines: "当年万里觅封侯，剑气指九州\n可怜长城空自许，又值寒秋\n便看满园千芳紫，独我不可登高楼\n肠断处，水悠悠"
+  },
+  shizhi2: {
+    title: "失志其二",
+    date: "",
+    lines: "落暮霜林晚\n秋风马蹄疾\n危危天不改\n蓼蓼故人稀"
+  },
+  zhiqige: {
+    title: "志气歌·中秋夜",
+    date: "",
+    lines: "暗叶幽枝拨紫夜\n清辉影里玉轮翻\n今学嫦娥守寂寞\n明年折挂赠仙官"
+  },
+  chayanyuese: {
+    title: "出辛亥革命博物馆初饮茶颜悦色题",
+    date: "2023.12.10",
+    lines: "看罢博展暗出神，首义旗下闻枪声。\n秋山秋雨隐秋日，江岸江花弄江城。\n烟云沉沉生饥渴，寒意萧萧人微困。\n店门忽现妆红色，四五兄弟茶几樽。\n桃花坞口擎奶盖，绵香稠腻细勾魂。\n冰白浅粉吐春色，滑舌入腹质地温。\n“疏影横斜水清浅，暗香浮动月黄昏。”\n水墨茶颜杯悦色，远黛如泼意境深。\n茶尽犹余长回味，清气半吐古韵成。"
+  },
+  povillage: {
+    title: "当洪水淹没我的家乡",
+    date: "",
+    lines: "是什么地方又唱起饶河调？\n航拍下的鄱阳\n熟悉的旋律，\n漾出无名的悲伤\n\n安徽的暴雨，\n鄱阳决口的圩堤\n\n洪水与黑夜\n城镇与渔庄\n在每一座圩堤上\n在每一座大坝上\n一群群乡村干部\n一队队人民战士\n是湖水还是汗水？\n浸湿你的衣裳\n\n我的湖城，我的鄱阳\n一个刚刚脱贫的小城\n是我的家乡\n\n你是我最深的情节\n是我心灵最深的地方\n你给我所有的甜\n又给我莫名的痛\n是父亲的微笑，爷爷的胡茬，奶奶的白发，\n而今，我又看见你的面孔\n泥泞的脸上写满的坚毅与不屈\n加油，鄱阳\n我愿给予你所有的祝福\n所有的盼望\n\n我看见，我看见，\n不远的地方闪动的黎明，\n我看见洪水的尽头，种着太阳，\n我看见百灵鸟，歌唱的百灵鸟，\n看见阳光\n洒进老城的街道"
+  },
+  daoyuanye: {
+    title: "悼念袁爷爷",
+    date: "",
+    lines: "一心为民去饥荒\n八旬下地务农忙\n裤跟鞋底泥土沃\n衣衫两袖稻花香\n千里澄澄功犹在\n万国默默齐哀伤\n吾辈继志勤勉励\n禾稻底下可乘凉"
+  },
+  jihenan: {
+    title: "寄河南",
+    date: "",
+    lines: "君不见\n天神触怒拨风雨，洪波漫漫阔如潮\n君不见\n冰箱彩电无处落，人车浮沉水中飘\n\n分崩离散知多少，暴雨烈烈沙阻道\n淹没店商三千所，横扫街巷一万条\n交通瘫痪步难行，焦目无神盼归家\n浪钩颈颔心慌乱，紧抱长杆手已麻\n信号阻隔无音讯，烛火亲人遥牵挂\n\n艰难里，人民英雄见伟大\n英雄人民在一起，咱不怕！\n\n警政工医终职守，军民志愿救死生\n兢兢业业水中岗，寻寻觅觅死亡线\n风雨兄弟手相牵，华夏同胞心相连\n四方聚靠传物资，七石汇聚补苍天\n\n河南莫怕风雨难，九州齐力助援舟！"
+  },
+  kuanggexing: {
+    title: "狂歌行",
+    date: "",
+    lines: "年少最是轻狂，\n日月心间挥日月，言笑自带岭南香\n翻书笑骂孔夫子，摇手自是探花郎\n吟啸徐行穿风雨，阴晴又何妨？\n只是，将四月研学，把五月歌唱\n却恨时不久，日不长\n惊醒里，末了，终了\n不晓得刷了几册习题，做得几段文章\n只得六月匆忙，临阵磨刀枪\n\n高一直是尽了，尽了的吧！\n回甘四季锦，梦里徜徉\n还可取将低吟浅唱。\n只是青年，切莫，切莫\n将习题搁放，将文章抛忘\n切莫负了，这金玉似的，\n飞矢般的，青华流光"
+  }
+};
+
+// ===== Modal 交互 =====
+var overlay = document.getElementById('poemOverlay');
+var modalTitle = document.getElementById('modalTitle');
+var modalDate = document.getElementById('modalDate');
+var modalText = document.getElementById('modalText');
+
+var _savedY = 0;
+
+function openPoem(card) {
+  var id = card.getAttribute('data-poem-id');
+  var poem = poems[id];
+  if (!poem) return;
+  modalTitle.textContent = poem.title;
+  modalDate.textContent = poem.date;
+  modalText.textContent = poem.lines;
+  _savedY = window.scrollY;
+  // 阻止背景滚动（不改 layout，不破坏 modal scroll）
+  document.documentElement.style.overflow = 'hidden';
+  document.documentElement.style.overscrollBehavior = 'none';
+  document.body.style.overflow = 'hidden';
+  document.body.style.overscrollBehavior = 'none';
+  overlay.classList.add('is-active');
+  var modalEl = overlay.querySelector('.poem-overlay__modal');
+  if (modalEl) modalEl.scrollTop = 0;
+}
+
+function closePoem() {
+  overlay.classList.remove('is-active');
+  document.documentElement.style.overflow = '';
+  document.documentElement.style.overscrollBehavior = '';
+  document.body.style.overflow = '';
+  document.body.style.overscrollBehavior = '';
+  window.scrollTo(0, _savedY);
+}
+
+// 捕获阶段拦截所有滚轮 → 手动送入 Modal（触控板通路）
+overlay.addEventListener('wheel', function(e) {
+  if (!overlay.classList.contains('is-active')) return;
+  e.preventDefault();
+  e.stopPropagation();
+  var modal = overlay.querySelector('.poem-overlay__modal');
+  if (modal) modal.scrollTop += e.deltaY;
+}, { passive: false, capture: true });
+
+// document 兜底：modal 打开期间任何滚轮都拦截
+document.addEventListener('wheel', function(e) {
+  if (!overlay.classList.contains('is-active')) return;
+  e.preventDefault();
+  e.stopPropagation();
+  var modal = overlay.querySelector('.poem-overlay__modal');
+  if (modal) modal.scrollTop += e.deltaY;
+}, { passive: false, capture: true });
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closePoem();
+});
+
+// ===== Scroll Reveal =====
+var revealObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-revealed');
+    }
+  });
+}, { threshold: 0.2, rootMargin: '0px 0px -40px 0px' });
+
+// 开篇诗逐行
+document.querySelectorAll('.opening-line').forEach(function(el) {
+  revealObserver.observe(el);
+});
+
+// 图片呼吸
+document.querySelectorAll('.photo-breather').forEach(function(el) {
+  revealObserver.observe(el);
+});
+
+// 诗歌卡片
+document.querySelectorAll('.poem-card').forEach(function(el) {
+  revealObserver.observe(el);
+});
+
+// 长诗 stanza
+document.querySelectorAll('.long-poem-stanza').forEach(function(el, i) {
+  var stanzaObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.15 });
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(30px)';
+  el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+  stanzaObserver.observe(el);
+});
+</script>
+<script type="module" src="/_astro/hoisted.BAJWDJOX.js"></script><script type="module" src="/_astro/page.LS5KDvwX.js"></script></body></html>

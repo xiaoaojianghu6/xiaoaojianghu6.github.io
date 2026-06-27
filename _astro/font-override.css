@@ -1,0 +1,85 @@
+/* Local font declarations */
+
+/* Zhi Mang Xing (行书) */
+@font-face {
+  font-family: 'Zhi Mang Xing';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/zhi-mang-xing-400.ttf') format('truetype');
+}
+
+/* Cinzel (English serif) - 6 weights */
+@font-face {
+  font-family: 'Cinzel';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/cinzel-400.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Cinzel';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/cinzel-500.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Cinzel';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/cinzel-600.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Cinzel';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/cinzel-700.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Cinzel';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/fonts/cinzel-800.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Cinzel';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('/fonts/cinzel-900.ttf') format('truetype');
+}
+
+/* LXGW WenKai (正文字体) */
+@font-face {
+  font-family: 'LXGW WenKai';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/LXGWWenKai-Regular.ttf') format('truetype');
+}
+
+/* 方正行楷简体 (FZXingKai) */
+@font-face {
+  font-family: 'FZXingKai';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/方正行楷简体.ttf') format('truetype');
+}
+
+/* Override taikisato font mapping */
+.font-serif {
+  font-family: "LXGW WenKai", "Zhi Mang Xing", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif !important;
+}
+.font-serif-en {
+  font-family: "Cinzel", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif !important;
+}
+
+/* Navigation: Zhi Mang Xing (行书) */
+.ts-text-link {
+  font-family: "Zhi Mang Xing", cursive !important;
+}
