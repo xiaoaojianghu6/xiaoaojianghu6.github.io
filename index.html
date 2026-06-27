@@ -26,9 +26,9 @@ const t={preserveBehavior:!1},e=e=>{if("string"==typeof e)return[e,t];const[n,r=
 .splash-line{height:2px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);margin:3.5rem 0 3rem;width:clamp(200px,38vw,400px);animation:splash-line-in .9s .5s both}
 .splash-sub{font-family:Cinzel,serif;color:rgba(255,255,255,.2);font-size:clamp(1rem,3vw,1.5rem);letter-spacing:.5em;animation:splash-sub-in .6s 1s both}
 .splash-progress-wrap{width:clamp(160px,28vw,320px);margin-top:2.8rem;animation:splash-sub-in .6s 1.3s both}
-.splash-progress-track{height:1px;background:rgba(255,255,255,.06);border-radius:1px;overflow:hidden;position:relative}
-.splash-progress-fill{height:100%;width:0%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18) 60%,rgba(255,255,255,.35));transition:width .35s ease-out;position:relative}
-.splash-progress-fill::after{content:'';position:absolute;right:0;top:50%;transform:translateY(-50%);width:20px;height:3px;background:rgba(255,255,255,.15);border-radius:2px;filter:blur(2px)}
+.splash-progress-track{height:2px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden;position:relative}
+.splash-progress-fill{height:100%;width:0%;background:linear-gradient(90deg,rgba(255,255,255,.05),rgba(255,255,255,.28) 50%,rgba(255,255,255,.5));border-radius:2px;transition:width .3s ease-out;position:relative}
+.splash-progress-fill::after{content:'';position:absolute;right:-1px;top:50%;transform:translateY(-50%);width:26px;height:4px;background:rgba(255,255,255,.25);border-radius:2px;filter:blur(2px)}
 @keyframes ink-wash-in{0%{filter:blur(20px);opacity:0;transform:scale(.92)}60%{filter:blur(2px);opacity:.85}to{filter:blur(0);opacity:1;transform:scale(1)}}
 @keyframes splash-line-in{0%{width:0;opacity:0}to{width:clamp(200px,38vw,400px);opacity:1}}
 @keyframes splash-sub-in{0%{opacity:0;letter-spacing:.8em}to{opacity:1;letter-spacing:.5em}}
