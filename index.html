@@ -45,8 +45,9 @@ const t={preserveBehavior:!1},e=e=>{if("string"==typeof e)return[e,t];const[n,r=
 </div>
 <script>
 (async function(){
-// Skip splash when navigating from another page on this site (e.g. menu "归枢")
-var ref=document.referrer;if(ref&&ref.indexOf(location.hostname)!==-1&&ref!==location.href){var el=document.getElementById('splash');if(el)el.remove();return;}
+// Skip splash on SPA internal nav (window persists). Refresh resets this flag.
+if(window.__splashShown){var el=document.getElementById('splash');if(el)el.remove();return;}
+window.__splashShown=1;
 // Wait for fonts
 await document.fonts.ready;
 await document.fonts.load('54px "Zhi Mang Xing"');
