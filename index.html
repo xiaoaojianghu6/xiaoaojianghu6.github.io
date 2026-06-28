@@ -45,8 +45,8 @@ const t={preserveBehavior:!1},e=e=>{if("string"==typeof e)return[e,t];const[n,r=
 </div>
 <script>
 (async function(){
-// Skip splash during SPA navigation (document already loaded = Astro body swap)
-if(document.readyState==='complete'){var el=document.getElementById('splash');if(el)el.remove();return;}
+// Skip splash when navigating from another page on this site (e.g. menu "归枢")
+var ref=document.referrer;if(ref&&ref.indexOf(location.hostname)!==-1&&ref!==location.href){var el=document.getElementById('splash');if(el)el.remove();return;}
 // Wait for fonts
 await document.fonts.ready;
 await document.fonts.load('54px "Zhi Mang Xing"');
