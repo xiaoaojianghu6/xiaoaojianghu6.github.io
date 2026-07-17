@@ -10,7 +10,7 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
-    // Serve directory index.html files for taikisato static copy
+    // Serve directory index.html files for static site
     {
       name: 'serve-dir-index',
       configureServer(server) {

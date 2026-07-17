@@ -104,7 +104,7 @@ def gen_video(src, caption):
         f'<div class="ts-horizontal-scroll-item flex flex-col items-start justify-center gap-4 px-5 py-16 md:px-10 md:py-0" style="min-width:360px;max-width:520px">'
         f'<p class="font-serif-en text-base text-gray">(Video)</p>'
         f'<div style="border-radius:8px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.15)">'
-        f'<video style="width:100%;display:block" webkit-playsinline playsinline muted autoplay loop>'
+        f'<video style="width:100%;display:block" preload="auto" webkit-playsinline playsinline muted autoplay loop>'
         f'<source src="{src}" type="video/mp4"></video></div>'
         f'<p class="whitespace-normal text-sm text-gray">{caption}</p>'
         f'</div>'

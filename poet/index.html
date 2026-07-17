@@ -97,7 +97,7 @@ html.wf-ready{visibility:visible}
 
 <div id="menu" class="menu z-30 h-dvh w-screen bg-mine-shaft-texture" data-astro-cid-xcczry7d>
   <div class="relative flex h-full w-full p-5 md:p-10" data-astro-cid-xcczry7d>
-    <video class="hidden h-full max-w-[50%] items-center md:mr-4 md:flex" webkit-playsinline playsinline muted autoplay loop data-astro-cid-xcczry7d><source src="/common/menu.mp4" type="video/mp4" data-astro-cid-xcczry7d></video>
+    <video class="hidden h-full max-w-[50%] items-center md:mr-4 md:flex" preload="auto" webkit-playsinline playsinline muted autoplay loop data-astro-cid-xcczry7d><source src="/common/menu.mp4" type="video/mp4" data-astro-cid-xcczry7d></video>
     <div class="flex w-full flex-col md:flex-1" data-astro-cid-xcczry7d>
       <button class="ts-menu-close absolute top-5 md:top-10 right-5 md:right-20 group" style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;background:transparent;border:none;cursor:pointer;color:var(--color-pampas,#F9F9F6)" data-astro-cid-xcczry7d>
         <span style="position:absolute;display:block;height:2px;width:22px;background:currentColor;transform:rotate(45deg);transition:transform 0.3s"></span>
@@ -544,4 +544,17 @@ document.querySelectorAll('.long-poem-stanza').forEach(function(el, i) {
   stanzaObserver.observe(el);
 });
 </script>
-<script type="module" src="/_astro/hoisted.BAJWDJOX.js"></script><script type="module" src="/_astro/page.LS5KDvwX.js"></script><script>(function(){var p=["/about/","/poet/","/wanderer/","/enthusiast/","/builder/"];p.forEach(function(u){fetch(u,{priority:"low"}).catch(function(){})});fetch('/assets/builder-CYJfVXiO.js',{priority:"low"}).catch(function(){});})();</script><script>(function(){var p=["/about/","/poet/","/wanderer/","/enthusiast/","/builder/"];p.forEach(function(u){fetch(u,{priority:"low"}).catch(function(){})});var c=["/top/wanderer/cover.jpg","/top/enthusiast/cover.jpg","/top/poet/cover.png","/about/mv/about_mv1.jpg"];c.forEach(function(u){fetch(u,{priority:"low"}).catch(function(){})});fetch("/assets/builder-CYJfVXiO.js",{priority:"low"}).catch(function(){});})();</script></body></html>
+<script type="module" src="/_astro/hoisted.BAJWDJOX.js"></script><script type="module" src="/_astro/page.LS5KDvwX.js"></script><script>(function(){var p=["/about/","/poet/","/wanderer/","/enthusiast/","/builder/"];p.forEach(function(u){fetch(u,{priority:"low"}).catch(function(){})});fetch('/assets/builder-CYJfVXiO.js',{priority:"low"}).catch(function(){});})();</script><script>(function(){var p=["/about/","/poet/","/wanderer/","/enthusiast/","/builder/"];p.forEach(function(u){fetch(u,{priority:"low"}).catch(function(){})});var c=["/top/wanderer/cover.jpg","/top/enthusiast/cover.jpg","/top/poet/cover.png","/about/mv/about_mv1.jpg"];c.forEach(function(u){fetch(u,{priority:"low"}).catch(function(){})});fetch("/assets/builder-CYJfVXiO.js",{priority:"low"}).catch(function(){});})();</script><script>(function(){
+var vids=document.querySelectorAll('video[autoplay]');
+if(!vids.length)return;
+var played=new WeakSet();
+function tp(v){if(played.has(v))return;var p=v.play();if(p&&p.then){p.then(function(){played.add(v)}).catch(function(){})}}
+function tpa(){vids.forEach(tp)}
+tpa();
+function og(){tpa();document.removeEventListener('click',og);document.removeEventListener('touchstart',og)}
+document.addEventListener('click',og);document.addEventListener('touchstart',og);
+document.addEventListener('visibilitychange',function(){if(!document.hidden)tpa()});
+if('IntersectionObserver' in window){
+var ob=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)tp(e.target)})},{threshold:0.1});
+setTimeout(function(){vids.forEach(function(v){if(v.paused&&!v.ended)ob.observe(v)})},2000)}
+})();</script></body></html>

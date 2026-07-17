@@ -71,7 +71,7 @@
   src: url('/fonts/FZXingKai-subset.woff2') format('woff2');
 }
 
-/* Override taikisato font mapping */
+/* Override font mapping */
 .font-serif {
   font-family: "LXGW WenKai", "Zhi Mang Xing", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif !important;
 }

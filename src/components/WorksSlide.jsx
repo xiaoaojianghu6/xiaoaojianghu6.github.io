@@ -5,12 +5,12 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 /* ===== Title Block ===== */
-function TitleBlock({ jp, en }) {
+function TitleBlock({ zh, en }) {
   return (
     <>
       <h1 className="px-[1.4rem] pt-16 md:px-0 md:pt-32">
         <span className="-mt-5 align-top text-4xl font-medium leading-none vertical-rl md:text-5xl">
-          <span>{jp}</span>
+          <span>{zh}</span>
         </span>
         <span className="-mt-5 ml-2 align-top font-serif-en vertical-rl md:ml-[0.8rem] md:text-xl md:leading-none">
           ({en})
@@ -182,7 +182,7 @@ export default function WorksSlide({ title, titleEn, items, path = '' }) {
           >
             {/* Title + Gold Quote */}
             <li className="mr-20 md:mr-60 flex flex-col items-center">
-              <TitleBlock jp={title} en={titleEn} />
+              <TitleBlock zh={title} en={titleEn} />
             </li>
 
             {/* Project Cards */}
