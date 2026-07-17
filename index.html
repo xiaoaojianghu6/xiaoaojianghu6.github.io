@@ -29,8 +29,7 @@ const t={preserveBehavior:!1},e=e=>{if("string"==typeof e)return[e,t];const[n,r=
 .splash-sub{font-family:'Cinzel Splash',Cinzel,serif;color:rgba(255,255,255,.2);font-size:clamp(1rem,3vw,1.5rem);letter-spacing:.5em;animation:splash-sub-in .6s 1s both}
 .splash-progress-wrap{width:clamp(160px,28vw,320px);margin-top:2.8rem;animation:splash-sub-in .6s 1.3s both}
 .splash-progress-track{height:2px;background:rgba(255,255,255,.1);border-radius:2px;overflow:visible;position:relative}
-.splash-progress-fill{height:100%;width:0%;background:linear-gradient(90deg,rgba(255,255,255,.2),rgba(255,255,255,.5) 60%,rgba(255,255,255,.7));border-radius:2px;position:relative;animation:progressGrow 5s ease-out forwards}
-@keyframes progressGrow{0%{width:0%}5%{width:4%}15%{width:15%}35%{width:40%}65%{width:70%}100%{width:88%}}
+.splash-progress-fill{height:100%;width:0%;background:linear-gradient(90deg,rgba(255,255,255,.2),rgba(255,255,255,.5) 60%,rgba(255,255,255,.7));border-radius:2px;position:relative;transition:width 0.4s ease-out}
 @keyframes ink-wash-in{0%{filter:blur(20px);opacity:0;transform:scale(.92)}60%{filter:blur(2px);opacity:.85}to{filter:blur(0);opacity:1;transform:scale(1)}}
 @keyframes splash-line-in{0%{width:0;opacity:0}to{width:clamp(200px,38vw,400px);opacity:1}}
 @keyframes splash-sub-in{0%{opacity:0;letter-spacing:.8em}to{opacity:1;letter-spacing:.5em}}
@@ -46,20 +45,41 @@ const t={preserveBehavior:!1},e=e=>{if("string"==typeof e)return[e,t];const[n,r=
 </div>
 </div>
 <script>
+(function(){var p=document.getElementById('splash-progress-fill');p&&(p.style.transition='width 0.4s ease-out',p.style.width='0%');})();
 (async function(){if(window.__splashShown){var el=document.getElementById("splash");if(el)el.remove();return;}window.__splashShown=1;
-// Skip splash during SPA navigation (document already loaded = Astro body swap)
 if(document.readyState==='complete'){var el=document.getElementById('splash');if(el)el.remove();return;}
-// Wait for fonts
+// JS-driven progress bar — tied to real loading milestones
+var bar=document.getElementById('splash-progress-fill');
+function setProgress(v){if(bar)bar.style.width=v+'%';}
+// Slow continuous advance between milestones
+var realPct=0, targetPct=0, capPct=10;
+function tick(){
+  if(realPct<targetPct){realPct=Math.min(realPct+0.15,targetPct);setProgress(realPct);}
+  if(realPct<capPct)setTimeout(tick,50);
+}
+setTimeout(tick,200);
+// Font loading milestones
+document.fonts.ready.then(function(){capPct=30;targetPct=28;});
 await document.fonts.ready;
 await document.fonts.load('54px "Zhi Mang Xing"');
-// Wait for hero video to be playable (with 8s safety timeout)
+capPct=50;targetPct=48;
+// Video loading milestones — track canplay + canplaythrough
 var heroVideo = document.querySelector('#hero-video video');
-if (heroVideo && heroVideo.readyState < 3) {
-  await Promise.race([
-    new Promise(function(r){ heroVideo.addEventListener('canplaythrough', r, {once:true}); }),
-    new Promise(function(r){ setTimeout(r, 8000); })
-  ]);
+var videoReady=false;
+if(heroVideo){
+  if(heroVideo.readyState>=2){capPct=70;targetPct=65;}
+  else heroVideo.addEventListener('canplay',function(){capPct=70;targetPct=65;},{once:true});
+  if(heroVideo.readyState>=3){videoReady=true;capPct=90;targetPct=85;}
+  else{
+    heroVideo.addEventListener('canplaythrough',function(){videoReady=true;capPct=90;targetPct=85;},{once:true});
+    await Promise.race([
+      new Promise(function(r){heroVideo.addEventListener('canplaythrough',r,{once:true})}),
+      new Promise(function(r){setTimeout(r,8000)})
+    ]);
+    videoReady=true;
+  }
 }
+capPct=100;targetPct=95;
 // Start exit animation
 var t=setTimeout;
 var text=document.getElementById('splash-text');
@@ -70,7 +90,10 @@ t(function(){text.classList.add('hide')},3000);
 t(function(){top.classList.add('split');bot.classList.add('split')},3400);
 t(function(){
   ov.remove();
-  // Prefetch AFTER splash gone — don't compete with hero video bandwidth
+  // FINAL: trigger hero video playback now that splash is gone
+  var hv=document.querySelector('#hero-video video');
+  if(hv&&hv.paused){hv.play().catch(function(){});}
+  // Prefetch AFTER splash gone
   var pages=['/about/','/poet/','/wanderer/','/enthusiast/','/builder/'];
   pages.forEach(function(u){fetch(u,{priority:'low'}).catch(function(){});});
   fetch('/common/menu.mp4',{priority:'low'}).catch(function(){});
