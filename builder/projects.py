@@ -3,6 +3,33 @@
 # 改完后运行: python3 build.py
 
 PROJECTS = {
+    "multimodal-rag": {
+        "title": "OCR+多模态RAG+Agent",
+        "subtitle": "MULTIMODAL RAG · UNITED IMAGING",
+        "role": "RESEARCH INTERN",
+        "date": "2025",
+        "hero": "/detail/multimodal-rag/mv-pc.jpg",
+        "hero_alt": "multimodal-rag 系统架构图",
+        "overview": [
+            "传统的文档检索要么只返回文字片段，要么只返回整页 PDF——前者丢失了图片、表格、公式等关键信息，后者信息密度太低，噪声过多。这个项目在联影公司实习期间完成，换了个思路：用多模态 RAG 实现 text-to-any 的全模态精准召回——不是召回整页，而是精准召回切片，图表就只有图、公式就只有公式，输出信息密度极高。",
+            "系统支持返回图片、Markdown 表格、LaTeX 公式，并附带原始出处溯源。结合 Agent 框架实现多步骤检索与推理。受保密协议限制，具体技术实现细节不便公开。",
+        ],
+        "sections": [
+            {
+                "type": "image",
+                "src": "/detail/multimodal-rag/mv-pc.jpg",
+                "alt": "多模态RAG系统架构图",
+            },
+            {
+                "type": "video",
+                "src": "/detail/multimodal-rag/demo.mp4",
+                "caption": "系统演示——多模态检索与答案生成全流程",
+            },
+        ],
+        "next_slug": "image-segmentation",
+        "next_title": "图像/视频分割",
+    },
+
     "cardioagent": {
         "title": "多模态心脏诊断智能体",
         "subtitle": "MULTI-AGENT · ISAIMS 2025",

@@ -14,13 +14,14 @@ with open(f'{BASE}/_tpl_after.html', 'r') as f:
 
 NEXT_MAP = {
     'cardioagent': 'text-restructuring',
+    'multimodal-rag': 'image-segmentation',
     'grab-car': 'signal-processing',
     'image-segmentation': 'cardioagent',
     'math-modeling': 'grab-car',
     'signal-processing': 'workflow',
     'text-restructuring': 'williamnotes',
     'williamnotes': 'math-modeling',
-    'workflow': 'image-segmentation',
+    'workflow': 'multimodal-rag',
 }
 
 
