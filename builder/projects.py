@@ -5,21 +5,21 @@
 PROJECTS = {
     "multimodal-rag": {
         "title": "OCR+多模态RAG+Agent",
-        "subtitle": "MULTIMODAL RAG · UNITED IMAGING",
-        "role": "RESEARCH INTERN",
+        "subtitle": "MEDICAL MULTIMODAL RAG · UNITED IMAGING",
+        "role": "SOLO DEVELOPER",
         "date": "2025",
         "hero": "/detail/multimodal-rag/mv-pc.jpg",
         "hero_alt": "multimodal-rag 系统架构图",
         "overview": [
-            "传统的文档检索要么只返回文字片段，要么只返回整页 PDF——前者丢失了图片、表格、公式等关键信息，后者信息密度太低，噪声过多。这个项目在联影公司实习期间完成，换了个思路：用多模态 RAG 实现 text-to-any 的全模态精准召回——不是召回整页，而是精准召回切片，图表就只有图、公式就只有公式，输出信息密度极高。",
-            "系统支持返回图片、Markdown 表格、LaTeX 公式，并附带原始出处溯源。结合 Agent 框架实现多步骤检索与推理。受保密协议限制，具体技术实现细节不便公开。",
+            "传统的文档检索要么只返回文字片段，要么只返回整页 PDF——前者丢失了图片、表格、公式等关键信息，后者信息密度太低，噪声过多。这个项目在联影公司（United Imaging）实习期间由我一人独立开发上线。联影是国内医学影像领域的头部企业，主打超声、CT 等医疗影像设备——这套 RAG 系统对接的就是医学超声文档场景。技术思路上，以 OCR 为文档解析入口，将扫描件/PDF 转为结构化内容，再用多模态 RAG 实现 text-to-any 的全模态精准召回——不是召回整页，而是精准召回切片，图表就只有图、公式就只有公式，输出信息密度极高。",
+            "整个项目从数据处理管线、向量索引构建、检索排序到 Agent 推理链路，均由我一人完成——全程独立设计、开发、部署。受联影保密协议限制，具体技术实现细节不便公开。",
         ],
         "sections": [
             {
                 "type": "text",
                 "tag": "核心优势",
                 "paragraphs": [
-                    "与传统的文档检索方案相比，这套系统有三个核心优势：",
+                    "相比传统的文档检索方案，这套面向医学超声场景的多模态 RAG 系统有三个核心优势：",
                     "模型灵活切换——支持多种 Embedding 架构，可选用多模态大语言模型（如 Qwen3-VL 系列）或 CLIP 架构（如 MedImageInsight），以统一流程处理不同模型，一键切换进行检索对比。",
                     "精准切片召回——不是召回整页 PDF，而是将文档解析为 section / paragraph / figure / table / equation 五类原子对象，每类对象独立索引、独立召回。搜图表就只有图，搜公式就只有 LaTeX，输出信息密度远高于整页返回方案。",
                     "多模态输出——前端 UI 图文表格公式无缝编译，Markdown 表格正确渲染，LaTeX 公式正确编译，图片附带原始出处溯源。不是只返回一串文字，而是一份结构完整的答案文档。",
