@@ -28,7 +28,7 @@ PROJECTS = {
             {
                 "type": "video",
                 "src": "/detail/multimodal-rag/demo.mp4",
-                "caption": "系统演示——多模态检索与答案生成全流程",
+                "caption": "系统输出效果——图文表格公式无缝编译与溯源",
             },
         ],
         "next_slug": "image-segmentation",
