@@ -16,9 +16,14 @@ PROJECTS = {
         ],
         "sections": [
             {
-                "type": "image",
-                "src": "/detail/multimodal-rag/mv-pc.jpg",
-                "alt": "多模态RAG系统架构图",
+                "type": "text",
+                "tag": "核心优势",
+                "paragraphs": [
+                    "与传统的文档检索方案相比，这套系统有三个核心优势：",
+                    "模型灵活切换——支持多种 Embedding 架构，可选用多模态大语言模型（如 Qwen3-VL 系列）或 CLIP 架构（如 MedImageInsight），以统一流程处理不同模型，一键切换进行检索对比。",
+                    "精准切片召回——不是召回整页 PDF，而是将文档解析为 section / paragraph / figure / table / equation 五类原子对象，每类对象独立索引、独立召回。搜图表就只有图，搜公式就只有 LaTeX，输出信息密度远高于整页返回方案。",
+                    "多模态输出——前端 UI 图文表格公式无缝编译，Markdown 表格正确渲染，LaTeX 公式正确编译，图片附带原始出处溯源。不是只返回一串文字，而是一份结构完整的答案文档。",
+                ],
             },
             {
                 "type": "video",
@@ -336,8 +341,8 @@ PROJECTS = {
                 ],
             },
         ],
-        "next_slug": "image-segmentation",
-        "next_title": "图像/视频分割",
+        "next_slug": "multimodal-rag",
+        "next_title": "OCR+多模态RAG+Agent",
     },
 
     "grab-car": {
