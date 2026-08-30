@@ -7,3 +7,7 @@ _archive/
 __pycache__/
 *.bak
 .superpowers/
+
+# 原始素材（本地保留，不入库）
+新项目/
+微信.JPG
