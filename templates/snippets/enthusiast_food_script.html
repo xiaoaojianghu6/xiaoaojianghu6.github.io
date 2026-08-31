@@ -1,0 +1,12 @@
+<script type="module">
+import {g as r} from '/_astro/index.DjKJqAo0.js';
+import {S as f} from '/_astro/ScrollTrigger.DZdR0iV_.js';
+import {g as p} from '/_astro/getIsMobile.Brfq5JoK.js';
+r.registerPlugin(f);
+(function(){
+var n=document.getElementById('food-slider-wrapper'),a=document.getElementById('food-slider'),h=n?.offsetHeight,i=p(),c='20%';
+r.timeline({scrollTrigger:{trigger:n,start:i?`top ${c}`:'top top',end:`+=${h}`,scrub:true,pin:true}}).to(a,{width:'100vw',height:'100vh',top:0,left:'50%',x:'-50%',y:i?`-${c}`:'0'});
+var t=document.querySelectorAll('.ts-slider-food-item');
+if(t.length){t[0].classList.add('is-active');var s=0;setInterval(function(){t[s].classList.remove('is-active');s=(s+1)%t.length;t[s].classList.add('is-active')},1500)}
+})();
+</script>

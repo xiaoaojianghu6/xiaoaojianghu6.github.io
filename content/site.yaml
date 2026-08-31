@@ -1,0 +1,35 @@
+# ================= 站点全局设置 =================
+# 这里控制全站共用的部分：导航、全屏菜单、页脚跑马灯、SEO、联系方式的“英文短名”
+site_name: HAO-Z Portfolio
+name_en: William Liu
+name_zh: HAO-Z
+
+# 统计 / 社交
+ga_id: G-VS04M3619P
+twitter_site: '@xiaoaojianghu6'
+email: 1708770266@qq.com
+github: https://github.com/xiaoaojianghu6
+
+# 顶部导航（桌面端右上角竖排小字，顺序即显示顺序）
+header_nav:
+  - { label: 述己, href: /about/ }
+  - { label: 创客, href: /builder/ }
+  - { label: 行者, href: /wanderer/ }
+  - { label: 诗人, href: /poet/ }
+  - { label: 赤子, href: /enthusiast/ }
+
+# 全屏菜单（点右上角三横线展开），num 是中文序号
+menu_items:
+  - { num: 一, zh: 归 枢, en: HOME, href: / }
+  - { num: 二, zh: 述 己, en: ABOUT, href: /about/ }
+  - { num: 三, zh: 创 客, en: BUILDER, href: /builder/ }
+  - { num: 四, zh: 行 者, en: WANDERER, href: /wanderer/ }
+  - { num: 五, zh: 诗 人, en: POET, href: /poet/ }
+  - { num: 六, zh: 赤 子, en: ENTHUSIAST, href: /enthusiast/ }
+  - { num: 七, zh: 联 系, en: CONTACT, href: 'mailto:1708770266@qq.com' }
+
+# 页脚跑马灯文字（循环滚动，自动重复两遍）
+marquee_words: [WILLIAM LIU, HAO-Z, BUILDER, POET, WANDERER, ENTHUSIAST]
+
+# 页面间互相预取（性能优化，一般不用改）
+prefetch_pages: [/about/, /poet/, /wanderer/, /enthusiast/, /builder/]

@@ -1,0 +1,39 @@
+# 项目数据——workflow
+# order: 在列表/首页的排序位置（1 = 最前）；year/categories/tags 用于列表卡片与筛选
+# sections: 详情页正文区块，type 支持 text/image/video/pdf/image_panel，数组顺序 = 页面顺序
+# 图片视频放本项目 media/ 文件夹，路径写 /projects/workflow/media/文件名
+
+slug: workflow
+order: 9
+title: AI 自动化工作流
+subtitle: LLM ENGINEERING · DIFY
+role: LLM ENGINEER
+date: '2025'
+hero: /projects/workflow/media/mv-pc.jpg
+hero_alt: workflow 主视觉图
+overview:
+- LLM 单独用是玩具，串进工作流才是生产力。这个仓库记的是我拿 Dify + Docker 本地搭 AI Agent 的全套实践——从最朴素的 RAG，一路玩到 Text-to-SQL 和 MCP。
+- 每个应用都本地跑通验证过，不是 PPT 里的概念图。
+sections:
+- type: image_panel
+  images:
+  - src: /projects/workflow/media/amap-mcp.png
+    alt: 高德地图 MCP 工具接入示意
+    label: MCP
+    caption: 本地 Ollama + Dify 工作流 + 高德 MCP——把 LLM 接进真实世界的工具链
+- type: text
+  tag: Unfold
+  paragraphs:
+  - LLM 单独用是玩具，知识陈旧还会「胡说八道」。串进工作流、挂上外部工具和知识库，才变成靠谱的生产力。我用 Dify + Docker 在本地搭了一套 AI Agent 实践场：基础 RAG 配医学指南知识库，知识检索节点加
+    Prompt 约束专家角色；Text-to-SQL 用自然语言查 PostgreSQL，Antv/Echarts 自动出图；MCP 高德工具调用，再把工作流本身发布为 MCP Server；高阶
+    RAG 调 PubMed 拉文献。
+  - 全部 Docker 本地部署，一套可复现的 Dify 工作流范式：RAG 让 Agent 回答有据可依，Text-to-SQL 把数据库变成聊天对象，MCP 让工作流反向成为可被调用的工具。边学边搭，每个节点都自己踩过坑验证过，沉淀成可复用的学习笔记。
+year: '2025'
+categories:
+- PERSONAL PROJECT
+tags:
+- PERSONAL PROJECT
+- AI AGENT
+- LLM
+- AUTOMATION
+list_image: /projects/workflow/media/mv-pc.jpg

@@ -1,0 +1,79 @@
+
+body{background:#4A3E35;color:#f9f9f6}
+html{visibility:hidden}
+html.wf-ready{visibility:visible}
+.page-bg{position:fixed;left:0;top:0;z-index:-1;width:100%;height:100%}
+.poet-hero{height:100vh;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-end;padding:5rem 1.5rem 4rem;position:relative;overflow:hidden}
+.poet-hero-img{position:absolute;top:0;left:0;width:100%;max-height:100vh;object-fit:cover;object-position:top center}
+.poet-hero-content{position:relative;z-index:1}
+/* === 开篇诗区 === */
+.opening-section{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:6rem 2.5rem 4rem;text-align:center}
+.opening-label{font-family:'Zhi Mang Xing',cursive;font-size:clamp(1.8rem,4vw,2.4rem);opacity:0.35;letter-spacing:0.2em;margin-bottom:2.5rem}
+.opening-title{font-family:'Zhi Mang Xing',cursive;font-size:clamp(2.4rem,5vw,3.5rem);letter-spacing:0.15em;margin-bottom:0.5rem}
+.opening-date{font-family:'LXGW WenKai',serif;font-size:0.8rem;opacity:0.35;margin-bottom:3rem}
+.opening-line{font-family:'FZXingKai','LXGW WenKai',serif;font-size:clamp(2rem,4.5vw,3rem);line-height:2.4;opacity:0;transform:translateY(50px);filter:blur(4px);transition:opacity 1.5s ease-out,transform 1.5s ease-out,filter 1.5s ease-out;margin-bottom:0.5rem}
+.opening-line.is-revealed{opacity:0.7;transform:translateY(0);filter:blur(0)}
+/* === 图片呼吸区（期刊插图风格） === */
+.photo-breather{position:relative;z-index:1;opacity:0;transform:translateY(40px);transition:opacity 1s ease-out,transform 1s ease-out}
+.photo-breather.is-revealed{opacity:1;transform:translateY(0)}
+.photo-breather img{width:100%;display:block;opacity:0.55;transition:opacity 0.5s}
+.photo-breather:hover img{opacity:0.85}
+.photo-breather__caption{font-family:Cinzel,serif;font-size:0.65rem;letter-spacing:0.15em;opacity:0.25;display:block;margin-top:0.5rem}
+/* === 图+诗并排行（Grid：图自然高度 + 诗堆叠） === */
+.photo-poem-row{display:grid;grid-template-columns:clamp(240px,34vw,440px) 1fr;gap:clamp(2rem,5vw,3.5rem);align-items:start;max-width:1100px;margin:5rem auto;padding:0 2.5rem;position:relative;z-index:1}
+.photo-poem-row .photo-breather{grid-row:1;margin:0}
+.photo-poem-row .photo-breather img{width:100%;display:block}
+.photo-poem-row .poem-stack{display:flex;flex-direction:column;gap:1.5rem}
+.photo-poem-row .poem-stack .poem-card{margin:0}
+.photo-poem-row--img-right{grid-template-columns:1fr clamp(240px,34vw,440px)}
+.photo-poem-row--img-right .photo-breather{grid-column:2;grid-row:1}
+.photo-poem-row--img-right .poem-stack{grid-column:1;grid-row:1}
+@media(max-width:767px){.photo-poem-row{grid-template-columns:1fr;gap:1.5rem;margin:3rem auto}.photo-breather img{opacity:0.8}.photo-poem-row .photo-breather{max-width:100%}.photo-poem-row--img-right{grid-template-columns:1fr}.photo-poem-row--img-right .photo-breather{grid-column:1}.photo-poem-row--img-right .poem-stack{grid-column:1}}
+/* === 诗选容器 === */
+.poetry-zone{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:2rem 2.5rem}
+/* === 诗卡网格 === */
+.poem-grid{display:grid;grid-template-columns:1fr;gap:1.2rem}
+@media(min-width:768px){.poem-grid{grid-template-columns:1fr 1fr;gap:1.5rem}}
+/* === 诗歌卡片 === */
+.poem-card{position:relative;border-radius:10px;background:rgba(249,249,246,0.03);border:1px solid rgba(249,249,246,0.06);padding:1.5rem;cursor:pointer;transition:background 0.3s,border-color 0.3s,transform 0.2s;overflow:hidden;opacity:0;transform:translateY(30px);transition:opacity 0.8s ease-out,transform 0.8s ease-out,background 0.3s,border-color 0.3s}
+.poem-card.is-revealed{opacity:1;transform:translateY(0)}
+.poem-card:hover{background:rgba(249,249,246,0.06);border-color:rgba(249,249,246,0.12)}
+.poem-card__header{display:flex;align-items:flex-start;justify-content:space-between;gap:0.8rem;margin-bottom:0.6rem}
+.poem-card__title{font-family:'LXGW WenKai',serif;font-size:clamp(1.15rem,2.2vw,1.35rem);opacity:0.85;line-height:1.4}
+.poem-card__date{font-family:Cinzel,serif;font-size:0.7rem;opacity:0.3;letter-spacing:0.1em;flex-shrink:0;margin-top:0.15rem}
+.poem-card__excerpt{font-family:'LXGW WenKai',serif;font-size:0.95rem;opacity:0.5;line-height:1.7;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.poem-card__hint{font-family:Cinzel,serif;font-size:0.65rem;letter-spacing:0.15em;opacity:0;transform:translateY(6px);transition:opacity 0.35s,transform 0.35s;margin-top:0.8rem;color:rgba(249,249,246,0.3)}
+.poem-card:hover .poem-card__hint{opacity:1;transform:translateY(0)}
+/* === 特色全宽卡 === */
+.poem-card--featured{grid-column:1/-1;padding:2rem}
+/* === Modal Overlay === */
+.poem-overlay{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:1.5rem;overscroll-behavior:contain;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.poem-overlay.is-active{opacity:1;pointer-events:auto}
+.poem-overlay__bg{position:absolute;inset:0;background:rgba(0,0,0,0.78);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.poem-overlay__modal{position:relative;z-index:1;width:100%;max-width:720px;max-height:85vh;overflow-y:auto;border-radius:14px;background:rgba(30,28,26,0.92);border:1px solid rgba(249,249,246,0.08);padding:3rem 2rem;transform:scale(0.95) translateY(15px);transition:transform 0.35s ease-out}
+.poem-overlay.is-active .poem-overlay__modal{transform:scale(1) translateY(0)}
+.poem-overlay__close{position:absolute;top:1rem;right:1rem;width:36px;height:36px;border-radius:50%;border:none;background:rgba(249,249,246,0.06);color:rgba(249,249,246,0.5);font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s,color 0.2s;line-height:1}
+.poem-overlay__close:hover{background:rgba(249,249,246,0.12);color:rgba(249,249,246,0.8)}
+.poem-overlay__title{font-family:'LXGW WenKai',serif;font-size:clamp(1.6rem,3vw,2rem);opacity:0.9;text-align:center;line-height:1.4;margin-bottom:0.3rem}
+.poem-overlay__date{font-family:Cinzel,serif;font-size:0.8rem;opacity:0.3;text-align:center;letter-spacing:0.1em;margin-bottom:2.5rem}
+.poem-overlay__text{font-family:'LXGW WenKai',serif;font-size:clamp(1.2rem,2.2vw,1.5rem);line-height:2.4;opacity:0.8;white-space:pre-line;text-align:center}
+.poem-overlay__text .stanza-break{display:block;height:1.2rem}
+.poem-overlay__footer{text-align:center;margin-top:2rem;font-family:Cinzel,serif;font-size:0.68rem;opacity:0.25;letter-spacing:0.15em;cursor:pointer}
+/* === 长诗区 === */
+.long-poem-section{position:relative;z-index:1;max-width:800px;margin:0 auto;padding:8rem 2.5rem 5rem;text-align:center}
+.long-poem-divider{width:60px;height:1px;background:rgba(249,249,246,0.12);margin:0 auto 3rem}
+.long-poem-label{font-family:Cinzel,serif;font-size:0.7rem;letter-spacing:0.25em;opacity:0.25;text-transform:uppercase;margin-bottom:2rem}
+.long-poem-title{font-family:'Zhi Mang Xing',cursive;font-size:clamp(2.4rem,5vw,3.5rem);letter-spacing:0.12em;opacity:0.8;margin-bottom:4rem}
+.long-poem-stanza{margin-bottom:3rem}
+.long-poem-stanza p{font-family:'FZXingKai','LXGW WenKai',serif;font-size:clamp(1.6rem,3.5vw,2.4rem);line-height:2.4;opacity:0.7;margin:0}
+/* === Back link === */
+.back-link{text-align:center;padding:5rem 2.5rem 3rem;position:relative;z-index:1}
+.back-link a{font-family:Cinzel,serif;font-size:0.8rem;letter-spacing:0.2em;opacity:0.3;text-decoration:none;color:inherit;transition:opacity 0.3s}
+.back-link a:hover{opacity:0.65}
+@media(min-width:768px){
+  .poet-hero{height:100vh;padding:12rem 5rem 8rem}
+  .opening-section{padding:8rem 0 5rem}
+  .poetry-zone{padding:2rem 1rem}
+  .poem-overlay__modal{padding:3rem 3rem}
+  .long-poem-section{padding:7rem 0 5rem}
+}

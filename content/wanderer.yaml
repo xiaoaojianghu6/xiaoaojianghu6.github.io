@@ -1,0 +1,63 @@
+# 行者区内容——改这里即可更新 /wanderer/ 页面
+# 每个地点是一个 places 列表项；photos 数组顺序 = 页面照片顺序
+# layout: two = 双图并排, single = 单图
+# 新增地点：复制一个列表项改文字和图片路径（图片放 top/wanderer/）
+
+hero:
+  cover: /top/wanderer/cover.jpg
+  title_lines:
+  - 踏遍青山
+  - 方知真我
+places:
+- en: Wugong Mountain · 江西
+  title: 武功山
+  sub: 重装正穿
+  text: 大雾里的武功山才是武功山的底色。我们重装正穿，背着三四十斤的包，在云雾之间走了三天。第二天下午，整个山都不见了，只剩下脚下的草叶和白茫茫的一切。那种感觉不是迷失，是某种清空。
+  photos:
+  - src: /top/wanderer/wugongshan2.jpg
+    alt: 武功山大雾
+  - src: /top/wanderer/wugongshan1.jpg
+    alt: 武功山苍天
+  layout: two
+- en: Zagana · 甘肃
+  title: 扎尕那
+  sub: 重装徒步
+  text: 扎尕那的山是垂直的，石壁直接插进云里。牦牛在细雪里慢慢走过，完全不在乎我们。这里的时间流速和别处不一样，我在那里待了两天，好像待了两个月，又好像什么都没发生。
+  photos:
+  - src: /top/wanderer/zagana.jpg
+    alt: 扎尕那
+  - src: /top/wanderer/zagana-yak.jpg
+    alt: 扎尕那牦牛
+  layout: two
+- en: Wutai Mountain · 山西
+  title: 五台山
+  sub: 重装大顺朝
+  text: 大顺朝是五台山最经典的徒步路线，串联五座台顶，草甸、石海、经幡一路相随。那些磕长头的人走得比我更慢，却比我走得更远。三天重装，山顶的风大得站不住，但每一次停下来回头望，都觉得值得。
+  photos:
+  - src: /top/wanderer/wutaishan.jpg
+    alt: 五台山大顺朝
+  layout: single
+- en: Emei Mountain · 四川
+  title: 峨眉山
+  sub: 轻装
+  text: 金顶的云海是用来还债的。你欠它很多次期待，登顶那一刻它全部还给你。一个人站在那里，突然不知道该说什么。
+  photos:
+  - src: /top/wanderer/emei.jpg
+    alt: 峨眉山金顶
+  layout: single
+- en: Enshi · 湖北
+  title: 恩施
+  sub: 溶洞 + 溯溪
+  text: 溯溪是用脚去读一条河的方式。冰凉的水从鞋里灌进来，你得不停地找落脚点，不能想别的事。大峡谷的绿是那种让人说不出话的绿，像是颜色本身在发光。
+  photos:
+  - src: /top/wanderer/enshi.jpg
+    alt: 恩施溯溪
+  layout: single
+- en: Wuhan · 湖北
+  title: 武汉夜徒
+  sub: 一夜
+  text: 凌晨三点，我的脚趾开始起泡。大腿几乎不听使唤，但也没人说要停。武汉的夜很暗，路灯稀稀拉拉，我们就这样走到了天亮。那次之后很长时间，我走路都有种"这算什么"的底气。
+  photos:
+  - src: /top/wanderer/wuhan-night.jpg
+    alt: 武汉夜徒
+  layout: single

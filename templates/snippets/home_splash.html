@@ -1,0 +1,66 @@
+<style>
+.splash-overlay{position:fixed;inset:0;z-index:100;pointer-events:none;background:#000}
+.splash-half{position:absolute;left:0;right:0;height:50%;background:#000;transition:transform .9s cubic-bezier(.22,1,.36,1)}
+.splash-half.top{top:0}.splash-half.bottom{bottom:0}
+.splash-half.top.split{transform:translateY(-100%)}
+.splash-half.bottom.split{transform:translateY(100%)}
+.splash-text-wrap{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:10;transition:opacity .5s,filter .5s}
+.splash-text-wrap.hide{opacity:0;filter:blur(16px);pointer-events:none}
+.splash-title{font-family:'Zhi Mang Xing Splash','Zhi Mang Xing',cursive;color:#fff;line-height:1;font-size:clamp(7rem,22vw,14rem);animation:ink-wash-in 1.4s cubic-bezier(.08,.52,.12,.98) both;text-shadow:0 0 120px rgba(255,255,255,.12),0 0 60px rgba(255,255,255,.06)}
+.splash-line{height:2px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);margin:3.5rem 0 3rem;width:clamp(200px,38vw,400px);animation:splash-line-in .9s .5s both}
+.splash-sub{font-family:'Cinzel Splash',Cinzel,serif;color:rgba(255,255,255,.2);font-size:clamp(1rem,3vw,1.5rem);letter-spacing:.5em;animation:splash-sub-in .6s 1s both}
+.splash-progress-wrap{width:clamp(160px,28vw,320px);margin-top:2.8rem;animation:splash-sub-in .6s 1.3s both}
+.splash-progress-track{height:2px;background:rgba(255,255,255,.1);border-radius:2px;overflow:visible;position:relative}
+.splash-progress-fill{height:100%;width:0%;background:linear-gradient(90deg,rgba(255,255,255,.2),rgba(255,255,255,.5) 60%,rgba(255,255,255,.7));border-radius:2px;position:relative;transition:width 0.4s ease-out}
+@keyframes ink-wash-in{0%{filter:blur(20px);opacity:0;transform:scale(.92)}60%{filter:blur(2px);opacity:.85}to{filter:blur(0);opacity:1;transform:scale(1)}}
+@keyframes splash-line-in{0%{width:0;opacity:0}to{width:clamp(200px,38vw,400px);opacity:1}}
+@keyframes splash-sub-in{0%{opacity:0;letter-spacing:.8em}to{opacity:1;letter-spacing:.5em}}
+</style>
+<div class="splash-overlay" id="splash">
+<div class="splash-half top" id="splash-top"></div>
+<div class="splash-half bottom" id="splash-bottom"></div>
+<div class="splash-text-wrap" id="splash-text">
+<h1 class="splash-title">Hao-Z</h1>
+<div class="splash-line"></div>
+<p class="splash-sub">PORTFOLIO</p>
+<div class="splash-progress-wrap"><div class="splash-progress-track"><div class="splash-progress-fill" id="splash-progress-fill"></div></div></div>
+</div>
+</div>
+<script>
+(function(){var p=document.getElementById('splash-progress-fill');if(!p)return;p.style.transition='width 0.35s ease-out';p.style.width='0%';var start=Date.now(),done=false;function upd(){if(done||!p)return;var e=(Date.now()-start)/1000;var v=Math.min(90,Math.pow(Math.max(e,0)/4.2,0.6)*90);p.style.width=v.toFixed(1)+'%';requestAnimationFrame(upd)}requestAnimationFrame(upd);window.__splashBarDone=function(){done=true;if(p){p.style.transition='width 0.5s ease-out';p.style.width='100%'}};})();
+(async function(){if(window.__splashShown){var el=document.getElementById("splash");if(el)el.remove();return;}window.__splashShown=1;
+if(document.readyState==='complete'){var el=document.getElementById('splash');if(el)el.remove();return;}
+await document.fonts.ready;
+await document.fonts.load('54px "Zhi Mang Xing"');
+var heroVideo = document.querySelector('#hero-video video');
+if (heroVideo && heroVideo.readyState < 3) {
+  await Promise.race([
+    new Promise(function(r){ heroVideo.addEventListener('canplaythrough', r, {once:true}); }),
+    new Promise(function(r){ setTimeout(r, 8000); })
+  ]);
+}
+var t=setTimeout;
+var text=document.getElementById('splash-text');
+var top=document.getElementById('splash-top');
+var bot=document.getElementById('splash-bottom');
+var ov=document.getElementById('splash');
+// When text starts fading, finish the progress bar
+t(function(){text.classList.add('hide');if(window.__splashBarDone)window.__splashBarDone();},3000);
+t(function(){top.classList.add('split');bot.classList.add('split')},3400);
+t(function(){
+  ov.remove();
+  // FINAL: trigger hero video playback now that splash is gone
+  var hv=document.querySelector('#hero-video video');
+  if(hv&&hv.paused){hv.play().catch(function(){});}
+  // Prefetch AFTER splash gone
+  var pages=['/about/','/poet/','/wanderer/','/enthusiast/','/builder/'];
+  pages.forEach(function(u){fetch(u,{priority:'low'}).catch(function(){});});
+  fetch('/common/menu.mp4',{priority:'low'}).catch(function(){});
+  fetch('/top/wanderer/cover.jpg',{priority:'low'}).catch(function(){});
+  fetch('/top/enthusiast/cover.jpg',{priority:'low'}).catch(function(){});
+  fetch('/top/poet/cover.png',{priority:'low'}).catch(function(){});
+},4600);
+})();
+(function(){var hv=document.getElementById("hero-video");if(!hv)return;var v=hv.querySelector("video");if(!v)return;function r(){hv.classList.remove("is-loading")}if(v.readyState>=2){r()}else{v.addEventListener("canplay",r,{once:true})}})();
+</script>
+ 

@@ -1,0 +1,193 @@
+# 赤子区内容——改这里即可更新 /enthusiast/ 页面
+# films: 海报墙（src 路径 + caption 英文名）；movies/books/music 的 note 是右侧小字
+# food.images: 美食轮播图；sport.cards: dashed=true 显示虚线框（未开始的项目）
+
+hero:
+  cover: /top/enthusiast/cover.jpg
+  title_lines:
+  - 勇敢热烈
+  - 赤心无尘
+cinema:
+  text: 电影是我理解世界的方式之一。黑泽明的凌厉、宫崎骏的温柔、库布里克的冷峻、吴宇森的浪漫——每一个导演都在教你用一种新的眼睛看世界。剧集则更绵长，像一本可以读很久的书。
+  films:
+  - src: /top/enthusiast/dir-eastwood.jpg
+    alt: Eastwood
+    caption: EASTWOOD
+  - src: /top/enthusiast/movie-braveheart.png
+    alt: Braveheart
+    caption: BRAVEHEART
+  - src: /top/enthusiast/tv-ming-1566.jpg
+    alt: 大明王朝1566
+    caption: MING 1566
+  - src: /top/enthusiast/movie-yojimbo.jpg
+    alt: 用心棒
+    caption: YOJIMBO
+  - src: /top/enthusiast/movie-xia-nu.jpg
+    alt: 侠女
+    caption: A TOUCH OF ZEN
+  - src: /top/enthusiast/movie-whisper.jpg
+    alt: 侧耳倾听
+    caption: WHISPER
+  - src: /top/enthusiast/movie-walter-mitty.jpg
+    alt: 白日梦想家
+    caption: WALTER MITTY
+  - src: /top/enthusiast/movie-stand-by-me.jpg
+    alt: 伴我同行
+    caption: STAND BY ME
+  - src: /top/enthusiast/movie-into-the-wild.png
+    alt: 荒野生存
+    caption: INTO THE WILD
+  - src: /top/enthusiast/movie-interstellar.jpg
+    alt: 星际穿越
+    caption: INTERSTELLAR
+  - src: /top/enthusiast/movie-good-bad-ugly.jpg
+    alt: 黄金三镖客
+    caption: THE GOOD...
+  - src: /top/enthusiast/movie-dead-poets.png
+    alt: 死亡诗社
+    caption: DEAD POETS
+  movies:
+  - name: 2001太空漫游
+    note: 库布里克 1968
+  - name: 伴我同行
+    note: 罗伯·莱纳 1986
+  - name: 死亡诗社
+    note: 彼得·威尔 1989
+  - name: 白日梦想家
+    note: 本·斯蒂勒 2013
+  - name: 触不可及
+    note: 奥利维·那卡什 2011
+  - name: 勇敢的心
+    note: 梅尔·吉布森 1995
+  - name: 海上钢琴师
+    note: 朱塞佩·托纳多雷 1998
+  - name: 星际穿越
+    note: 诺兰 2014
+  - name: 荒野生存
+    note: 西恩·潘 2007
+  - name: 用心棒
+    note: 黑泽明 1961
+  - name: 侠女
+    note: 胡金铨 1971
+  - name: 侧耳倾听
+    note: 近藤喜文 1995
+  - name: 黄金三镖客
+    note: 莱昂内 1966
+  tv_series:
+  - 三国演义(94) / 红楼梦(87) / 绝命毒师
+  - 风骚律师 / 权力的游戏 / 瑞克和莫蒂
+  - 爱死机 / 最后生还者 / 行尸走肉
+  - 疑犯追踪 / 大明王朝1566 / 神探狄仁杰
+  - 雍正王朝 / 真探
+  trilogies:
+  - 教父三部曲 / 指环王 / 霍比特人
+  - 爱在三部曲 / 库布里克未来三部曲
+  - 李安父亲三部曲
+  directors:
+  - 黑泽明 / 宫崎骏 / 李安 / 周星驰
+  - 早期成龙 / 戈达尔 / 胡金铨
+  - 克林特·伊斯特伍德 / 皮克斯
+music:
+  text: 纯音乐是我码字、走路、发呆时的底色。没有歌词反而更自由，每一段旋律都可以是你自己的故事。集中在几位陪伴多年的作曲家身上。
+  items:
+  - name: Giovanni Marradi
+    note: 现代钢琴诗人
+  - name: Tonny Ann
+    note: 新古典钢琴
+  - name: Nicolas de Angelis
+    note: 法式浪漫吉他
+  - name: Roberto Cacciapaglia
+    note: 意大利极简钢琴
+  - name: Ennio Morricone
+    note: 电影配乐之神
+  - name: 赵季平
+    note: 中国电影配乐泰斗
+  - name: 久石让
+    note: 宫崎骏的声音
+  - name: 川井惠次
+    note: 攻壳/科幻配乐
+  - name: Paul Mauriat
+    note: 轻音乐之王
+  - name: 宗次郎
+    note: 陶笛大师
+  - name: 胡伟立
+    note: 港片配乐灵魂
+  - name: Yanni
+    note: 新世纪交响
+  - name: 坂本龙一
+    note: 声音即哲学
+  - name: 王立平
+    note: 红楼梦配乐
+  - name: Bandari
+    note: 自然之音
+  - name: Richard Clayderman
+    note: 钢琴王子
+books:
+  text: 读书这件事我一直是随缘的。但有些书是那种你不读就算了，读了就没法假装没读过的。它们在你心里留下一个印记，之后看什么都带着它的影子。
+  items:
+  - name: 海鸥乔纳森
+    note: 理查德·巴赫
+  - name: 小王子
+    note: 圣埃克苏佩里
+  - name: 牧羊人的奇幻之旅
+    note: 保罗·柯艾略
+  - name: 博尔赫斯集
+    note: 博尔赫斯
+  - name: 契诃夫小说集
+    note: 契诃夫
+  - name: 欧亨利小说集
+    note: 欧·亨利
+  - name: 故事新编
+    note: 鲁迅
+  - name: 射雕英雄传
+    note: 金庸
+  - name: 追风筝的人
+    note: 卡勒德·胡赛尼
+  - name: 红楼梦
+    note: 曹雪芹
+  - name: 杀死一只知更鸟
+    note: 哈珀·李
+  - name: 平凡的世界
+    note: 路遥
+  - name: 刘亮程选
+    note: 刘亮程
+  - name: 人类群星闪耀时
+    note: 茨威格
+  - name: 乔布斯传
+    note: 沃尔特·艾萨克森
+  - name: 曾国藩传
+    note: 张宏杰
+food:
+  text: 吃是我的另一条探索世界的路。从江西小炒到广州煲仔饭，从东北锅包肉到日式烧鸟——美食是人间最直接的快乐。我还是一个老吃家。
+  images:
+  - src: /top/enthusiast/food-bibimbap.jpg
+    alt: 石锅拌饭
+  - src: /top/enthusiast/food-casserole.jpg
+    alt: 砂锅煲
+  - src: /top/enthusiast/food-guobaorou.jpg
+    alt: 锅包肉
+  - src: /top/enthusiast/food-thai-rice.jpg
+    alt: 泰式饭
+  - src: /top/enthusiast/food-yakitori.jpg
+    alt: 日式烧鸟
+sport:
+  text: 运动对我来说是重置键。一口气游几十个来回，出来之后脑子里什么杂念都没了。变强是一件很物理的事，比很多事情都确定。
+  cards:
+  - title: TABLE TENNIS
+    text: 上饶市青少年锦标赛单打第3 · 双打第7。从小学打到大学，赛场上的风姿飒飒是最快乐的时刻之一。
+    dashed: false
+  - title: SWIM
+    text: 一口气游几十个来回，所有的苦闷都消散在水里。游泳是我的清场方式。
+    dashed: false
+  - title: FITNESS
+    text: 日常健身，享受胸腔爆炸和酣畅淋漓的感觉。变强是一件很物理的事，比很多事情都确定。
+    dashed: false
+  - title: HIKING
+    text: 武功山重装 · 扎尕那重装 · 五台山大顺朝 · 恩施溯溪 · 武汉夜徒。详见行者区。
+    dashed: false
+  - title: SKATEBOARD
+    text: 正在学。如果有板友路过欢迎带带。
+    dashed: true
+  - title: SANDA
+    text: 想学。强身健体，防身自卫。
+    dashed: true

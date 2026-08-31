@@ -1,0 +1,40 @@
+# ===== 新项目模板 =====
+# 用法：复制整个 _template 文件夹，重命名为项目英文短名（如 my-new-project），
+# 图片/视频放进该文件夹的 media/ 子目录，然后修改本文件。改完运行 python3 build.py
+
+slug: my-new-project
+order: 99
+title: 项目名称
+subtitle: ENGLISH SUBTITLE
+role: SOLO DEVELOPER
+date: '2025'
+year: '2025'
+categories:
+- PERSONAL PROJECT
+tags:
+- PERSONAL PROJECT
+- TAG
+hero: /projects/my-new-project/media/cover.jpg
+hero_alt: 主视觉图
+overview:
+- 一段话简介。
+sections:
+- type: text
+  tag: Unfold
+  paragraphs:
+  - 正文段落…
+- type: image
+  src: /projects/my-new-project/media/图1.jpg
+  alt: 图片说明
+- type: video
+  src: /projects/my-new-project/media/demo.mp4
+  caption: 视频说明
+- type: image_panel
+  images:
+  - src: /projects/my-new-project/media/a.jpg
+    alt: A
+    label: A
+    caption: ''
+- type: pdf
+  src: /projects/my-new-project/media/paper.pdf
+  title: PDF 标题

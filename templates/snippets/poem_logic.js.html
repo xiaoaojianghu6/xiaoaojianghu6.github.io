@@ -1,0 +1,96 @@
+// ===== Modal 交互 =====
+var overlay = document.getElementById('poemOverlay');
+var modalTitle = document.getElementById('modalTitle');
+var modalDate = document.getElementById('modalDate');
+var modalText = document.getElementById('modalText');
+
+var _savedY = 0;
+
+function openPoem(card) {
+  var id = card.getAttribute('data-poem-id');
+  var poem = poems[id];
+  if (!poem) return;
+  modalTitle.textContent = poem.title;
+  modalDate.textContent = poem.date;
+  modalText.textContent = poem.lines;
+  _savedY = window.scrollY;
+  // 阻止背景滚动（不改 layout，不破坏 modal scroll）
+  document.documentElement.style.overflow = 'hidden';
+  document.documentElement.style.overscrollBehavior = 'none';
+  document.body.style.overflow = 'hidden';
+  document.body.style.overscrollBehavior = 'none';
+  overlay.classList.add('is-active');
+  var modalEl = overlay.querySelector('.poem-overlay__modal');
+  if (modalEl) modalEl.scrollTop = 0;
+}
+
+function closePoem() {
+  overlay.classList.remove('is-active');
+  document.documentElement.style.overflow = '';
+  document.documentElement.style.overscrollBehavior = '';
+  document.body.style.overflow = '';
+  document.body.style.overscrollBehavior = '';
+  window.scrollTo(0, _savedY);
+}
+
+// 捕获阶段拦截所有滚轮 → 手动送入 Modal（触控板通路）
+overlay.addEventListener('wheel', function(e) {
+  if (!overlay.classList.contains('is-active')) return;
+  e.preventDefault();
+  e.stopPropagation();
+  var modal = overlay.querySelector('.poem-overlay__modal');
+  if (modal) modal.scrollTop += e.deltaY;
+}, { passive: false, capture: true });
+
+// document 兜底：modal 打开期间任何滚轮都拦截
+document.addEventListener('wheel', function(e) {
+  if (!overlay.classList.contains('is-active')) return;
+  e.preventDefault();
+  e.stopPropagation();
+  var modal = overlay.querySelector('.poem-overlay__modal');
+  if (modal) modal.scrollTop += e.deltaY;
+}, { passive: false, capture: true });
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closePoem();
+});
+
+// ===== Scroll Reveal =====
+var revealObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-revealed');
+    }
+  });
+}, { threshold: 0.2, rootMargin: '0px 0px -40px 0px' });
+
+// 开篇诗逐行
+document.querySelectorAll('.opening-line').forEach(function(el) {
+  revealObserver.observe(el);
+});
+
+// 图片呼吸
+document.querySelectorAll('.photo-breather').forEach(function(el) {
+  revealObserver.observe(el);
+});
+
+// 诗歌卡片
+document.querySelectorAll('.poem-card').forEach(function(el) {
+  revealObserver.observe(el);
+});
+
+// 长诗 stanza
+document.querySelectorAll('.long-poem-stanza').forEach(function(el, i) {
+  var stanzaObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.15 });
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(30px)';
+  el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+  stanzaObserver.observe(el);
+});

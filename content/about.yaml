@@ -1,0 +1,78 @@
+# 述己页内容——改这里即可更新 /about/ 页面
+# slider: 主视觉轮播图（顺序 = 轮播顺序）；timeline: 底部时间线
+
+bio_zh: 我是HAO-Z，是一名热衷探索新知的大学生，聚焦AI科技前沿，热衷于独立的创造。本科就读于华中科技大学Biomedical&nbsp;Engineering，专业研究方向集中于CV与多模态；此外也在疯狂探索AI，早期是狂热的vibe练习生，目前是Claude
+  Code的重度使用患者；我关注人(Med)，人与自然，人与健康；我爱哲学，自我剖析；我爱写诗，爱一个人沉思，一个人漫步；我热衷视与听，热爱电影与摄影；我常与纯音乐伴，古典流行摇滚来者不拒；我酷爱乒乓，我还是一个老吃家。行于山川，热爱无止，热烈无限。
+bio_en: Biomedical Engineering at HUST, immersed in computer vision and multimodal AI. A former vibe-coding
+  enthusiast, now deep in the trenches with Claude Code. I write poetry, wander alone, live through cinema
+  and photography, and find rhythm in music from Bach to Radiohead. Table tennis. Good food. Endless mountains.
+  Boundless curiosity.
+slider:
+- src: /about/mv/about_mv1.jpg
+  alt: image 1
+- src: /about/mv/about_mv2.jpg
+  alt: image 2
+- src: /about/mv/about_mv3.jpg
+  alt: image 3
+- src: /about/mv/about_mv12.jpg
+  alt: 图像配准
+- src: /about/mv/about_mv4.jpg
+  alt: image 4
+- src: /about/mv/about_mv5.jpg
+  alt: image 5
+- src: /about/mv/about_mv6.jpg
+  alt: image 6
+- src: /about/mv/about_mv13.jpg
+  alt: 汇编语言编写
+- src: /about/mv/about_mv7.jpg
+  alt: image 7
+- src: /about/mv/about_mv8.jpg
+  alt: image 8
+- src: /about/mv/about_mv14.jpg
+  alt: 医学传感器硬件设计
+- src: /about/mv/about_mv9.jpg
+  alt: image 9
+- src: /about/mv/about_mv10.jpg
+  alt: image 10
+- src: /about/mv/about_mv15.jpg
+  alt: FPGA绘制接口电路图
+- src: /about/mv/about_mv11.jpg
+  alt: image 11
+profile:
+  image: /about/profile.jpg
+  name_en: William Liu
+  name: William Liu
+  lines:
+  - 江西鄱阳人，华中科技大学生物医学工程在读。
+  - 聚焦CV与多模态AI，Claude Code重度使用者。
+  - 写诗，摄影，乒乓，美食。行于山川，永远在路上。
+  email_qq: mailto:1708770266@qq.com
+  email_gmail: mailto:hh15180393122@gmail.com
+  github: https://github.com/xiaoaojianghu6
+  wechat_qr: /about/qr-wechat.jpg
+  wechat_id: lyh_xiaoaojianghu6
+timeline:
+- time: '2005.07'
+  city: 湖城
+  city_sub: 鄱阳
+  desc: 湖水与稻浪之间长大。
+- time: 2011 — 2017
+  city: 湖城
+  city_sub: 鄱阳
+  desc: 五一中心小学。童年在山野与课本之间奔跑。
+- time: 2017 — 2019
+  city: 湖城
+  city_sub: 鄱阳
+  desc: 湖城学校初中部。开始对世界产生无尽好奇。
+- time: 2019 — 2020
+  city: 洪城
+  city_sub: 南昌
+  desc: 凤外（师大附中教育集团）。离开家乡，初入洪城。
+- time: 2020 — 2023
+  city: 洪城
+  city_sub: 南昌
+  desc: 江西师范大学附属中学。寒窗数载，文理并进。
+- time: 2023 — 现在
+  city: 江城
+  city_sub: 武汉
+  desc: 华中科技大学·生物医学工程。算法、模型、分割与信号，在理性与诗性之间游走。

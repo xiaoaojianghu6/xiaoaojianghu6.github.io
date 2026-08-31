@@ -1,0 +1,36 @@
+# 项目数据——cardioagent
+# order: 在列表/首页的排序位置（1 = 最前）；year/categories/tags 用于列表卡片与筛选
+# sections: 详情页正文区块，type 支持 text/image/video/pdf/image_panel，数组顺序 = 页面顺序
+# 图片视频放本项目 media/ 文件夹，路径写 /projects/cardioagent/media/文件名
+
+slug: cardioagent
+order: 3
+title: 多模态心脏诊断智能体
+subtitle: MULTI-AGENT · ISAIMS 2025
+role: CO-AUTHOR
+date: '2025'
+hero: /projects/cardioagent/media/mv-pc.jpg
+hero_alt: cardioagent 主视觉图
+overview:
+- 心血管疾病的精准诊疗太复杂，现有 AI 工具大多是个孤立的黑箱——能给预测，却说不清理由，更别提接进临床工作流。CardioAgent 换了个思路：多个智能体各管一摊，把 ECG、影像、临床指南这些多模态信号嚼碎了再拼起来。
+- 这篇工作是我在上海理工大学HealtIT团队实习时的工作成果，被 ISAIMS 2025（ACM）录用，我是共同作者，负责Agent内一维时序增强、多模态融合和 FAISS 向量检索那块 RAG 闭环。
+sections:
+- type: pdf
+  src: /projects/cardioagent/media/cardioagent-paper.pdf
+  title: CardioAgent · ISAIMS 2025
+- type: text
+  tag: Unfold
+  paragraphs:
+  - 心血管疾病诊疗的痛点很明确：现有 AI 大多是孤立的黑箱模型——能吐一个预测分数，却说不出为什么。更麻烦的是，心电图、医学影像、临床指南这些多模态信号各说各话，没有一个框架把它们揉在一起。CardioAgent
+    想做的，就是搭一个多智能体协作框架——每个 Agent 管一摊，把多模态信号嚼碎了再拼起来，给出可解释、能落地的决策支持。
+  - 技术路线上，多智能体分工协作是骨架，一维时序数据增强让 ECG 信号更鲁棒，FAISS 向量索引搭起 RAG 闭环——让每条建议都挂得上指南证据。我的角色是共同作者，扛了一维时序增强策略、多模态融合机制和
+    FAISS 向量索引 RAG 闭环三块——把「黑箱预测」往「可解释决策」推了一把。
+year: '2025'
+categories:
+- INTERNSHIP
+tags:
+- INTERNSHIP
+- AI AGENT
+- MULTIMODAL
+- HEALTHCARE
+list_image: /projects/cardioagent/media/mv-pc.jpg

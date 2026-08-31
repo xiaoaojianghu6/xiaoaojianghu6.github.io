@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://haozi.dev/</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://haozi.dev/about/</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://haozi.dev/builder/</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://haozi.dev/wanderer/</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://haozi.dev/poet/</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://haozi.dev/enthusiast/</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://haozi.dev/builder/multimodal-rag/</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://haozi.dev/builder/image-segmentation/</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://haozi.dev/builder/cardioagent/</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://haozi.dev/builder/text-restructuring/</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://haozi.dev/builder/williamnotes/</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://haozi.dev/builder/math-modeling/</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://haozi.dev/builder/grab-car/</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://haozi.dev/builder/signal-processing/</loc><changefreq>monthly</changefreq></url>
+  <url><loc>https://haozi.dev/builder/workflow/</loc><changefreq>monthly</changefreq></url>
+</urlset>

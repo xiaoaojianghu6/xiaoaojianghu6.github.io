@@ -1,0 +1,45 @@
+# 项目数据——math-modeling
+# order: 在列表/首页的排序位置（1 = 最前）；year/categories/tags 用于列表卡片与筛选
+# sections: 详情页正文区块，type 支持 text/image/video/pdf/image_panel，数组顺序 = 页面顺序
+# 图片视频放本项目 media/ 文件夹，路径写 /projects/math-modeling/media/文件名
+
+slug: math-modeling
+order: 6
+title: 数学建模
+subtitle: COMPETITION
+role: TEAM LEADER · MODELER
+date: 2025–2026
+hero: /projects/math-modeling/media/mv-pc.jpg
+hero_alt: math-modeling 主视觉图
+overview:
+- 2025 这一年，我拿同一套建模思维打了两场仗。国赛对着 NIPT 产前检测拿了个省级一等奖，美赛对着 KiBaM 双井电池混了个 Honorable Mention。
+- 一头是医学统计，一头是物理仿真——八竿子打不着，但内核一样：把现实揉成一堆方程，再让方程替你做决定。
+sections:
+- type: text
+  tag: Unfold
+  paragraphs:
+  - 国赛的问题很实际：NIPT 产前检测对所有孕妇「一刀切」，高 BMI 人群准头和效率都打折。我们想的是——能不能给每个孕妇找个最优的检测时点，把异常判定做成可解释的决策框架？技术路线上用了四件套联动：非线性混合效应模型（个体差异当随机效应，解释约
+    66% 变异）→ 生存分析递归分割定最优时点 → 多变量逻辑回归揭示异质性 → ML 二分类，优先保召回率防漏诊。最终省级一等奖，条件 R²=0.7888，AIC=-4392.56，召回率 77.78%。
+- type: pdf
+  src: /projects/math-modeling/media/cumcm-paper.pdf
+  title: NIPT · 国赛 · 省级一等奖
+- type: text
+  tag: Unfold
+  paragraphs:
+  - 美赛这边，问题是「手机还能撑多久」。传统库仑计数压根讲不清「电量焦虑」——电池的倍率容量效应、恢复现象、温度漂移，它一个都解释不了。我们换了个思路：KiBaM 双井模型把可用电荷和束缚电荷分开管，二阶等效电路描瞬态响应，集总热耦合管温度，SEI
+    老化管衰减——四个物理模型耦合在一起，再上蒙特卡洛 500 次量化不确定性。最终 Honorable Mention，TTE 预测 RMSE=42.3min，R²>0.85，均值 8.2h。
+- type: pdf
+  src: /projects/math-modeling/media/mcm-paper.pdf
+  title: KiBaM · 美赛 · Honorable Mention
+- type: text
+  tag: Unfold
+  paragraphs:
+  - 两场都是建模核心。国赛扛混合效应 + 生存分析 + 逻辑回归三模型联动和稳健性分析；美赛主攻 KiBaM 双井 + 等效电路 + 热耦合 + 老化多模型耦合，外加蒙特卡洛和敏感性分析。一个临床决策的「宁可错杀」，一个物理建模的「追根溯源」——团队里最较真方程的那个人。
+year: '2025'
+categories:
+- COMPETITION
+tags:
+- COMPETITION
+- MATHEMATICAL MODELING
+- STATISTICS
+list_image: /projects/math-modeling/media/mv-pc.jpg

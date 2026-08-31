@@ -1,0 +1,45 @@
+# 项目数据——signal-processing
+# order: 在列表/首页的排序位置（1 = 最前）；year/categories/tags 用于列表卡片与筛选
+# sections: 详情页正文区块，type 支持 text/image/video/pdf/image_panel，数组顺序 = 页面顺序
+# 图片视频放本项目 media/ 文件夹，路径写 /projects/signal-processing/media/文件名
+
+slug: signal-processing
+order: 8
+title: 信号处理(EEG+rPPG)
+subtitle: rPPG · EEG · SIGNAL PROCESSING
+role: INDEPENDENT RESEARCH
+date: '2024'
+hero: /projects/signal-processing/media/ica-cover.png
+hero_alt: 独立成分分析脑电信号处理(EEG+rPPG)封面
+overview:
+- 两个独立信号处理实验，主题相近：从噪声里提取隐藏的生理信息。一个看脸——rPPG 从视频帧里读心率，不接触；一个看脑——EEG 从多通道电信号里分离脑波与伪迹，FFT + ICA 各显神通。
+sections:
+- type: image
+  src: /projects/signal-processing/media/rppg-result.png
+  alt: rPPG 信号与心率检测结果
+- type: text
+  tag: Unfold
+  paragraphs:
+  - 测心率通常要指夹或电极——接触式、有门槛。rPPG（远程光电容积描记法）换个路子：对着脸录视频，从皮肤血液容积变化造成的微弱色差里反推生理信号。我从零搭了一个 rPPG 基础框架：MediaPipe
+    Face Mesh 定位额头 ROI → 抠绿色通道平均亮度变化提取原始 BVP → 去趋势 + 带通滤波（0.7–4.0Hz）+ 归一化 → 滑动窗口 FFT 算动态心率 → 峰值检测算 RR
+    间期，输出时域 HRV（RMSSD/SDNN）。
+  - '在 UBFC-rPPG 数据集 52 秒视频上跑通：FFT 估算心率与 ground truth 趋势高度重合（约 100–110 BPM），庞加莱图显示 RR 间期集中在 800–1000ms。算法库
+    pyVHR 环境冲突，索性从零手写信号提取与分析全流程——踩坑反而是最扎实的部分。GitHub: xiaoaojianghu6/rppg-estimation。'
+- type: image
+  src: /projects/signal-processing/media/eeg-bands.png
+  alt: 脑电信号频率提取结果
+- type: text
+  tag: Unfold
+  paragraphs:
+  - 脑电图（EEG）信号是多通道、低信噪比的时序数据，眼动、肌电等伪迹混杂其中——把真正的神经振荡从噪声堆里挑出来，是信号处理的经典难题。我用了两条路线：FFT 频域分析把信号分解为 Delta/Theta/Alpha/Beta/Gamma
+    五个脑波频带，量化各频带功率分布；ICA 独立成分分析提取 9 个成分，识别并剔除疑似眼电/肌电伪迹（成分 0、1、8），对比处理前后 Beta 波功率变化——干扰显著下降。基于 MNE-Python
+    + SciPy 实现完整流水线。
+year: '2025'
+categories:
+- PERSONAL PROJECT
+tags:
+- PERSONAL PROJECT
+- SIGNAL PROCESSING
+- BIOMEDICAL
+- CV
+list_image: /projects/signal-processing/media/ica-cover.png

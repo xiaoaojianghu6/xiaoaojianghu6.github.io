@@ -1,0 +1,44 @@
+# 项目数据——grab-car
+# order: 在列表/首页的排序位置（1 = 最前）；year/categories/tags 用于列表卡片与筛选
+# sections: 详情页正文区块，type 支持 text/image/video/pdf/image_panel，数组顺序 = 页面顺序
+# 图片视频放本项目 media/ 文件夹，路径写 /projects/grab-car/media/文件名
+
+slug: grab-car
+order: 7
+title: 抓取型小车
+subtitle: HARDWARE · EMBEDDED SYSTEMS
+role: STUDENT PROJECT
+date: '2024'
+hero: /projects/grab-car/media/mv-pc.jpg
+hero_alt: grab-car 主视觉图
+overview:
+- 机械与控制的入门课设——从一张白纸到一辆会自己抓东西的小车。这是我第一次把课本上的运动学和电路图，变成能在地上跑、能听我遥控的铁疙瘩。
+- 从 SolidWorks 画第一根轴开始，到 PS2 手柄遥控整车联调结束——走完了一个完整硬件项目的每一道工序。
+sections:
+- type: image_panel
+  images:
+  - src: /projects/grab-car/media/car-structure.jpg
+    alt: 小车结构设计图
+    label: Structure
+    caption: SolidWorks 三维建模——从原理图到装配体的完整机械设计
+- type: video
+  src: /projects/grab-car/media/car-demo.mp4
+  caption: 整车联调——PS2 手柄遥控抓取演示
+- type: text
+  tag: 完整实现过程
+  paragraphs:
+  - 机械设计阶段：在 SolidWorks 中完成整车三维建模——底盘、齿轮传动组、抓取机械臂的完整装配体。所有零部件从图纸开始：齿轮和抓手臂的三维模型导出 STL，用 3D 打印机逐层堆出来；底盘和支撑结构选用亚克力板，在车床上切削加工、钻孔攻丝。第一次体会到「设计-制造-装配」的尺寸链——图纸上差了
+    0.5mm，实物就是装不上。
+  - 电控系统阶段：Arduino 主板作为控制核心。直流马达通过 L298N 驱动模块做 PWM 调速——占空比映射到车速，写了一套带刹车逻辑的差速转向控制（左 / 右轮独立 PWM 通道，原地转向用差动反转）。舵机控制抓取机械臂的三个自由度——底部旋转、大臂俯仰、爪子开合——每个舵机的角度范围经过实物标定，避开结构限位。
+  - 遥控通信阶段：HC-05 蓝牙模块串口透传，自己写了 PS2 手柄的通信协议解析代码——摇杆模拟量映射到车速 PWM 占空比和舵机角度，按键映射到爪子开合和急停。手柄数据帧解析在 Arduino
+    端完成，16ms 刷新周期保证控制的实时性。烧录代码到主板，上电自检，整车联调。
+  - 这个项目不追求创新——它追求完整。从机械到电子到软件，从建模到加工到装配到调试，每一步都是实打实的工程训练。SolidWorks / 3D 打印 / 车床加工 / Arduino (C/C++)
+    / PWM 伺服控制 / 蓝牙串口通信 / PS2 协议——这就是一个本科生能做出来的东西。
+year: '2024'
+categories:
+- COURSE PROJECT
+tags:
+- COURSE PROJECT
+- ROBOTICS
+- EMBEDDED SYSTEMS
+list_image: /projects/grab-car/media/mv-pc.jpg
