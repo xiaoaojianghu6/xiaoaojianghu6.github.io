@@ -3,6 +3,9 @@
 # wanderer_quotes: 行者区古文引用；poet_gallery: 首页背水诗
 # enthusiast_cards: 赤子区五张卡片
 
+# 首页作品集只显示排序前 N 个项目（完整列表在 /builder 页）
+project_count: 4
+
 hero:
   en_paragraph: I am HAO-Z, an undergraduate in Biomedical Engineering at HUST, immersed in computer vision
     and multimodal AI. A former vibe-coding enthusiast, now deep in the trenches with Claude Code. I write

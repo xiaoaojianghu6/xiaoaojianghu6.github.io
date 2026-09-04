@@ -333,7 +333,8 @@ def render_home():
         + more_button('/about') + ' </div> </div> </section>')
 
     # --- 创客区作品卡 ---
-    home_projects = [p for p in PROJECTS if p.get('home', True)]
+    home_count = HOME.get('project_count', 4)
+    home_projects = [p for p in PROJECTS if p.get('home', True)][:home_count]
     cards = ''.join(render_work_card(p, i) for i, p in enumerate(home_projects))
     works = (
         '<section id="works-gallery" style="background-color:#C2B3A4;'

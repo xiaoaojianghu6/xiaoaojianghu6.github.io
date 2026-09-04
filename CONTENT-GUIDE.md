@@ -10,6 +10,7 @@
 | 首页大标题、英文简介、视差画廊图片 | `content/home.yaml` |
 | 首页行者区古文引用 / 背水诗 / 赤子区五张卡片 | `content/home.yaml` |
 | 首页作品卡片的顺序、要不要显示 | `projects/<项目名>/project.yaml` 里的 `order` / `home` |
+| 首页显示几个项目 | `content/home.yaml` 里的 `project_count`（默认 4，取排序最前的 N 个） |
 | 行者区（地点、文字、照片、增删地点） | `content/wanderer.yaml` |
 | 诗人区（诗卡、诗的全文、长诗） | `content/poems.yaml` |
 | 赤子区（电影/音乐/书籍/美食/运动） | `content/enthusiast.yaml` |
@@ -60,7 +61,8 @@ projects/
    - `tags`：标签（首页卡片和列表页显示）
    - `hero`：封面图路径（详情页头图），`list_image`：列表页卡片图（一般和 hero 相同）
    - `overview`：一段话简介（数组，每项一段）
-   - `home: true`：是否显示在首页（false 可只出现在 /builder 列表）
+   - `home: true`：是否参与首页展示（false 可只出现在 /builder 列表）
+   - 首页最多显示几个由 `content/home.yaml` 的 `project_count` 控制（默认 4）
    - `sections`：详情页正文，从上到下依次渲染，支持 5 种类型：
 
 ```yaml
