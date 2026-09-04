@@ -24,7 +24,8 @@ html{scroll-behavior:smooth}
 .two-col-note{font-family:'LXGW WenKai',serif;font-size:0.75rem;opacity:0.35;flex-shrink:0;text-align:right}
 /* Sport */
 .sport-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.8rem;margin:2.5rem 0}
-.sport-card{background:rgba(249,249,246,0.04);padding:1.5rem;border-radius:4px}
+.sport-card{background:rgba(249,249,246,0.04);border:1px solid rgba(249,249,246,0.08);padding:1.5rem;border-radius:8px;transition:background 0.4s ease,transform 0.4s ease}
+.sport-card:hover{background:rgba(249,249,246,0.07)}
 .sport-card h4{font-family:Cinzel,serif;font-size:0.8rem;letter-spacing:0.15em;opacity:0.5;margin-bottom:0.5rem}
 .sport-card p{font-family:'LXGW WenKai',serif;font-size:0.85rem;line-height:1.7;opacity:0.6}
 .sport-card.dashed{border:1px dashed rgba(249,249,246,0.08);background:rgba(249,249,246,0.02)}
@@ -38,3 +39,4 @@ html{scroll-behavior:smooth}
 .movie-catalog p{font-family:'LXGW WenKai',serif;font-size:0.8rem;line-height:1.9;opacity:0.5}
 @media(min-width:768px){.hero{padding:12rem 5rem 8rem}.chapter-outer{padding:9rem 5rem}.film-strip{grid-template-columns:repeat(6,1fr)}}
 @media(max-width:767px){.two-col{grid-template-columns:1fr;gap:1.5rem}.sport-grid{grid-template-columns:repeat(2,1fr)}.movie-catalog{grid-template-columns:1fr}}
+@media(max-width:480px){.chapter-outer{padding:4.5rem 1.25rem}.film-strip{grid-template-columns:repeat(3,1fr)}.sport-grid{grid-template-columns:1fr 1fr;gap:0.6rem}.sport-card{padding:1.1rem}}

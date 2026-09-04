@@ -4,7 +4,7 @@
 # long_poem.stanzas: 长诗的每一节，<br> 表示强制换行
 
 hero:
-  cover: /top/poet/cover.png
+  cover: /top/poet/cover.jpg
   title_lines:
   - 吟风弄雨
   - 意在云间

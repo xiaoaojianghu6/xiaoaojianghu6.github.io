@@ -18,3 +18,4 @@ html.wf-ready{visibility:visible}
 .place-photos img:hover{opacity:0.8}
 .section-title{font-family:Cinzel,serif;font-size:clamp(0.7rem,1.5vw,0.9rem);letter-spacing:0.25em;opacity:0.35;margin-bottom:1rem;text-transform:uppercase}
 @media(min-width:768px){.wanderer-hero{padding:12rem 5rem 8rem}.place-block{padding:5rem 5rem}.place-block.alt{flex-direction:row-reverse}}
+@media(max-width:480px){.place-block{padding:3rem 1.25rem}.wanderer-hero{padding:7rem 1.25rem 4rem}.place-photos img{height:190px}.place-text{font-size:0.9rem}}

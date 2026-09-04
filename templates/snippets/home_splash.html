@@ -6,12 +6,12 @@
 .splash-half.bottom.split{transform:translateY(100%)}
 .splash-text-wrap{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:10;transition:opacity .5s,filter .5s}
 .splash-text-wrap.hide{opacity:0;filter:blur(16px);pointer-events:none}
-.splash-title{font-family:'Zhi Mang Xing Splash','Zhi Mang Xing',cursive;color:#fff;line-height:1;font-size:clamp(7rem,22vw,14rem);animation:ink-wash-in 1.4s cubic-bezier(.08,.52,.12,.98) both;text-shadow:0 0 120px rgba(255,255,255,.12),0 0 60px rgba(255,255,255,.06)}
+.splash-title{font-family:'Zhi Mang Xing Splash','Zhi Mang Xing',cursive;color:#fff;line-height:1;font-size:clamp(7rem,22vw,14rem);animation:ink-wash-in 1.4s cubic-bezier(.08,.52,.12,.98) both;text-shadow:0 0 90px rgba(255,255,255,.07)}
 .splash-line{height:2px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.25),transparent);margin:3.5rem 0 3rem;width:clamp(200px,38vw,400px);animation:splash-line-in .9s .5s both}
 .splash-sub{font-family:'Cinzel Splash',Cinzel,serif;color:rgba(255,255,255,.2);font-size:clamp(1rem,3vw,1.5rem);letter-spacing:.5em;animation:splash-sub-in .6s 1s both}
 .splash-progress-wrap{width:clamp(160px,28vw,320px);margin-top:2.8rem;animation:splash-sub-in .6s 1.3s both}
 .splash-progress-track{height:2px;background:rgba(255,255,255,.1);border-radius:2px;overflow:visible;position:relative}
-.splash-progress-fill{height:100%;width:0%;background:linear-gradient(90deg,rgba(255,255,255,.2),rgba(255,255,255,.5) 60%,rgba(255,255,255,.7));border-radius:2px;position:relative;transition:width 0.4s ease-out}
+.splash-progress-fill{height:100%;width:0%;background:rgba(255,255,255,.55);border-radius:2px;position:relative;transition:width 0.4s ease-out}
 @keyframes ink-wash-in{0%{filter:blur(20px);opacity:0;transform:scale(.92)}60%{filter:blur(2px);opacity:.85}to{filter:blur(0);opacity:1;transform:scale(1)}}
 @keyframes splash-line-in{0%{width:0;opacity:0}to{width:clamp(200px,38vw,400px);opacity:1}}
 @keyframes splash-sub-in{0%{opacity:0;letter-spacing:.8em}to{opacity:1;letter-spacing:.5em}}
@@ -58,7 +58,7 @@ t(function(){
   fetch('/common/menu.mp4',{priority:'low'}).catch(function(){});
   fetch('/top/wanderer/cover.jpg',{priority:'low'}).catch(function(){});
   fetch('/top/enthusiast/cover.jpg',{priority:'low'}).catch(function(){});
-  fetch('/top/poet/cover.png',{priority:'low'}).catch(function(){});
+  fetch('/top/poet/cover.jpg',{priority:'low'}).catch(function(){});
 },4600);
 })();
 (function(){var hv=document.getElementById("hero-video");if(!hv)return;var v=hv.querySelector("video");if(!v)return;function r(){hv.classList.remove("is-loading")}if(v.readyState>=2){r()}else{v.addEventListener("canplay",r,{once:true})}})();

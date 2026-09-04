@@ -223,15 +223,12 @@ FONT_PRELOADS_ALL = ('<link rel="preload" href="/fonts/ZhiMangXing-subset.woff2"
                      '<link rel="preload" href="/fonts/FZXingKai-subset.woff2" as="font" type="font/woff2" crossorigin>')
 FONT_PRELOAD_ZMX = ('<link rel="preload" href="/fonts/ZhiMangXing-subset.woff2" as="font" type="font/woff2" crossorigin>')
 
-GTAG_BLOCK = f'''<!-- Google tag (gtag.js) --><script async type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id={SITE['ga_id']}"></script><script type="text/partytown">
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {{
-    dataLayer.push(arguments);
-  }}
-  gtag('js', new Date());
-
-  gtag('config', '{SITE['ga_id']}');
-</script>'''
+GTAG_BLOCK = ("""<!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id="""
+              + SITE['ga_id'] + '"></script><script>'
+              'window.dataLayer = window.dataLayer || [];'
+              'function gtag(){dataLayer.push(arguments);}'
+              "gtag('js', new Date());"
+              "gtag('config', '" + SITE['ga_id'] + "');</script>")
 
 def render_head(title, desc, canonical, extra_head='', html_attr=''):
     t = title.replace('"', '&quot;')
@@ -308,6 +305,7 @@ def render_work_card(p, idx):
 
 def render_home():
     h = HOME['hero']
+    title_join = '<br>'.join(h['title_lines'])
     # --- 视差画廊 ---
     left = []
     right = []
@@ -359,22 +357,23 @@ def render_home():
         quotes.append(
             '<div class="scroll-reveal" style="font-family:\'FZXingKai\',\'LXGW WenKai\',serif;'
             'font-size:clamp(1.3rem,4.5vw,2.8rem);line-height:2.2;opacity:0;transform:translateY(50px);'
-            'filter:blur(4px);transition:opacity 1.5s ease-out,transform 1.5s ease-out,filter 1.5s ease-out;'
+            'filter:blur(2px);transition:opacity 0.9s ease-out,transform 0.9s ease-out,filter 0.9s ease-out;'
             f'margin-bottom:{mb};text-align:center"><p>{q["text"]}</p></div>')
     fig = HOME['wanderer_figure']
     wanderer = (
         '<section id="wanderer-gallery" class="relative py-[4.6rem] md:py-44 text-pampas contents-full"> '
         '<div class="absolute left-0 top-0 h-full w-full bg-mine-shaft-texture" style="background-color:#3E4337"></div> '
         '<style>@keyframes wandererFloat{0%,100%{transform:translateY(-50%) translateX(0)}'
-        '25%{transform:translateY(-53%) translateX(4px)}50%{transform:translateY(-47%) translateX(-3px)}'
-        '75%{transform:translateY(-51%) translateX(3px)}}</style> '
-        '<div id="wanderer-figure" class="hidden md:block" style="position:fixed;left:5vw;top:50%;'
+        '25%{transform:translateY(-51.2%) translateX(2px)}50%{transform:translateY(-48.8%) translateX(-1px)}'
+        '75%{transform:translateY(-50.4%) translateX(1px)}}'
+        '#wanderer-figure img{object-fit:contain}'
+        '@media(max-width:767px){#wanderer-figure{left:auto;right:0;width:clamp(220px,58vw,420px);'
+        'bottom:8vh;top:auto;transform:translateY(0)}}</style> '
+        '<div id="wanderer-figure" style="position:fixed;left:5vw;top:50%;'
         'transform:translateY(-50%);z-index:5;width:clamp(420px,42vw,750px);opacity:0;'
-        'transition:opacity 1.5s ease-out;pointer-events:none;animation:wandererFloat 5s ease-in-out infinite"> '
+        'transition:opacity 1.5s ease-out;pointer-events:none;animation:wandererFloat 7s ease-in-out infinite"> '
         '<div style="position:relative;width:100%;padding-bottom:140%"> '
-        '<div style="position:absolute;inset:0;background-color:#3E4337" class="bg-mine-shaft-texture"></div> '
-        f'<img src="{fig}" alt="" style="position:absolute;inset:0;z-index:1;width:100%;height:100%;'
-        'object-fit:contain;opacity:0.7;filter:grayscale(0.15) brightness(0.9)"></div> </div> '
+        f'<img src="{fig}" alt="徒步中的行者" style="position:absolute;inset:0;z-index:1;width:100%;height:100%;"></div> </div> '
         '<div class="relative z-10 flex flex-col items-center justify-center min-h-screen"> '
         '<div style="max-width:860px;width:100%;padding:4rem 1rem 0 clamp(1rem,18vw,20rem)"> '
         + ''.join(quotes) + ' </div> '
@@ -388,7 +387,7 @@ def render_home():
         plines.append(
             '<div class="scroll-reveal" style="font-family:\'FZXingKai\',\'LXGW WenKai\',serif;'
             'font-size:clamp(2.4rem,5vw,3.5rem);line-height:2.4;opacity:0;transform:translateY(50px);'
-            'filter:blur(4px);transition:opacity 1.5s ease-out,transform 1.5s ease-out,filter 1.5s ease-out;'
+            'filter:blur(2px);transition:opacity 0.9s ease-out,transform 0.9s ease-out,filter 0.9s ease-out;'
             f'margin-bottom:2.5rem;text-align:center"><p>{ln}</p></div>')
     poet = (
         '<section id="poet-gallery" class="relative py-[4.6rem] md:py-44 text-pampas contents-full"> '
@@ -475,10 +474,9 @@ def render_home():
         '<h1 class="mt-3 flex items-end justify-between gap-4 md:mt-0 md:justify-normal md:gap-10" '
         'data-astro-cid-5saot5ic> '
         '<h2 class="font-splash text-white leading-tight" style="position:relative;z-index:1;'
-        "font-family:'Zhi Mang Xing',cursive;font-size:clamp(5rem,13vw,9rem);letter-spacing:0.15em;"
+        "font-family:'Zhi Mang Xing',cursive;font-size:clamp(3.2rem,11vw,9rem);letter-spacing:0.12em;"
         'text-shadow:0 0 60px rgba(0,0,0,.5),0 2px 8px rgba(0,0,0,.3);line-height:1.3;margin-top:0.6em;'
-        f'margin-left:clamp(0.5rem,3vw,3rem)"><br>'.join(h['title_lines']).replace('<br>', '<br>')
-        + '</h2> '
+        f'margin-left:clamp(0.5rem,3vw,3rem)">{title_join}</h2> '
         f'<span style="writing-mode:vertical-rl;color:rgba(255,255,255,0.8);font-family:Cinzel,serif;'
         f'font-size:clamp(0.7rem,1.5vw,0.95rem);letter-spacing:0.1em" data-astro-cid-5saot5ic>{h["vertical_label"]}</span> '
         '</h1> </div> '
@@ -488,16 +486,6 @@ def render_home():
         'data-astro-cid-5saot5ic></div> </div> </div> </div> </section> ')
 
     title_join = '<br>'.join(h['title_lines'])
-    hero = hero.replace('<br>'.join(h['title_lines']), title_join)  # no-op keep clarity
-    # hero h2 正确拼接（上面 join 逻辑复杂，这里直接重做一次标题部分）
-    hero_h2 = (
-        '<h2 class="font-splash text-white leading-tight" style="position:relative;z-index:1;'
-        "font-family:'Zhi Mang Xing',cursive;font-size:clamp(5rem,13vw,9rem);letter-spacing:0.15em;"
-        'text-shadow:0 0 60px rgba(0,0,0,.5),0 2px 8px rgba(0,0,0,.3);line-height:1.3;margin-top:0.6em;'
-        f'margin-left:clamp(0.5rem,3vw,3rem)">{title_join}</h2>')
-    start = hero.find('<h2 class="font-splash')
-    end = hero.find('</h2>', start) + len('</h2>')
-    hero = hero[:start] + hero_h2 + hero[end:]
 
     content = ('<main id="main" class="container px-[1.4rem] md:px-20 overflow-x-hidden false">      '
                + hero + '   ' + parallax + '  ' + works + '  '
@@ -505,11 +493,11 @@ def render_home():
                + wanderer + poet + enthusiast + '   ')
 
     extra_head = (snippet('home_head_preloads.html').replace('/sitemap-index.xml', '/sitemap.xml')
+                  + '\n' + GTAG_BLOCK
                   + '\n' + FONT_PRELOADS_ALL
                   + '\n<link rel="preload" href="/_astro/about.j05OPDV1.css" as="style">'
                     '<link rel="preload" href="/_astro/about.Cl2ZlrCQ.css" as="style">'
                     '<link rel="preload" href="/_astro/font-override.css" as="style">'
-                    '<link rel="preload" href="/top/hero/shadow-movie.mp4" as="fetch" crossorigin>'
                     '<link rel="prefetch" href="/about/"><link rel="prefetch" href="/poet/">'
                     '<link rel="prefetch" href="/wanderer/"><link rel="prefetch" href="/enthusiast/">'
                     '<link rel="prefetch" href="/builder/">\n'
@@ -551,7 +539,7 @@ def render_wanderer():
   <section class="wanderer-hero">
     <img fetchpriority="high" src="{w['hero']['cover']}" alt="行者封面" class="wanderer-hero-img">
     <div class="wanderer-hero-content">
-      <p style="font-family:'Zhi Mang Xing',cursive;font-size:clamp(5rem,13vw,9rem);line-height:1.3;letter-spacing:0.15em;text-shadow:0 0 60px rgba(0,0,0,.5),0 2px 8px rgba(0,0,0,.3)">{hl}</p>
+      <p style="font-family:'Zhi Mang Xing',cursive;font-size:clamp(3.2rem,11vw,9rem);line-height:1.3;letter-spacing:0.12em;text-shadow:0 0 60px rgba(0,0,0,.5),0 2px 8px rgba(0,0,0,.3)">{hl}</p>
     </div>
   </section>
 
@@ -717,9 +705,7 @@ def render_enthusiast():
     films = '\n'.join(
         f'      <div><img src="{f["src"]}" alt="{f["alt"]}"><span class="film-caption">{f["caption"]}</span></div>'
         for f in cin['films'])
-    half = (len(cin['movies']) + 1) // 2
-    movies_l = render_two_col(cin['movies'][:half], 1)
-    movies_r = render_two_col(cin['movies'][half:], half + 1)
+    movies_l = render_two_col(cin['movies'], 1)
     tv = '\n'.join(f'        <div class="two-col-item"><span class="two-col-name">{t}</span></div>'
                    for t in cin['tv_series'])
     tri = '\n'.join(f'        <div class="two-col-item"><span class="two-col-name">{t}</span></div>'
@@ -743,7 +729,7 @@ def render_enthusiast():
   <section class="hero">
     <img fetchpriority="high" src="{e['hero']['cover']}" alt="赤子封面" class="hero-img">
     <div class="hero-content">
-      <p style="font-family:'Zhi Mang Xing',cursive;font-size:clamp(5rem,13vw,9rem);line-height:1.3;letter-spacing:0.15em;text-shadow:0 0 60px rgba(0,0,0,.5),0 2px 8px rgba(0,0,0,.3)">{hl}</p>
+      <p style="font-family:'Zhi Mang Xing',cursive;font-size:clamp(3.2rem,11vw,9rem);line-height:1.3;letter-spacing:0.12em;text-shadow:0 0 60px rgba(0,0,0,.5),0 2px 8px rgba(0,0,0,.3)">{hl}</p>
     </div>
   </section>
 
@@ -1217,7 +1203,8 @@ def render_builder_detail(p):
                     '<link rel="preload" href="/_astro/font-override.css" as="style">'
                   + f'<link rel="preload" as="image" href="{p["hero"]}" fetchpriority="high">'
                   + '\n<script type="module" src="/_astro/hoisted.GaSC7j3R.js"></script>'
-                    '<script type="module" src="/_astro/page.LS5KDvwX.js"></script>')
+                    '<script type="module" src="/_astro/page.LS5KDvwX.js"></script>'
+                  + '\n' + GTAG_BLOCK)
     tail = ('\n' + snippet('detail_tail.html') + '   </main>')
     page = (render_head(f'{p["title"]} | William Liu', desc, f'/builder/{p["slug"]}/',
                         extra_head=extra_head)
