@@ -22,14 +22,14 @@ html.wf-ready{visibility:visible}
 .photo-breather__caption{font-family:Cinzel,serif;font-size:0.65rem;letter-spacing:0.15em;opacity:0.25;display:block;margin-top:0.5rem}
 /* === 图+诗并排行（Grid：图自然高度 + 诗堆叠） === */
 .photo-poem-row{display:grid;grid-template-columns:clamp(240px,34vw,440px) 1fr;gap:clamp(2rem,5vw,3.5rem);align-items:start;max-width:1100px;margin:5rem auto;padding:0 2.5rem;position:relative;z-index:1}
-.photo-poem-row .photo-breather{grid-row:1;margin:0;display:flex;flex-direction:column;align-self:stretch}
-.photo-poem-row .photo-breather img{flex:1;min-height:0;width:100%;object-fit:cover;display:block}
+.photo-poem-row .photo-breather{grid-row:1;margin:0}
+.photo-poem-row .photo-breather img{width:100%;display:block}
 .photo-poem-row .poem-stack{display:flex;flex-direction:column;gap:1.5rem}
 .photo-poem-row .poem-stack .poem-card{margin:0}
 .photo-poem-row--img-right{grid-template-columns:1fr clamp(240px,34vw,440px)}
 .photo-poem-row--img-right .photo-breather{grid-column:2;grid-row:1}
 .photo-poem-row--img-right .poem-stack{grid-column:1;grid-row:1}
-@media(max-width:767px){.photo-poem-row{grid-template-columns:1fr;gap:1.5rem;margin:3rem auto}.photo-breather img{opacity:0.8;flex:none;height:auto}.photo-poem-row .photo-breather{align-self:auto}.photo-poem-row .photo-breather{max-width:100%}.photo-poem-row--img-right{grid-template-columns:1fr}.photo-poem-row--img-right .photo-breather{grid-column:1}.photo-poem-row--img-right .poem-stack{grid-column:1}}
+@media(max-width:767px){.photo-poem-row{grid-template-columns:1fr;gap:1.5rem;margin:3rem auto}.photo-breather img{opacity:0.8}.photo-poem-row .photo-breather{max-width:100%}.photo-poem-row--img-right{grid-template-columns:1fr}.photo-poem-row--img-right .photo-breather{grid-column:1}.photo-poem-row--img-right .poem-stack{grid-column:1}}
 /* === 诗选容器 === */
 .poetry-zone{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:2rem 2.5rem}
 /* === 诗卡网格 === */
@@ -129,16 +129,6 @@ html.wf-ready{visibility:visible}
         <p class="poem-card__excerpt">晴空天下暗波涌，潜湖循江万树深</p>
         <div class="poem-card__hint">展开阅读 · Click to read</div>
       </div>
-      <div class="poem-card" data-poem-id="xuefuan" onclick="openPoem(this)">
-        <div class="poem-card__header"><span class="poem-card__title">雪伏案</span><span class="poem-card__date">2022.12.9</span></div>
-        <p class="poem-card__excerpt">乾坤穿白絮，山河挂雪袍</p>
-        <div class="poem-card__hint">展开阅读 · Click to read</div>
-      </div>
-      <div class="poem-card" data-poem-id="xueqing" onclick="openPoem(this)">
-        <div class="poem-card__header"><span class="poem-card__title">雪晴</span><span class="poem-card__date">2024.01.23</span></div>
-        <p class="poem-card__excerpt">开户波光暖，初阳照雪晴</p>
-        <div class="poem-card__hint">展开阅读 · Click to read</div>
-      </div>
     </div>
   </div>
   <div class="photo-poem-row photo-poem-row--img-right">
@@ -208,6 +198,16 @@ html.wf-ready{visibility:visible}
       <div class="poem-card" data-poem-id="jihenan" onclick="openPoem(this)">
         <div class="poem-card__header"><span class="poem-card__title">寄河南</span></div>
         <p class="poem-card__excerpt">君不见，天神触怒拨风雨，洪波漫漫阔如潮</p>
+        <div class="poem-card__hint">展开阅读 · Click to read</div>
+      </div>
+      <div class="poem-card" data-poem-id="xuefuan" onclick="openPoem(this)">
+        <div class="poem-card__header"><span class="poem-card__title">雪伏案</span><span class="poem-card__date">2022.12.9</span></div>
+        <p class="poem-card__excerpt">乾坤穿白絮，山河挂雪袍</p>
+        <div class="poem-card__hint">展开阅读 · Click to read</div>
+      </div>
+      <div class="poem-card" data-poem-id="xueqing" onclick="openPoem(this)">
+        <div class="poem-card__header"><span class="poem-card__title">雪晴</span><span class="poem-card__date">2024.01.23</span></div>
+        <p class="poem-card__excerpt">开户波光暖，初阳照雪晴</p>
         <div class="poem-card__hint">展开阅读 · Click to read</div>
       </div>
     </div>

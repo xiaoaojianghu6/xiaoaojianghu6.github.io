@@ -958,14 +958,7 @@ def render_builder_list():
             class="flex h-[calc(100vh-calc(var(--header-height)+3.25rem))] flex-nowrap justify-start whitespace-nowrap pb-20 md:h-[calc(100vh-calc(var(--header-height)+var(--filter-height)))]"
           >
             <li class="mr-20 md:mr-60 flex flex-col items-center">
-              <h1 class="px-[1.4rem] pt-16 md:px-0 md:pt-32">
-                <span class="-mt-5 align-top text-4xl font-medium leading-none vertical-rl md:text-5xl">
-                  <span>创客</span>
-                </span>
-                <span class="-mt-5 ml-2 align-top font-serif-en vertical-rl md:ml-[0.8rem] md:text-xl md:leading-none">
-                  (BUILDER)
-                </span>
-              </h1>
+              <h1 class="px-[1.4rem] pt-16 md:px-0 md:pt-32"><span class="-mt-5 align-top text-4xl font-medium leading-none vertical-rl md:text-5xl"><span>创客</span></span><span class="-mt-5 ml-2 align-top font-serif-en vertical-rl md:ml-[0.8rem] md:text-xl md:leading-none">(BUILDER)</span></h1>
               <p
                 class="mt-16 font-splash text-center"
                 style="font-family: 'Zhi Mang Xing', cursive; font-size: clamp(3rem, 8vw, 5.5rem); line-height: 1.3; letter-spacing: 0.1em; opacity: 0.55"
@@ -984,9 +977,7 @@ def render_builder_list():
                 class="group inline-flex flex-col items-center text-2xl font-medium md:text-[2rem]"
                 style="padding-top: 2rem"
               >
-                <span class="vertical-rl">
-                  <span>述己</span>
-                </span>
+                <span class="vertical-rl"><span>述己</span></span>
                 <span
                   class="mx-auto mt-6 flex h-[1.5rem] w-[1.5rem] items-center justify-center rounded-full border border-black text-black transition-colors duration-700 group-hover:bg-black group-hover:text-white md:mt-9 md:h-[2rem] md:w-[2rem]"
                   aria-hidden="true"
