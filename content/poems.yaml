@@ -1,7 +1,7 @@
 # 诗人区内容——改这里即可更新 /poet/ 页面
 # poems: 每首诗的完整文本（lines 里的 \n = 换行）；excerpt = 卡片上显示的一句摘录
 # photo_poem_rows: 照片+诗卡并排行，image_side: left/right = 图在左/右
-# 注意：横图行放 3 首诗、竖图行放 5 首诗，卡片堆高度才能和图片对齐
+# 注意：竖图行（约580px高）放 5 首诗、横图行（约330px高）放 3 首诗，卡堆才和图片齐平
 # long_poem.stanzas: 长诗的每一节，<br> 表示强制换行
 
 hero:
@@ -31,6 +31,8 @@ photo_poem_rows:
   - houru
   - qingchen
   - ruju
+  - xuefuan
+  - xueqing
 - image: /top/poet/sunset-train.jpg
   alt: 夕阳列车
   caption: 夕阳列车
@@ -61,8 +63,6 @@ poetry_zone:
   poems:
   - xifeng
   - jihenan
-  - xuefuan
-  - xueqing
 poems:
   houru:
     title: 候鸟的诗
