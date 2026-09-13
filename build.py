@@ -896,7 +896,8 @@ def render_about():
 
 def render_builder_list():
     lis = []
-    for p in PROJECTS:
+    for idx, p in enumerate(PROJECTS, 1):
+        no = f'({idx:02d})'
         cats = ''.join(f'<li>{c}</li>' for c in p.get('categories', []))
         tags = ''.join(f'<li>{t}</li>' for t in p.get('tags', []))
         lis.append(
@@ -921,6 +922,7 @@ def render_builder_list():
             '                      </div>\n'
             '                    </div>\n'
             '                    <div class="mt-4 flex-1 pr-8">\n'
+            f'                      <p class="font-serif-en text-gray text-sm leading-none mb-3">{no}</p>\n'
             '                      <h2\n'
             '                        class="overflow-hidden text-ellipsis whitespace-normal text-xl font-medium '
             'md:text-[1.75rem]"\n'
@@ -930,7 +932,7 @@ def render_builder_list():
             '                      <ul class="mt-6 flex min-h-[2.2rem] flex-wrap gap-x-4 gap-y-[0.2rem] '
             f'font-serif-en text-gray">\n                        {tags}\n                      </ul>\n'
             '                    </div>\n                  </a>\n            </li>')
-    filters = SITE.get('builder_filters', ['ALL', 'INTERNSHIP', 'PERSONAL PROJECT', 'COMPETITION', 'COURSE PROJECT'])
+    filters = SITE.get('builder_filters', ['ALL', 'INTERNSHIP', 'PERSONAL PROJECT', 'HACKATHON', 'COMPETITION', 'COURSE PROJECT'])
     filter_lis = []
     for f in filters:
         checked = ' checked' if f == 'ALL' else ''
@@ -1047,7 +1049,7 @@ def render_builder_list():
             + '<body class="font-serif text-black relative overflow-x-hidden" data-bg-color="bright"> <div class="fixed left-0 top-0 -z-10 h-screen w-screen bg-gray-texture" style="background-color:#C2B3A4"></div>   '
             + render_chrome('bright', 'false') + '    '
             + '<main id="main" class="container px-[1.4rem] md:px-20 overflow-x-hidden md:max-w-[calc(85rem+10rem)]">   '
-            + content + '   </main>' + tail + '</body></html>')
+            + content + '   </main>' + render_footer() + tail + '</body></html>')
     write('builder/index.html', page)
 
 # ---------------------------------------------------------- 创客区详情页
@@ -1106,14 +1108,37 @@ def gen_image_panel(images):
             'md:[&_img]:h-full md:flex-col md:[&>li]:h-[calc(50%-1.25rem)] [&>li]:w-full">'
             f'{lis}</ul></div></div>')
 
-def gen_video(src, caption):
-    return ('<div class="ts-horizontal-scroll-item flex flex-col items-start justify-center gap-4 px-5 py-16 '
-            'md:px-10 md:py-0" style="min-width:360px;max-width:520px">'
+def gen_video(src, caption, portrait=False):
+    if portrait:
+        vid_style = 'height:min(72vh,660px);width:auto;display:block;margin:0 auto'
+        wrap_style = 'min-width:300px;max-width:460px'
+    else:
+        vid_style = 'width:100%;display:block'
+        wrap_style = 'min-width:360px;max-width:520px'
+    return (f'<div class="ts-horizontal-scroll-item flex flex-col items-start justify-center gap-4 px-5 py-16 '
+            f'md:px-10 md:py-0" style="{wrap_style}">'
             '<p class="font-serif-en text-base text-gray">(Video)</p>'
             '<div style="border-radius:8px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.15)">'
-            '<video style="width:100%;display:block" preload="auto" webkit-playsinline playsinline muted autoplay loop>'
+            f'<video style="{vid_style}" preload="auto" webkit-playsinline playsinline muted autoplay loop>'
             f'<source src="{src}" type="video/mp4"></video></div>'
             f'<p class="whitespace-normal text-sm text-gray">{caption}</p></div>')
+
+def gen_metrics(rows, title='(Metrics)'):
+    """数据行区块：rows = [{label, value, note?}]，label/value 网格呈现"""
+    lis = []
+    for r in rows:
+        note = f'<span class="metrics-note">{r["note"]}</span>' if r.get('note') else ''
+        lis.append(
+            '<li class="metrics-row">'
+            f'<span class="metrics-label">{r["label"]}</span>'
+            f'<span class="metrics-value">{r["value"]}</span>{note}</li>')
+    return (f'<div class="ts-horizontal-scroll-item metrics-block">'
+            f'<div class="h-full px-5 md:px-0 md:py-[7.5rem]">'
+            f'<div class="md:w-[40rem] md:px-[13.75rem] box-content">'
+            f'<h2 class="mb-9 font-serif-en text-lg md:mb-10 md:text-xl">{title}</h2>'
+            f'<ul class="metrics-list">{"".join(lis)}</ul>'
+            f'</div></div></div>')
+
 
 def gen_pdf(src, title):
     return ('<div class="ts-horizontal-scroll-item">'
@@ -1183,7 +1208,9 @@ def render_builder_detail(p):
         elif t == 'image_panel':
             parts.append(gen_image_panel(sec['images']))
         elif t == 'video':
-            parts.append(gen_video(sec['src'], sec['caption']))
+            parts.append(gen_video(sec['src'], sec['caption'], portrait=bool(sec.get('portrait'))))
+        elif t == 'metrics':
+            parts.append(gen_metrics(sec['rows'], sec.get('tag', '(Metrics)')))
         elif t == 'pdf':
             parts.append(gen_pdf(sec['src'], sec['title']))
         else:
@@ -1201,7 +1228,18 @@ def render_builder_detail(p):
                   + f'<link rel="preload" as="image" href="{p["hero"]}" fetchpriority="high">'
                   + '\n<script type="module" src="/_astro/hoisted.GaSC7j3R.js"></script>'
                     '<script type="module" src="/_astro/page.LS5KDvwX.js"></script>'
-                  + '\n' + GTAG_BLOCK)
+                  + '\n' + GTAG_BLOCK
+                  + '\n<style>'
+                    '.metrics-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}'
+                    '.metrics-row{display:flex;align-items:baseline;gap:1.25rem;padding:1.1rem 0;'
+                    'border-bottom:1px solid rgba(0,0,0,0.12);flex-wrap:wrap}'
+                    '.metrics-row:first-child{border-top:1px solid rgba(0,0,0,0.12)}'
+                    '.metrics-label{font-family:Cinzel,serif;font-size:0.72rem;letter-spacing:0.12em;'
+                    'color:#6b6357;flex:0 0 11rem;text-transform:uppercase}'
+                    '.metrics-value{font-size:clamp(1.3rem,2.2vw,1.8rem);font-weight:500;color:#1a1a1a;'
+                    'font-variant-numeric:tabular-nums}'
+                    '.metrics-note{font-size:0.8rem;color:#6b6357;margin-left:auto}'
+                    '</style>')
     tail = ('\n' + snippet('detail_tail.html') + '   </main>')
     page = (render_head(f'{p["title"]} | William Liu', desc, f'/builder/{p["slug"]}/',
                         extra_head=extra_head)

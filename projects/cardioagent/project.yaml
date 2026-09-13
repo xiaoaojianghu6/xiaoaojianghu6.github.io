@@ -1,20 +1,29 @@
-# 项目数据——cardioagent
-# order: 在列表/首页的排序位置（1 = 最前）；year/categories/tags 用于列表卡片与筛选
-# sections: 详情页正文区块，type 支持 text/image/video/pdf/image_panel，数组顺序 = 页面顺序
-# 图片视频放本项目 media/ 文件夹，路径写 /projects/cardioagent/media/文件名
+# 项目数据——cardioagent（上海理工 HealthIT Lab）
 
 slug: cardioagent
 order: 3
 title: 多模态心脏诊断智能体
-subtitle: MULTI-AGENT · ISAIMS 2025
+subtitle: MULTI-AGENT · ISAIMS 2025 · ACM
 role: CO-AUTHOR
-date: '2025'
+date: 2025.03–08
 hero: /projects/cardioagent/media/mv-pc.jpg
 hero_alt: cardioagent 主视觉图
 overview:
 - 心血管疾病的精准诊疗太复杂，现有 AI 工具大多是个孤立的黑箱——能给预测，却说不清理由，更别提接进临床工作流。CardioAgent 换了个思路：多个智能体各管一摊，把 ECG、影像、临床指南这些多模态信号嚼碎了再拼起来。
 - 这篇工作是我在上海理工大学HealtIT团队实习时的工作成果，被 ISAIMS 2025（ACM）录用，我是共同作者，负责Agent内一维时序增强、多模态融合和 FAISS 向量检索那块 RAG 闭环。
 sections:
+- type: metrics
+  tag: (Results)
+  rows:
+  - label: ECG 分类
+    value: 99.82% / 95.51%
+    note: Trans-Unet-ECG · 准确率 / F1
+  - label: 指南检索
+    value: R@5 = 0.89
+    note: MedCPT + FAISS 向量检索
+  - label: 知识库
+    value: 42,000+
+    note: PubMed 心血管文献 + 药械手册
 - type: pdf
   src: /projects/cardioagent/media/cardioagent-paper.pdf
   title: CardioAgent · ISAIMS 2025
@@ -33,4 +42,5 @@ tags:
 - AI AGENT
 - MULTIMODAL
 - HEALTHCARE
+- RAG
 list_image: /projects/cardioagent/media/mv-pc.jpg

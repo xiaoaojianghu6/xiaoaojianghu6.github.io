@@ -4,7 +4,7 @@
 # 图片视频放本项目 media/ 文件夹，路径写 /projects/williamnotes/media/文件名
 
 slug: williamnotes
-order: 5
+order: 6
 title: WilliamNotes（数字分身决策系统）
 subtitle: PERSONAL KNOWLEDGE ENGINE
 role: SOLO DEVELOPER

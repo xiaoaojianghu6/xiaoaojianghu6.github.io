@@ -1,32 +1,52 @@
-# 项目数据——multimodal-rag
-# order: 在列表/首页的排序位置（1 = 最前）；year/categories/tags 用于列表卡片与筛选
-# sections: 详情页正文区块，type 支持 text/image/video/pdf/image_panel，数组顺序 = 页面顺序
-# 图片视频放本项目 media/ 文件夹，路径写 /projects/multimodal-rag/media/文件名
+# 项目数据——multimodal-rag（联影）
+# order: 在列表/首页的排序位置；sections 支持 text/image/video/pdf/image_panel/metrics
+# 注意 NDA：不放内网 IP/截图/代码
 
 slug: multimodal-rag
 order: 1
 title: OCR+多模态RAG+Agent
 subtitle: MEDICAL MULTIMODAL RAG · UNITED IMAGING
 role: SOLO DEVELOPER
-date: '2025'
+date: 2026.07–08
 hero: /projects/multimodal-rag/media/mv-pc.jpg
 hero_alt: multimodal-rag 系统架构图
 overview:
-- 传统的文档检索要么只返回文字片段，要么只返回整页 PDF——前者丢失了图片、表格、公式等关键信息，后者信息密度太低，噪声过多。这个项目在联影公司（United Imaging）实习期间由我一人独立开发上线。联影是国内医学影像领域的头部企业，主打超声、CT
-  等医疗影像设备——这套 RAG 系统对接的就是医学超声文档场景。技术思路上，以 OCR 为文档解析入口，将扫描件/PDF 转为结构化内容，再用多模态 RAG 实现 text-to-any 的全模态精准召回——不是召回整页，而是精准召回切片，图表就只有图、公式就只有公式，输出信息密度极高。
-- 整个项目从数据处理管线、向量索引构建、检索排序到 Agent 推理链路，均由我一人完成——全程独立设计、开发、部署。受联影保密协议限制，具体技术实现细节不便公开。
+- 医学文献检索的痛点是「找不到、不敢信」：传统 RAG 只返回文字片段，丢掉图表与公式；返回整页又噪声太大，而且没有一处能告诉你答案从哪来。在联影武汉超声事业部实习期间，我独立开发并上线了一套面向医学超声文档的企业知识库多模态
+  RAG 检索系统——以 OCR 为解析入口，实现 text-to-any 的全模态精准召回与完整的来源溯源。
+- 从文档解析管线、三层索引架构、检索排序到前后端与 MCP 服务，全部由我一人完成，并在企业内网与堡垒机环境中完成部署、演示与交接。受保密协议限制，具体业务细节不便公开。
 sections:
 - type: text
-  tag: 核心优势
+  tag: 核心体验
   paragraphs:
-  - 相比传统的文档检索方案，这套面向医学超声场景的多模态 RAG 系统有三个核心优势：
-  - 模型灵活切换——支持多种 Embedding 架构，可选用多模态大语言模型（如 Qwen3-VL 系列）或 CLIP 架构（如 MedImageInsight），以统一流程处理不同模型，一键切换进行检索对比。
-  - 精准切片召回——不是召回整页 PDF，而是将文档解析为 section / paragraph / figure / table / equation 五类原子对象，每类对象独立索引、独立召回。搜图表就只有图，搜公式就只有
-    LaTeX，输出信息密度远高于整页返回方案。
-  - 多模态输出——前端 UI 图文表格公式无缝编译，Markdown 表格正确渲染，LaTeX 公式正确编译，图片附带原始出处溯源。不是只返回一串文字，而是一份结构完整的答案文档。
+  - text-to-any 召回——文档被解析为段落、图片、表格、公式五类原子对象，各自独立索引、独立召回：搜图表就只有图，搜公式就只有 LaTeX，而不是召回一整页 PDF。文本查询可以命中图表，信息密度完全不同。
+  - 来源溯源——每条回答都可以回溯到 PDF 原页，点击来源即可查看原文位置。「不敢信」的问题从产品层面被解决：答案永远带着出处。
+- type: text
+  tag: 三层架构
+  paragraphs:
+  - 文档层—导航层—索引层三层分离：MinerU 把 PDF 解析为带位置信息的结构化对象；导航层用 SQLite 图谱维护对象间的从属与相邻关系（支撑邻居扩展与图表引用回链）；索引层负责向量检索。三层解耦的好处很实际——更换
+    embedding 模型只需重建索引层，文档层原封不动。
+  - 解析与生成之间，我设计了「电梯模型」：任何中间态数据都有标准化的上楼/下楼函数，任意一层都可以被独立替换、独立测试。
+- type: text
+  tag: 检索链路
+  paragraphs:
+  - Qwen3-VL-Embedding-2B 粗召回 → 元数据过滤 → Qwen3-VL-Reranker-4B 精排 → Qwen3-4B 生成，四段链路按场景可插拔切换（Registry 模式，支持
+    qwen3vl / MedImageInsight / generic clip 等后端一键切换对比）。
+  - 工程侧：18 个 REST 端点、异步建库与增量索引、三个隔离环境跨进程通信（模型只加载一次）；整套系统封装为 MCP Server（13 个工具），供后续智能体直接复用。
+- type: metrics
+  tag: (Evaluation)
+  rows:
+  - label: MIRAGE 基准
+    value: 90 / 70 / 60
+    note: MMLU-Med / MedQA / MedMCQA 准确率 %
+  - label: 自建 55 题评测
+    value: 8.16 vs 5.91
+    note: RAG vs 纯 LLM 十分制 · 胜 48 / 负 7
+  - label: 平均响应
+    value: 9.39s vs 14.49s
+    note: 更快且更准
 - type: video
   src: /projects/multimodal-rag/media/demo.mp4
-  caption: 系统输出效果——图文表格公式无缝编译与溯源
+  caption: 系统输出效果——图文表格公式无缝编译与来源溯源
 year: '2025'
 categories:
 - INTERNSHIP
@@ -36,4 +56,5 @@ tags:
 - MEDICAL AI
 - MULTIMODAL RAG
 - OCR
+- MCP
 list_image: /projects/multimodal-rag/media/mv-pc.jpg

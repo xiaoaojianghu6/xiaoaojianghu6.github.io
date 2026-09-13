@@ -4,7 +4,7 @@
 # 图片视频放本项目 media/ 文件夹，路径写 /projects/image-segmentation/media/文件名
 
 slug: image-segmentation
-order: 2
+order: 4
 title: 图像/视频分割
 subtitle: VIDEO STREAM SEGMENTATION
 role: RESEARCH INTERN

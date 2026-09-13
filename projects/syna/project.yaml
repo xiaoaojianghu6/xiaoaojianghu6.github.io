@@ -1,0 +1,50 @@
+# 项目数据——syna
+# order: 在列表/首页的排序位置（1 = 最前）；year/categories/tags 用于列表卡片与筛选
+# sections: 详情页正文区块，type 支持 text/image/video/pdf/image_panel/metrics，数组顺序 = 页面顺序
+# 图片视频放本项目 media/ 文件夹，路径写 /projects/syna/media/文件名
+
+slug: syna
+order: 2
+title: Syna · AI 智能眼镜生活日志 + 共鸣社交
+subtitle: ADVENTUREX 2026 · ROKID GLASSES · OPEN SOURCE
+role: SOLO PRODUCT DESIGNER & DEVELOPER
+date: 2026.07
+year: '2026'
+categories:
+- HACKATHON
+tags:
+- ADVENTUREX
+- ROKID
+- ANDROID
+- MULTIMODAL LLM
+- SOCIAL
+hero: /projects/syna/media/syna-banner.jpg
+hero_alt: Syna 产品横幅——AI 日记 · 记录生活 · 连接同频
+list_image: /projects/syna/media/syna-banner.jpg
+overview:
+- 戴上眼镜过生活，摘下手机看故事。Syna 是一款基于 AI 智能眼镜的生活日志 + 社交产品：眼镜替你无感记录，AI 替你整理与回想，然后让走过相似一天的人自然相遇。它想服务的是一类「半记录者」——拍了但从不整理，想表达但不知从何说起。
+- 我独立完成产品定义与安卓端开发（基于 Rokid 乐奇开发者 SDK）：从用户画像、功能边界、交互设计，到眼镜端—手机端数据流与 AI 处理链路。项目已开源：github.com/hsrxr/Syna。
+sections:
+- type: text
+  tag: 产品定义
+  paragraphs:
+  - 记录的门槛不该是「掏出手机、打开 App、想好配文」。Syna 把采集交给眼镜：单击镜腿拍照，双击说一句速记、说完自动停，长按直接和 AI 对话——记录成为生活的背景，而不是一项任务。
+  - AI 负责把碎片编织成可带走的东西：每天一段有叙事的总结（关键词、情绪、高光），想不起来的细节可以问回去——「我钥匙放哪了？」「上周三下午我在做什么？」答案附带当时的画面与语音证据。AI 出草稿，你定稿。
+- type: video
+  portrait: true
+  src: /projects/syna/media/journal-demo.mp4
+  caption: 日记流——每日总结、带证据的细节回溯、语音速记（真实演示）
+- type: text
+  tag: Echoes · 以生活细节识人的共鸣引擎
+  paragraphs:
+  - 社交匹配不靠脸。Echoes 的匹配依据是可核对的生活事实：同一天去过的地点、相同的情绪、共同的标签——「你们都提到了
+  - 匹配不是选美，也不做第二个微信——破冰之后的聊天刻意做得轻，仅限于围绕彼此分享的生活片段展开。
+- type: video
+  portrait: true
+  src: /projects/syna/media/echoes-demo.mp4
+  caption: Echoes——匹配卡片、匹配依据与 High Five 破冰（真实演示）
+- type: text
+  tag: 边界与底线
+  paragraphs:
+  - 明确不做的事：不做即时通讯、不做自动发布、不做颜值滑卡、不做通用知识问答。产品的每一条边界都指向同一个原则——记录属于用户自己。
+  - 隐私优先：默认全部私密，原始媒体本地保存并定期清理，只留存摘要与标签；细节回溯只基于本人记录检索作答，检索不到就明确说找不到——答案必须附证据，这是产品的底线。
