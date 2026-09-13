@@ -12,35 +12,37 @@ html{scroll-behavior:smooth}
 .chapter-outer{padding:7rem 2rem;border-top:1px solid rgba(249,249,246,0.06)} .chapter-inner{max-width:1000px;margin:0 auto}
 .chapter-title{font-family:Cinzel,serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:600;letter-spacing:0.05em;margin-bottom:0.5rem}
 .chapter-zh{font-family:'Zhi Mang Xing',cursive;font-size:clamp(1.5rem,3.5vw,2.5rem);opacity:0.5;margin-bottom:2.5rem;display:block}
-.film-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:0.4rem;margin:2rem 0}
-.film-strip img{width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:3px;transition:opacity 0.3s}
-.film-strip img:hover{opacity:0.7}
-.film-caption{font-family:Cinzel,serif;font-size:0.68rem;letter-spacing:0.1em;opacity:0.35;margin-top:0.3rem;display:block}
+.film-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:0.45rem;margin:2rem 0}
+.film-item{overflow:hidden;border-radius:3px}
+.film-item img{width:100%;aspect-ratio:2/3;object-fit:cover;display:block;transition:transform 1.1s cubic-bezier(0.22,1,0.36,1)}
+.film-item:hover img{transform:scale(1.045)}
+.film-item--featured{grid-column:span 2;grid-row:span 1}
+.film-item--featured img{aspect-ratio:4/3}
+.film-caption{font-family:Cinzel,serif;font-size:0.66rem;letter-spacing:0.12em;opacity:0.35;margin-top:0.35rem;display:block}
 .body-text{font-family:'LXGW WenKai',serif;font-size:0.95rem;line-height:2;opacity:0.65;max-width:720px}
 /* Music & Books two-column */
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:2rem 4rem;margin:2.5rem 0}
-.two-col-item{display:flex;align-items:baseline;gap:0.8rem;padding:0.5rem 0;border-bottom:1px solid rgba(249,249,246,0.05)}
-.two-col-idx{font-family:Cinzel,serif;font-size:0.65rem;opacity:0.25;letter-spacing:0.1em;flex-shrink:0;width:1.8rem;text-align:right}
-.two-col-name{font-family:'LXGW WenKai',serif;font-size:0.88rem;opacity:0.7;flex:1}
-.two-col-note{font-family:'LXGW WenKai',serif;font-size:0.75rem;opacity:0.35;flex-shrink:0;text-align:right}
+.two-col-item{display:flex;align-items:baseline;gap:1rem;padding:0.55rem 0.4rem;border-bottom:1px solid rgba(249,249,246,0.045);transition:background 0.35s ease}
+.two-col-item:hover{background:rgba(249,249,246,0.035)}
+.two-col-idx{font-family:Cinzel,serif;font-size:0.58rem;opacity:0.22;letter-spacing:0.12em;flex-shrink:0;width:1.6rem;text-align:right;font-variant-numeric:tabular-nums}
+.two-col-name{font-family:'LXGW WenKai',serif;font-size:0.95rem;opacity:0.78;flex:1}
+.two-col-note{font-family:'LXGW WenKai',serif;font-size:0.74rem;opacity:0.35;flex-shrink:0;text-align:right}
 /* Sport */
 .sport-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.8rem;margin:2.5rem 0}
 .sport-card{background:rgba(249,249,246,0.04);border:1px solid rgba(249,249,246,0.08);padding:1.5rem;border-radius:8px;transition:background 0.4s ease,transform 0.4s ease}
 .sport-card:hover{background:rgba(249,249,246,0.07)}
 .sport-card h4{font-family:Cinzel,serif;font-size:0.8rem;letter-spacing:0.15em;opacity:0.5;margin-bottom:0.5rem}
 .sport-card p{font-family:'LXGW WenKai',serif;font-size:0.85rem;line-height:1.7;opacity:0.6}
-.sport-card.dashed{border:1px dashed rgba(249,249,246,0.08);background:rgba(249,249,246,0.02)}
+.sport-card.dashed{border:1px dashed rgba(249,249,246,0.06);background:rgba(249,249,246,0.015)}
+.sport-card--wide{grid-column:span 2}
+.sport-card--wide p{max-width:34em}
 /* Food slider */
 .food-slider{position:relative}
 .slider__item{width:100%;height:100%;object-fit:cover;position:absolute;top:0;right:0;opacity:0;transition:all 1s ease}
 .slider__item.is-active{opacity:1}
-/* Movie catalog */
-.movie-catalog{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem 3rem;margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(249,249,246,0.06)}
-.movie-catalog h4{font-family:Cinzel,serif;font-size:0.7rem;letter-spacing:0.2em;opacity:0.25;margin-bottom:0.8rem}
-.movie-catalog p{font-family:'LXGW WenKai',serif;font-size:0.8rem;line-height:1.9;opacity:0.5}
 @media(min-width:768px){.hero{padding:12rem 5rem 8rem}.chapter-outer{padding:9rem 5rem}.film-strip{grid-template-columns:repeat(6,1fr)}}
-@media(max-width:767px){.two-col{grid-template-columns:1fr;gap:1.5rem}.sport-grid{grid-template-columns:repeat(2,1fr)}.movie-catalog{grid-template-columns:1fr}}
-@media(max-width:480px){.chapter-outer{padding:4.5rem 1.25rem}.film-strip{grid-template-columns:repeat(3,1fr)}.sport-grid{grid-template-columns:1fr 1fr;gap:0.6rem}.sport-card{padding:1.1rem}}
+@media(max-width:767px){.two-col{grid-template-columns:1fr;gap:1.5rem}.sport-grid{grid-template-columns:repeat(2,1fr)}.film-strip{grid-template-columns:repeat(3,1fr)}.film-item--featured{grid-column:span 3}.sport-card--wide{grid-column:span 2}}
+@media(max-width:480px){.chapter-outer{padding:4.5rem 1.25rem}.sport-grid{grid-template-columns:1fr 1fr;gap:0.6rem}.sport-card{padding:1.1rem}.sport-card--wide{grid-column:span 2}}
 </style><link rel="stylesheet" href="/_astro/about.Cl2ZlrCQ.css">
 <link rel="stylesheet" href="/_astro/about.j05OPDV1.css">
 <link rel="stylesheet" href="/_astro/font-override.css"></head> <body style="background:#4E3E2C;color:#f9f9f6;overflow-x:hidden">
@@ -58,25 +60,25 @@ html{scroll-behavior:smooth}
 
   <!-- CINEMA -->
   <div class="chapter-outer" id="cinema" style="background:rgba(62,67,55,0.3)"><div class="chapter-inner">
-    <span class="section-label">Cinema &amp; Series</span>
+    <span class="section-label">(01) · Cinema &amp; Series</span>
     <div class="chapter-title">CINEMA</div>
     <span class="chapter-zh">电影·剧集</span>
     <p class="body-text">电影是我理解世界的方式之一。黑泽明的凌厉、宫崎骏的温柔、库布里克的冷峻、吴宇森的浪漫——每一个导演都在教你用一种新的眼睛看世界。剧集则更绵长，像一本可以读很久的书。</p>
 
     <p style="font-family:Cinzel,serif;font-size:0.7rem;letter-spacing:0.2em;opacity:0.25;margin:2.5rem 0 0.8rem">FILMS &amp; DIRECTORS</p>
     <div class="film-strip">
-      <div><img src="/top/enthusiast/dir-eastwood.jpg" alt="Eastwood"><span class="film-caption">EASTWOOD</span></div>
-      <div><img src="/top/enthusiast/movie-braveheart.png" alt="Braveheart"><span class="film-caption">BRAVEHEART</span></div>
-      <div><img src="/top/enthusiast/tv-ming-1566.jpg" alt="大明王朝1566"><span class="film-caption">MING 1566</span></div>
-      <div><img src="/top/enthusiast/movie-yojimbo.jpg" alt="用心棒"><span class="film-caption">YOJIMBO</span></div>
-      <div><img src="/top/enthusiast/movie-xia-nu.jpg" alt="侠女"><span class="film-caption">A TOUCH OF ZEN</span></div>
-      <div><img src="/top/enthusiast/movie-whisper.jpg" alt="侧耳倾听"><span class="film-caption">WHISPER</span></div>
-      <div><img src="/top/enthusiast/movie-walter-mitty.jpg" alt="白日梦想家"><span class="film-caption">WALTER MITTY</span></div>
-      <div><img src="/top/enthusiast/movie-stand-by-me.jpg" alt="伴我同行"><span class="film-caption">STAND BY ME</span></div>
-      <div><img src="/top/enthusiast/movie-into-the-wild.png" alt="荒野生存"><span class="film-caption">INTO THE WILD</span></div>
-      <div><img src="/top/enthusiast/movie-interstellar.jpg" alt="星际穿越"><span class="film-caption">INTERSTELLAR</span></div>
-      <div><img src="/top/enthusiast/movie-good-bad-ugly.jpg" alt="黄金三镖客"><span class="film-caption">THE GOOD...</span></div>
-      <div><img src="/top/enthusiast/movie-dead-poets.png" alt="死亡诗社"><span class="film-caption">DEAD POETS</span></div>
+      <div class="film-item film-item--featured"><img src="/top/enthusiast/dir-eastwood.jpg" alt="Eastwood" loading="lazy"><span class="film-caption">(01) EASTWOOD</span></div>
+      <div class="film-item"><img src="/top/enthusiast/movie-braveheart.png" alt="Braveheart" loading="lazy"><span class="film-caption">(02) BRAVEHEART</span></div>
+      <div class="film-item"><img src="/top/enthusiast/tv-ming-1566.jpg" alt="大明王朝1566" loading="lazy"><span class="film-caption">(03) MING 1566</span></div>
+      <div class="film-item"><img src="/top/enthusiast/movie-yojimbo.jpg" alt="用心棒" loading="lazy"><span class="film-caption">(04) YOJIMBO</span></div>
+      <div class="film-item"><img src="/top/enthusiast/movie-xia-nu.jpg" alt="侠女" loading="lazy"><span class="film-caption">(05) A TOUCH OF ZEN</span></div>
+      <div class="film-item"><img src="/top/enthusiast/movie-whisper.jpg" alt="侧耳倾听" loading="lazy"><span class="film-caption">(06) WHISPER</span></div>
+      <div class="film-item"><img src="/top/enthusiast/movie-walter-mitty.jpg" alt="白日梦想家" loading="lazy"><span class="film-caption">(07) WALTER MITTY</span></div>
+      <div class="film-item"><img src="/top/enthusiast/movie-stand-by-me.jpg" alt="伴我同行" loading="lazy"><span class="film-caption">(08) STAND BY ME</span></div>
+      <div class="film-item"><img src="/top/enthusiast/movie-into-the-wild.png" alt="荒野生存" loading="lazy"><span class="film-caption">(09) INTO THE WILD</span></div>
+      <div class="film-item"><img src="/top/enthusiast/movie-interstellar.jpg" alt="星际穿越" loading="lazy"><span class="film-caption">(10) INTERSTELLAR</span></div>
+      <div class="film-item"><img src="/top/enthusiast/movie-good-bad-ugly.jpg" alt="黄金三镖客" loading="lazy"><span class="film-caption">(11) THE GOOD...</span></div>
+      <div class="film-item"><img src="/top/enthusiast/movie-dead-poets.png" alt="死亡诗社" loading="lazy"><span class="film-caption">(12) DEAD POETS</span></div>
     </div>
 
     <div class="two-col" style="margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(249,249,246,0.06)">
@@ -117,7 +119,7 @@ html{scroll-behavior:smooth}
 
   <!-- MUSIC -->
   <div class="chapter-outer" id="music"><div class="chapter-inner">
-    <span class="section-label">Music</span>
+    <span class="section-label">(02) · Music</span>
     <div class="chapter-title">MUSIC</div>
     <span class="chapter-zh">音乐</span>
     <p class="body-text">纯音乐是我码字、走路、发呆时的底色。没有歌词反而更自由，每一段旋律都可以是你自己的故事。集中在几位陪伴多年的作曲家身上。</p>
@@ -147,7 +149,7 @@ html{scroll-behavior:smooth}
 
   <!-- BOOKS -->
   <div class="chapter-outer" id="books" style="background:rgba(62,67,55,0.3)"><div class="chapter-inner">
-    <span class="section-label">Books</span>
+    <span class="section-label">(03) · Books</span>
     <div class="chapter-title">BOOKS</div>
     <span class="chapter-zh">书籍</span>
     <p class="body-text">读书这件事我一直是随缘的。但有些书是那种你不读就算了，读了就没法假装没读过的。它们在你心里留下一个印记，之后看什么都带着它的影子。</p>
@@ -176,12 +178,12 @@ html{scroll-behavior:smooth}
   </div></div>
 
   <!-- FOOD -->
-  <div class="chapter-outer" id="food" style="padding-bottom:2rem"><div class="chapter-inner">
-    <span class="section-label">Food</span>
+  <div class="chapter-outer chapter-outer--food" id="food" style="padding-bottom:0"><div class="chapter-inner">
+    <span class="section-label">(04) · Food</span>
     <div class="chapter-title">FOOD</div>
     <span class="chapter-zh">美食</span>
     <p class="body-text">吃是我的另一条探索世界的路。从江西小炒到广州煲仔饭，从东北锅包肉到日式烧鸟——美食是人间最直接的快乐。我还是一个老吃家。</p>
-  </div></div>
+  </div>
 
   <div id="food-slider-wrapper" style="max-width:1000px;margin:0 auto;position:relative;height:110vh">
     <div id="food-slider" style="position:absolute;top:0;left:0;width:66%">
@@ -193,7 +195,7 @@ html{scroll-behavior:smooth}
         <div class="ts-slider-food-item slider__item"><img src="/top/enthusiast/food-yakitori.jpg" alt="日式烧鸟" class="h-full w-full object-cover"></div>
       </div>
     </div>
-  </div>
+  </div></div>
   <script type="module">
 import {g as r} from '/_astro/index.DjKJqAo0.js';
 import {S as f} from '/_astro/ScrollTrigger.DZdR0iV_.js';
@@ -203,13 +205,13 @@ r.registerPlugin(f);
 var n=document.getElementById('food-slider-wrapper'),a=document.getElementById('food-slider'),h=n?.offsetHeight,i=p(),c='20%';
 r.timeline({scrollTrigger:{trigger:n,start:i?`top ${c}`:'top top',end:`+=${h}`,scrub:true,pin:true}}).to(a,{width:'100vw',height:'100vh',top:0,left:'50%',x:'-50%',y:i?`-${c}`:'0'});
 var t=document.querySelectorAll('.ts-slider-food-item');
-if(t.length){t[0].classList.add('is-active');var s=0;setInterval(function(){t[s].classList.remove('is-active');s=(s+1)%t.length;t[s].classList.add('is-active')},1500)}
+if(t.length){t[0].classList.add('is-active');var s=0;setInterval(function(){t[s].classList.remove('is-active');s=(s+1)%t.length;t[s].classList.add('is-active')},3000)}
 })();
 </script>
 
   <!-- SPORT -->
   <div class="chapter-outer" id="sport" style="background:rgba(62,67,55,0.3)"><div class="chapter-inner">
-    <span class="section-label">Sport</span>
+    <span class="section-label">(05) · Sport</span>
     <div class="chapter-title">SPORT</div>
     <span class="chapter-zh">运动</span>
     <p class="body-text">运动对我来说是重置键。一口气游几十个来回，出来之后脑子里什么杂念都没了。变强是一件很物理的事，比很多事情都确定。</p>
@@ -217,9 +219,9 @@ if(t.length){t[0].classList.add('is-active');var s=0;setInterval(function(){t[s]
       <div class="sport-card"><h4>TABLE TENNIS</h4><p>上饶市青少年锦标赛单打第3 · 双打第7。从小学打到大学，赛场上的风姿飒飒是最快乐的时刻之一。</p></div>
       <div class="sport-card"><h4>SWIM</h4><p>一口气游几十个来回，所有的苦闷都消散在水里。游泳是我的清场方式。</p></div>
       <div class="sport-card"><h4>FITNESS</h4><p>日常健身，享受胸腔爆炸和酣畅淋漓的感觉。变强是一件很物理的事，比很多事情都确定。</p></div>
-      <div class="sport-card"><h4>HIKING</h4><p>武功山重装 · 扎尕那重装 · 五台山大顺朝 · 恩施溯溪 · 武汉夜徒。详见行者区。</p></div>
+      <div class="sport-card sport-card--wide"><h4>HIKING</h4><p>武功山重装 · 扎尕那重装 · 五台山大顺朝 · 恩施溯溪 · 武汉夜徒。详见行者区。</p></div>
       <div class="sport-card dashed"><h4>SKATEBOARD</h4><p>正在学。如果有板友路过欢迎带带。</p></div>
-      <div class="sport-card dashed"><h4>SANDA</h4><p>想学。强身健体，防身自卫。</p></div>
+      <div class="sport-card dashed sport-card--wide"><h4>SANDA</h4><p>想学。强身健体，防身自卫。</p></div>
     </div>
   </div></div>
 

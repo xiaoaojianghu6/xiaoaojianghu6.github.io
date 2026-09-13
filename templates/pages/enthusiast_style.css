@@ -11,32 +11,34 @@ html{scroll-behavior:smooth}
 .chapter-outer{padding:7rem 2rem;border-top:1px solid rgba(249,249,246,0.06)} .chapter-inner{max-width:1000px;margin:0 auto}
 .chapter-title{font-family:Cinzel,serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:600;letter-spacing:0.05em;margin-bottom:0.5rem}
 .chapter-zh{font-family:'Zhi Mang Xing',cursive;font-size:clamp(1.5rem,3.5vw,2.5rem);opacity:0.5;margin-bottom:2.5rem;display:block}
-.film-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:0.4rem;margin:2rem 0}
-.film-strip img{width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:3px;transition:opacity 0.3s}
-.film-strip img:hover{opacity:0.7}
-.film-caption{font-family:Cinzel,serif;font-size:0.68rem;letter-spacing:0.1em;opacity:0.35;margin-top:0.3rem;display:block}
+.film-strip{display:grid;grid-template-columns:repeat(6,1fr);gap:0.45rem;margin:2rem 0}
+.film-item{overflow:hidden;border-radius:3px}
+.film-item img{width:100%;aspect-ratio:2/3;object-fit:cover;display:block;transition:transform 1.1s cubic-bezier(0.22,1,0.36,1)}
+.film-item:hover img{transform:scale(1.045)}
+.film-item--featured{grid-column:span 2;grid-row:span 1}
+.film-item--featured img{aspect-ratio:4/3}
+.film-caption{font-family:Cinzel,serif;font-size:0.66rem;letter-spacing:0.12em;opacity:0.35;margin-top:0.35rem;display:block}
 .body-text{font-family:'LXGW WenKai',serif;font-size:0.95rem;line-height:2;opacity:0.65;max-width:720px}
 /* Music & Books two-column */
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:2rem 4rem;margin:2.5rem 0}
-.two-col-item{display:flex;align-items:baseline;gap:0.8rem;padding:0.5rem 0;border-bottom:1px solid rgba(249,249,246,0.05)}
-.two-col-idx{font-family:Cinzel,serif;font-size:0.65rem;opacity:0.25;letter-spacing:0.1em;flex-shrink:0;width:1.8rem;text-align:right}
-.two-col-name{font-family:'LXGW WenKai',serif;font-size:0.88rem;opacity:0.7;flex:1}
-.two-col-note{font-family:'LXGW WenKai',serif;font-size:0.75rem;opacity:0.35;flex-shrink:0;text-align:right}
+.two-col-item{display:flex;align-items:baseline;gap:1rem;padding:0.55rem 0.4rem;border-bottom:1px solid rgba(249,249,246,0.045);transition:background 0.35s ease}
+.two-col-item:hover{background:rgba(249,249,246,0.035)}
+.two-col-idx{font-family:Cinzel,serif;font-size:0.58rem;opacity:0.22;letter-spacing:0.12em;flex-shrink:0;width:1.6rem;text-align:right;font-variant-numeric:tabular-nums}
+.two-col-name{font-family:'LXGW WenKai',serif;font-size:0.95rem;opacity:0.78;flex:1}
+.two-col-note{font-family:'LXGW WenKai',serif;font-size:0.74rem;opacity:0.35;flex-shrink:0;text-align:right}
 /* Sport */
 .sport-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.8rem;margin:2.5rem 0}
 .sport-card{background:rgba(249,249,246,0.04);border:1px solid rgba(249,249,246,0.08);padding:1.5rem;border-radius:8px;transition:background 0.4s ease,transform 0.4s ease}
 .sport-card:hover{background:rgba(249,249,246,0.07)}
 .sport-card h4{font-family:Cinzel,serif;font-size:0.8rem;letter-spacing:0.15em;opacity:0.5;margin-bottom:0.5rem}
 .sport-card p{font-family:'LXGW WenKai',serif;font-size:0.85rem;line-height:1.7;opacity:0.6}
-.sport-card.dashed{border:1px dashed rgba(249,249,246,0.08);background:rgba(249,249,246,0.02)}
+.sport-card.dashed{border:1px dashed rgba(249,249,246,0.06);background:rgba(249,249,246,0.015)}
+.sport-card--wide{grid-column:span 2}
+.sport-card--wide p{max-width:34em}
 /* Food slider */
 .food-slider{position:relative}
 .slider__item{width:100%;height:100%;object-fit:cover;position:absolute;top:0;right:0;opacity:0;transition:all 1s ease}
 .slider__item.is-active{opacity:1}
-/* Movie catalog */
-.movie-catalog{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem 3rem;margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(249,249,246,0.06)}
-.movie-catalog h4{font-family:Cinzel,serif;font-size:0.7rem;letter-spacing:0.2em;opacity:0.25;margin-bottom:0.8rem}
-.movie-catalog p{font-family:'LXGW WenKai',serif;font-size:0.8rem;line-height:1.9;opacity:0.5}
 @media(min-width:768px){.hero{padding:12rem 5rem 8rem}.chapter-outer{padding:9rem 5rem}.film-strip{grid-template-columns:repeat(6,1fr)}}
-@media(max-width:767px){.two-col{grid-template-columns:1fr;gap:1.5rem}.sport-grid{grid-template-columns:repeat(2,1fr)}.movie-catalog{grid-template-columns:1fr}}
-@media(max-width:480px){.chapter-outer{padding:4.5rem 1.25rem}.film-strip{grid-template-columns:repeat(3,1fr)}.sport-grid{grid-template-columns:1fr 1fr;gap:0.6rem}.sport-card{padding:1.1rem}}
+@media(max-width:767px){.two-col{grid-template-columns:1fr;gap:1.5rem}.sport-grid{grid-template-columns:repeat(2,1fr)}.film-strip{grid-template-columns:repeat(3,1fr)}.film-item--featured{grid-column:span 3}.sport-card--wide{grid-column:span 2}}
+@media(max-width:480px){.chapter-outer{padding:4.5rem 1.25rem}.sport-grid{grid-template-columns:1fr 1fr;gap:0.6rem}.sport-card{padding:1.1rem}.sport-card--wide{grid-column:span 2}}

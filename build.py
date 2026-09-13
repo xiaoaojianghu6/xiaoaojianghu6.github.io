@@ -730,8 +730,10 @@ def render_enthusiast():
     e = ENTHUSIAST
     cin = e['cinema']
     films = '\n'.join(
-        f'      <div><img src="{f["src"]}" alt="{f["alt"]}"><span class="film-caption">{f["caption"]}</span></div>'
-        for f in cin['films'])
+        f'      <div class="film-item{" film-item--featured" if i == 1 else ""}">'
+        f'<img src="{f["src"]}" alt="{f["alt"]}" loading="lazy">'
+        f'<span class="film-caption">({i:02d}) {f["caption"]}</span></div>'
+        for i, f in enumerate(cin['films'], 1))
     movies_l = render_two_col(cin['movies'], 1)
     tv = '\n'.join(f'        <div class="two-col-item"><span class="two-col-name">{t}</span></div>'
                    for t in cin['tv_series'])
@@ -749,7 +751,8 @@ def render_enthusiast():
         f'        <div class="ts-slider-food-item slider__item"><img src="{f["src"]}" alt="{f["alt"]}" '
         'class="h-full w-full object-cover"></div>' for f in e['food']['images'])
     sport_cards = '\n'.join(
-        f'      <div class="sport-card{" dashed" if c["dashed"] else ""}"><h4>{c["title"]}</h4>'
+        f'      <div class="sport-card{" dashed" if c["dashed"] else ""}'
+        f'{" sport-card--wide" if c["title"] in ("HIKING", "SANDA") else ""}"><h4>{c["title"]}</h4>'
         f'<p>{c["text"]}</p></div>' for c in e['sport']['cards'])
     hl = '<br>'.join(e['hero']['title_lines'])
     content = f'''<main>
@@ -762,7 +765,7 @@ def render_enthusiast():
 
   <!-- CINEMA -->
   <div class="chapter-outer" id="cinema" style="background:rgba(62,67,55,0.3)"><div class="chapter-inner">
-    <span class="section-label">Cinema &amp; Series</span>
+    <span class="section-label">(01) · Cinema &amp; Series</span>
     <div class="chapter-title">CINEMA</div>
     <span class="chapter-zh">电影·剧集</span>
     <p class="body-text">{cin['text']}</p>
@@ -790,7 +793,7 @@ def render_enthusiast():
 
   <!-- MUSIC -->
   <div class="chapter-outer" id="music"><div class="chapter-inner">
-    <span class="section-label">Music</span>
+    <span class="section-label">(02) · Music</span>
     <div class="chapter-title">MUSIC</div>
     <span class="chapter-zh">音乐</span>
     <p class="body-text">{e['music']['text']}</p>
@@ -806,7 +809,7 @@ def render_enthusiast():
 
   <!-- BOOKS -->
   <div class="chapter-outer" id="books" style="background:rgba(62,67,55,0.3)"><div class="chapter-inner">
-    <span class="section-label">Books</span>
+    <span class="section-label">(03) · Books</span>
     <div class="chapter-title">BOOKS</div>
     <span class="chapter-zh">书籍</span>
     <p class="body-text">{e['books']['text']}</p>
@@ -821,12 +824,12 @@ def render_enthusiast():
   </div></div>
 
   <!-- FOOD -->
-  <div class="chapter-outer" id="food" style="padding-bottom:2rem"><div class="chapter-inner">
-    <span class="section-label">Food</span>
+  <div class="chapter-outer chapter-outer--food" id="food" style="padding-bottom:0"><div class="chapter-inner">
+    <span class="section-label">(04) · Food</span>
     <div class="chapter-title">FOOD</div>
     <span class="chapter-zh">美食</span>
     <p class="body-text">{e['food']['text']}</p>
-  </div></div>
+  </div>
 
   <div id="food-slider-wrapper" style="max-width:1000px;margin:0 auto;position:relative;height:110vh">
     <div id="food-slider" style="position:absolute;top:0;left:0;width:66%">
@@ -834,12 +837,12 @@ def render_enthusiast():
 {food_imgs}
       </div>
     </div>
-  </div>
+  </div></div>
   {snippet('enthusiast_food_script.html')}
 
   <!-- SPORT -->
   <div class="chapter-outer" id="sport" style="background:rgba(62,67,55,0.3)"><div class="chapter-inner">
-    <span class="section-label">Sport</span>
+    <span class="section-label">(05) · Sport</span>
     <div class="chapter-title">SPORT</div>
     <span class="chapter-zh">运动</span>
     <p class="body-text">{e['sport']['text']}</p>
@@ -1198,7 +1201,20 @@ def gen_next(next_slug, next_title):
     def pick(name):
         return f'/projects/{next_slug}/media/{name}' if os.path.exists(f'{media}/{name}') \
             else f'/projects/{next_slug}/media/mv-pc.jpg'
-    src_pc, src_sp = pick('mv-vertical.jpg'), pick('mv-sp.jpg')
+    if os.path.exists(f'{media}/mv-vertical.jpg'):
+        src_pc = f'/projects/{next_slug}/media/mv-vertical.jpg'
+    elif os.path.exists(f'{media}/mv-sp.jpg'):
+        src_pc = f'/projects/{next_slug}/media/mv-sp.jpg'
+    else:
+        # 无标准三联图的项目（如 Syna）：回退到其 yaml 里的 hero 封面
+        try:
+            import yaml as _y
+            meta = _y.safe_load(open(f'projects/{next_slug}/project.yaml', encoding='utf-8'))
+            cover = meta.get('list_image') or meta.get('hero')
+        except Exception:
+            cover = None
+        src_pc = cover or pick('mv-pc.jpg')
+    src_sp = src_pc
     return (
         '<section class="ts-horizontal-scroll-item box-content flex items-end justify-end whitespace-normal '
         'md:w-[40rem] md:pl-[34rem] md:pr-20">'
