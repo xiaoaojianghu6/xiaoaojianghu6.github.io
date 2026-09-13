@@ -535,11 +535,16 @@ def render_wanderer():
         photos = ''.join(
             f'<figure class="place-photo"><img src="{ph["src"]}" alt="{ph["alt"]}" loading="lazy"></figure>'
             for ph in pl['photos'])
-        is_quote = len(pl['text']) < 60
-        quote_cls = ' place-block--quote' if is_quote else ''
-        alt_cls = ' alt' if i % 2 == 0 else ''
+        is_two = pl.get('layout', 'single') == 'two'
+        is_quote = (not is_two) and len(pl['text']) < 60
+        if is_two:
+            blk_cls = ' place-block--gallery'
+        elif is_quote:
+            blk_cls = ' place-block--quote'
+        else:
+            blk_cls = ' alt' if i % 2 == 0 else ''
         blocks.append(
-            f'    <article class="place-block{alt_cls}{quote_cls} reveal">\n'
+            f'    <article class="place-block{blk_cls} reveal">\n'
             f'      <header class="place-head">\n'
             f'        <p class="place-no">{no}</p>\n'
             f'        <p class="place-en">{pl["en"]}</p>\n'
@@ -560,7 +565,7 @@ def render_wanderer():
     </div>
   </section>
 
-  <div style="max-width:900px;margin:0 auto">
+  <div class="places-flow" style="max-width:1160px;margin:0 auto;padding-top:9rem">
 
 {''.join(blocks)}
   </div>
@@ -730,7 +735,7 @@ def render_enthusiast():
     e = ENTHUSIAST
     cin = e['cinema']
     films = '\n'.join(
-        f'      <div class="film-item{" film-item--featured" if i == 1 else ""}">'
+        f'      <div class="film-item{" film-item--featured" if i in (1, 7) else ""}">'
         f'<img src="{f["src"]}" alt="{f["alt"]}" loading="lazy">'
         f'<span class="film-caption">({i:02d}) {f["caption"]}</span></div>'
         for i, f in enumerate(cin['films'], 1))
@@ -1134,11 +1139,11 @@ def gen_image_panel(images):
 
 def gen_video(src, caption, portrait=False):
     if portrait:
-        vid_style = 'height:min(72vh,660px);width:auto;display:block;margin:0 auto'
-        wrap_style = 'min-width:300px;max-width:460px'
+        vid_style = 'height:min(80vh,740px);width:auto;display:block;margin:0 auto'
+        wrap_style = 'min-width:300px;max-width:540px'
     else:
         vid_style = 'width:100%;display:block'
-        wrap_style = 'min-width:360px;max-width:520px'
+        wrap_style = 'min-width:400px;max-width:620px'
     return (f'<div class="ts-horizontal-scroll-item flex flex-col items-start justify-center gap-4 px-5 py-16 '
             f'md:px-10 md:py-0" style="{wrap_style}">'
             '<p class="font-serif-en text-base text-gray">(Video)</p>'

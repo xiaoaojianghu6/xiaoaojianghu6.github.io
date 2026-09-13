@@ -13,13 +13,16 @@ hero_alt: multimodal-rag 系统架构图
 overview:
 - 医学文献检索的痛点是「找不到、不敢信」：传统 RAG 只返回文字片段，丢掉图表与公式；返回整页又噪声太大，而且没有一处能告诉你答案从哪来。在联影武汉超声事业部实习期间，我独立开发并上线了一套面向医学超声文档的企业知识库多模态
   RAG 检索系统——以 OCR 为解析入口，实现 text-to-any 的全模态精准召回与完整的来源溯源。
-- 从文档解析管线、三层索引架构、检索排序到前后端与 MCP 服务，全部由我一人完成，并在企业内网与堡垒机环境中完成部署、演示与交接。受保密协议限制，具体业务细节不便公开。
+- 从文档解析管线、三层索引架构、检索排序到前后端与 MCP 服务，全部由我一人完成，并在企业内网与堡垒机环境中完成部署、演示与交接。
 sections:
 - type: text
   tag: 核心体验
   paragraphs:
   - text-to-any 召回——文档被解析为段落、图片、表格、公式五类原子对象，各自独立索引、独立召回：搜图表就只有图，搜公式就只有 LaTeX，而不是召回一整页 PDF。文本查询可以命中图表，信息密度完全不同。
   - 来源溯源——每条回答都可以回溯到 PDF 原页，点击来源即可查看原文位置。「不敢信」的问题从产品层面被解决：答案永远带着出处。
+- type: video
+  src: /projects/multimodal-rag/media/rag-launch.mp4
+  caption: 全局介绍——从文档解析、三层索引到检索生成与溯源的完整链路走查
 - type: text
   tag: 三层架构
   paragraphs:
@@ -32,6 +35,9 @@ sections:
   - Qwen3-VL-Embedding-2B 粗召回 → 元数据过滤 → Qwen3-VL-Reranker-4B 精排 → Qwen3-4B 生成，四段链路按场景可插拔切换（Registry 模式，支持
     qwen3vl / MedImageInsight / generic clip 等后端一键切换对比）。
   - 工程侧：18 个 REST 端点、异步建库与增量索引、三个隔离环境跨进程通信（模型只加载一次）；整套系统封装为 MCP Server（13 个工具），供后续智能体直接复用。
+- type: video
+  src: /projects/multimodal-rag/media/demo.mp4
+  caption: 系统输出效果——图文表格公式无缝编译与来源溯源
 - type: metrics
   tag: (Evaluation)
   rows:
@@ -44,9 +50,6 @@ sections:
   - label: 平均响应
     value: 9.39s vs 14.49s
     note: 更快且更准
-- type: video
-  src: /projects/multimodal-rag/media/demo.mp4
-  caption: 系统输出效果——图文表格公式无缝编译与来源溯源
 year: '2025'
 categories:
 - INTERNSHIP
