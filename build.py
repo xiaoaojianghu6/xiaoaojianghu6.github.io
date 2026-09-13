@@ -530,16 +530,27 @@ def render_home():
 def render_wanderer():
     w = WANDERER
     blocks = []
-    for pl in w['places']:
-        photos = ''.join(f'<img src="{ph["src"]}" alt="{ph["alt"]}">' for ph in pl['photos'])
+    for i, pl in enumerate(w['places'], 1):
+        no = f'({i:02d})'
+        photos = ''.join(
+            f'<figure class="place-photo"><img src="{ph["src"]}" alt="{ph["alt"]}" loading="lazy"></figure>'
+            for ph in pl['photos'])
+        is_quote = len(pl['text']) < 60
+        quote_cls = ' place-block--quote' if is_quote else ''
+        alt_cls = ' alt' if i % 2 == 0 else ''
         blocks.append(
-            '    <div class="place-block">\n'
-            f'      <p class="section-title">{pl["en"]}</p>\n'
-            f'      <div class="place-title">{pl["title"]}</div>\n'
-            f'      <div class="place-sub">{pl["sub"]}</div>\n'
-            f'      <p class="place-text">{pl["text"]}</p>\n'
-            f'      <div class="place-photos {pl.get("layout", "single")}">\n        {photos}\n      </div>\n'
-            '    </div>\n')
+            f'    <article class="place-block{alt_cls}{quote_cls} reveal">\n'
+            f'      <header class="place-head">\n'
+            f'        <p class="place-no">{no}</p>\n'
+            f'        <p class="place-en">{pl["en"]}</p>\n'
+            f'        <h2 class="place-title">{pl["title"]}</h2>\n'
+            f'        <p class="place-sub">{pl["sub"]}</p>\n'
+            f'      </header>\n'
+            f'      <div class="place-body">\n'
+            f'        <p class="place-text">{pl["text"]}</p>\n'
+            f'        <div class="place-photos {pl.get("layout", "single")}">\n        {photos}\n      </div>\n'
+            f'      </div>\n'
+            f'    </article>\n')
     hl = '<br>'.join(w['hero']['title_lines'])
     content = f'''<main>
   <section class="wanderer-hero">
@@ -573,7 +584,17 @@ def render_wanderer():
                         extra_head=extra_head)
             + f'<body{body_attr}>\n' + pre + '\n\n'
             + render_chrome('bright', 'false', ' style="color:#3D3D3D"') + '\n\n'
-            + content + ' '
+            + content + '''
+<script>
+(function(){
+  var els=document.querySelectorAll('.place-block');
+  if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('is-in')});return}
+  var ob=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(e.isIntersecting){e.target.classList.add('is-in');ob.unobserve(e.target)}
+  })},{threshold:0.12,rootMargin:'0px 0px -30px 0px'});
+  els.forEach(function(e){ob.observe(e)});
+})();
+</script> '''
             + render_footer() + tail + '</body></html>')
     write('wanderer/index.html', page)
 

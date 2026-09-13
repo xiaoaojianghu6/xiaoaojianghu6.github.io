@@ -1,7 +1,8 @@
 # 行者区内容——改这里即可更新 /wanderer/ 页面
-# 每个地点是一个 places 列表项；photos 数组顺序 = 页面照片顺序
-# layout: two = 双图并排, single = 单图
-# 新增地点：复制一个列表项改文字和图片路径（图片放 top/wanderer/）
+# 每个地点生成一个编号区块 (01)(02)…，桌面端图文两栏自动左右交替
+# text 少于 60 字会自动排成居中 pull-quote（适合短句感悟）
+# layout: two = 双图 4:3 并排, single = 单图 3:2；photos 数组顺序 = 页面顺序
+# 图片放 top/wanderer/，建议英文小写文件名
 
 hero:
   cover: /top/wanderer/cover.jpg
