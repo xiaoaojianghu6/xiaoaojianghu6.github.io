@@ -4,7 +4,7 @@
 # 图片视频放本项目 media/ 文件夹，路径写 /projects/text-restructuring/media/文件名
 
 slug: text-restructuring
-order: 5
+order: 6
 title: 文本逻辑结构化引擎
 subtitle: NLP · TAURI 2 + REACT 19
 role: SOLO DEVELOPER

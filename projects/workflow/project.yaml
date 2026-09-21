@@ -4,7 +4,7 @@
 # 图片视频放本项目 media/ 文件夹，路径写 /projects/workflow/media/文件名
 
 slug: workflow
-order: 10
+order: 11
 title: AI 自动化工作流
 subtitle: LLM ENGINEERING · DIFY
 role: LLM ENGINEER

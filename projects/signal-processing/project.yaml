@@ -4,7 +4,7 @@
 # 图片视频放本项目 media/ 文件夹，路径写 /projects/signal-processing/media/文件名
 
 slug: signal-processing
-order: 8
+order: 9
 title: 信号处理(EEG+rPPG)
 subtitle: rPPG · EEG · SIGNAL PROCESSING
 role: INDEPENDENT RESEARCH

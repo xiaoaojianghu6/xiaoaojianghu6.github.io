@@ -4,7 +4,7 @@
 # 图片视频放本项目 media/ 文件夹，路径写 /projects/grab-car/media/文件名
 
 slug: grab-car
-order: 9
+order: 10
 title: 抓取型小车
 subtitle: HARDWARE · EMBEDDED SYSTEMS
 role: STUDENT PROJECT

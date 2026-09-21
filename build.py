@@ -1084,6 +1084,13 @@ def render_builder_list():
 # ---------------------------------------------------------- 创客区详情页
 
 def gen_title(p):
+    links = ''
+    for lk in p.get('links') or []:
+        links += (f'<a href="{lk["url"]}" target="_blank" rel="noopener" '
+                  'class="inline-flex items-center gap-2 rounded-full border border-black/60 px-5 py-2 '
+                  'font-serif-en text-sm text-black transition-colors duration-500 hover:bg-black hover:text-white">'
+                  f'{lk["label"]} ↗</a>')
+    links_html = (f'<div class="mt-8 flex flex-wrap gap-3 whitespace-normal">{links}</div>' if links else '')
     return ('<section class="ts-horizontal-scroll-item mt-28 flex flex-col items-start justify-end '
             'px-5 md:mr-[23.75rem] md:mt-0 md:w-[40rem] md:px-0 md:pb-[7.5rem]">'
             '<h1 class="flex w-full flex-col gap-[0.2rem] whitespace-normal md:gap-4">'
@@ -1092,7 +1099,8 @@ def gen_title(p):
             '<div class="mt-16 flex w-full flex-col gap-4 whitespace-normal md:mt-24 md:flex-row md:gap-20">'
             '<p class="flex flex-col gap-2"><span class="text-gray">ROLE</span>'
             f'<span> {p["role"]} </span></p>'
-            f'<p class="flex flex-col gap-2"><span>{p["date"]}</span></p></div></section>')
+            f'<p class="flex flex-col gap-2"><span>{p["date"]}</span></p></div>'
+            f'{links_html}</section>')
 
 def gen_image(src, alt):
     return f'<img src="{src}" alt="{alt}" class="ts-horizontal-scroll-item mt-9 block md:mt-0 md:h-full">'

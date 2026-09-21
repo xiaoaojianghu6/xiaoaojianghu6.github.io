@@ -1,0 +1,80 @@
+# 项目数据——8beds（八张床）
+# order: 在列表/首页的排序位置；sections 支持 text/image/video/pdf/image_panel/metrics
+# 图片放本项目 media/ 文件夹，路径写 /projects/8beds/media/文件名
+
+slug: 8beds
+order: 5
+title: 8 Beds · 八张床
+subtitle: DETERMINISTIC MEDICAL PUZZLE · PHASER 4 + TYPESCRIPT · PLAYABLE
+role: SOLO GAME DESIGNER & DEVELOPER
+date: 2026.09
+year: '2026'
+categories:
+- PERSONAL PROJECT
+tags:
+- GAME DEV
+- PHASER
+- TYPESCRIPT
+- SIMULATION
+- MEDICAL
+- OPEN SOURCE
+hero: /projects/8beds/media/title-menu.jpg
+hero_alt: 八张床——夜班病房主菜单实拍
+list_image: /projects/8beds/media/title-menu.jpg
+links:
+- { label: 线上试玩, url: 'https://game.8beds.haozi.dev' }
+- { label: GitHub, url: 'https://github.com/xiaoaojianghu6/8beds' }
+overview:
+- 八张床，三只手，一夜班。8 Beds 是我把生物医学工程背景做成的一款确定性医疗决策谜题：一夜夜班里，你只有三只手（每回合三个行动），要在八张病床之间做检测、治疗、隔离的取舍——像极了医院里真实发生的资源分配。七个夜晚全部可玩，浏览器打开即玩。
+- 我独立完成全部设计、开发与验证：Phaser 4 + TypeScript 实现的确定性模拟（同一输入永远同一结果，谜题才有「想明白」可言）、A* 求解器验证每关可解性与最优手数、218 项测试守护规则与文案。开源：github.com/xiaoaojianghu6/8beds。
+sections:
+- type: image_panel
+  images:
+  - src: /projects/8beds/media/ward-night02.jpg
+    alt: 夜02病房实机——教学贴士与五类行动
+    label: A
+    caption: 实机·夜 02——床卡、五类行动与「说人话」的教学贴士
+- type: text
+  tag: 为什么是医疗谜题
+  paragraphs:
+  - 我是学生物医学工程的。医院里最真实的困境不是「不知道该做什么」，而是「知道该做的事有三件，但手上只有两只手」——院感防控尤其如此：隔离要花人手、检测要花人手、治疗本身也要人手，而病原体不等人。我想把这个困境做成一个纯策略谜题：没有运气、没有氪金、没有知识门槛，输赢只取决于你的决策。
+  - 为此我立了一条很硬的文案纪律——「说人话到小学生、老人能听懂」：界面上不许出现任何医学术语，「谵妄」要写成「神志不清、又喊又闹」，「暴露升档」要写成「被传染的风险」。该玩家判断的绝不剧透，该直给的信息一个数字都不能少。
+- type: text
+  tag: 确定性模拟
+  paragraphs:
+  - 谜题的前提是公平：同一局面、同一操作，永远走向同一结果。所以整个模拟层是纯函数——reduce(state, action)，没有随机数，不依赖帧循环；规则收敛为一份权威规格文档（SIMULATION CONTRACT），模拟与表现层完全分离。
+  - 218 项测试守护这套规则：关卡配平、传播模型、误诊判定、连「界面上每一个字」都有机器护栏——三张术语黑名单递归扫描全部关卡与字符串，防的就是「术语在线上活了三关没人发现」这种事。
+- type: metrics
+  tag: '(Numbers)'
+  rows:
+  - label: 关卡
+    value: '7 关全部可玩'
+    note: 六关教学 + 地狱关「八张床」
+  - label: 测试
+    value: 218 项全绿
+    note: 规则 / 配平 / 文案三重护栏
+  - label: 配平
+    value: 最优解余量 ≤ 1
+    note: 七关全部贴着预算配平（求解器实测）
+  - label: 地狱关
+    value: 29 手参考解
+    note: 状态空间超出本机内存，回归重放验证
+- type: text
+  tag: 求解器验证
+  paragraphs:
+  - 谜题设计最容易犯的错是「我觉得能过」。所以我写了一个 A* 求解器：穷尽每关的动作空间，输出最小行动点数（minAP）与可解性判定，七关的预算全部按求解器实测配平——最优解余量压到 0 或 1，浪费一个回合就输。
+  - 地狱关「八张床」的状态空间超出本机内存护栏，改为参考解回归验证：29 手重放获胜。搜索代价按行动点计而非动作数（治愈 2 手、急救 1 手），v1 曾在这里算错，凡最优解含隔离的关卡全部偏乐观——这个坑也写进了仓库文档。
+- type: image_panel
+  images:
+  - src: /projects/8beds/media/failure-review.jpg
+    alt: 失败结算页——左栏复盘归因，右栏现实贴士
+    label: B
+    caption: 失败结算页——左栏这一局的复盘归因，右栏「现实里真的发生过什么」
+- type: text
+  tag: 设计取舍
+  paragraphs:
+  - 几条我坚持的边界：误诊未检测的镜像患者直接判负——因为玩家误诊后的第一选择是重开，不存在「补救」这条路径，把它做成机制是自欺；隔离没有任何关卡强制要求——它是纯粹的策略支出，唯一的价值是买时间；失败页的贴士是唯一允许讲医学知识的地方，但标题仍然只能用玩家在病房里见过的词。
+  - 游戏永远做不完，但护栏可以先立起来。仓库的 README 从「每次开始先读什么」写到「护栏必须递归扫整个文件」——这个项目里我最满意的不是七个夜晚，是这套让后面每一晚都能安心迭代的验证体系。
+- type: image
+  src: /projects/8beds/media/ending-dawn.jpg
+  alt: 结局——天亮
