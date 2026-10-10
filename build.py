@@ -230,6 +230,13 @@ GTAG_BLOCK = ("""<!-- Google tag (gtag.js) --><script async src="https://www.goo
               "gtag('js', new Date());"
               "gtag('config', '" + SITE['ga_id'] + "');</script>")
 
+# 自建看板埋点（haozi.dev 旗下统一数据看板 dash.haozi.dev）。
+# 与 gtag 并存、互不依赖：gtag 在国内常被墙，这个走自己的 Cloudflare 边缘，
+# 只上报匿名访客 ID 与页面/点击/退出行为，不收任何个人信息。
+# 隐私：不取 IP、不存原始 UA、无 Cookie、尊重 Do Not Track（网址加 ?ha=1 可自检强制开启）。
+ANALYTICS_BLOCK = ('<script defer src="https://dash.haozi.dev/analytics.js"'
+                   ' data-site="about"></script>')
+
 def render_head(title, desc, canonical, extra_head='', html_attr=''):
     t = title.replace('"', '&quot;')
     d = desc.replace('"', '&quot;')
@@ -499,7 +506,7 @@ def render_home():
                + wanderer + poet + enthusiast + '   ')
 
     extra_head = (snippet('home_head_preloads.html').replace('/sitemap-index.xml', '/sitemap.xml')
-                  + '\n' + GTAG_BLOCK
+                  + '\n' + GTAG_BLOCK + ANALYTICS_BLOCK
                   + '\n' + FONT_PRELOADS_ALL
                   + '\n<link rel="preload" href="/_astro/about.j05OPDV1.css" as="style">'
                     '<link rel="preload" href="/_astro/about.Cl2ZlrCQ.css" as="style">'
@@ -911,7 +918,7 @@ def render_about():
                   + WF_READY_SCRIPT
                   + '\n<script type="module" src="/_astro/hoisted.BAJWDJOX.js"></script>'
                     '<script type="module" src="/_astro/page.LS5KDvwX.js"></script>'
-                  + '\n' + GTAG_BLOCK)
+                  + '\n' + GTAG_BLOCK + ANALYTICS_BLOCK)
     tail = ('\n<script>document.getElementById(\'wechat-link\').addEventListener(\'click\',function(e){{e.preventDefault();document.getElementById(\'qr-modal\').style.display=\'flex\';}});</script>'.replace('{{', '{').replace('}}', '}')
             + render_footer_scripts() + '\n' + VIDEO_AUTOPLAY_SCRIPT)
     page = (render_head('ABOUT | William Liu', 'HAO-Z -- Biomedical engineering student, AI researcher, and creative technologist based in Wuhan.', '/about/',
@@ -1069,7 +1076,7 @@ def render_builder_list():
                   + WF_READY_SCRIPT
                   + '\n<script type="module" src="/_astro/hoisted.BrlQdvNY.js"></script>'
                     '<script type="module" src="/_astro/page.LS5KDvwX.js"></script>'
-                  + '\n' + GTAG_BLOCK
+                  + '\n' + GTAG_BLOCK + ANALYTICS_BLOCK
                   + '\n<link rel="preload" href="/fonts/LXGWWenKai-subset.woff2" as="font" type="font/woff2" crossorigin>')
     tail = ('\n<script type="module" src="/builder/works.js"></script>'
             + render_footer_scripts(prefetch_slugs=slugs))
@@ -1278,7 +1285,7 @@ def render_builder_detail(p):
                   + f'<link rel="preload" as="image" href="{p["hero"]}" fetchpriority="high">'
                   + '\n<script type="module" src="/_astro/hoisted.GaSC7j3R.js"></script>'
                     '<script type="module" src="/_astro/page.LS5KDvwX.js"></script>'
-                  + '\n' + GTAG_BLOCK
+                  + '\n' + GTAG_BLOCK + ANALYTICS_BLOCK
                   + '\n<style>'
                     '.metrics-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}'
                     '.metrics-row{display:flex;align-items:baseline;gap:1.25rem;padding:1.1rem 0;'
