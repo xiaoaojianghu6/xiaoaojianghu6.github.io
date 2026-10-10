@@ -10,7 +10,7 @@ hero: /projects/cardioagent/media/mv-pc.jpg
 hero_alt: cardioagent 主视觉图
 overview:
 - 心血管疾病的精准诊疗太复杂，现有 AI 工具大多是个孤立的黑箱——能给预测，却说不清理由，更别提接进临床工作流。CardioAgent 换了个思路：多个智能体各管一摊，把 ECG、影像、临床指南这些多模态信号嚼碎了再拼起来。
-- 这篇工作是我在上海理工大学HealtIT团队实习时的工作成果，被 ISAIMS 2025（ACM）录用，我是共同作者，负责Agent内一维时序增强、多模态融合和 FAISS 向量检索那块 RAG 闭环。
+- 这篇工作是我在上海理工大学 HealthIT Lab 担任应用开发实习生时的工作成果，被 ISAIMS 2025（ACM）录用，我是共同作者，负责Agent内一维时序增强、多模态融合和 FAISS 向量检索那块 RAG 闭环。
 sections:
 - type: metrics
   tag: (Results)

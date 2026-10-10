@@ -6,7 +6,7 @@ slug: syna
 order: 2
 title: Syna · AI 智能眼镜生活日志 + 共鸣社交
 subtitle: ADVENTUREX 2026 HACKATHON · ROKID GLASSES · OPEN SOURCE
-role: SOLO PRODUCT DESIGNER & DEVELOPER
+role: PRODUCT LEAD & CORE DEVELOPER (TEAM PROJECT)
 date: 2026.07
 year: '2026'
 categories:
@@ -22,8 +22,8 @@ hero: /projects/syna/media/syna-banner.jpg
 hero_alt: Syna 产品横幅——AI 日记 · 记录生活 · 连接同频
 list_image: /projects/syna/media/syna-banner.jpg
 overview:
-- AdventureX 2026 黑客松参赛作品（已开源：github.com/hsrxr/Syna）。Syna 是一款基于 AI 智能眼镜的生活日志 + 社交产品：眼镜替你无感记录，AI 替你整理与回想，然后让走过相似一天的人自然相遇。它想服务的是一类「半记录者」——拍了但从不整理，想表达但不知从何说起。
-- 在黑客松的有限时间里，我独立完成了产品定义与安卓端开发（基于 Rokid 乐奇开发者 SDK）：从用户画像、功能边界、交互设计，到眼镜端—手机端数据流与 AI 处理链路，全部一次成型、现场可演示。
+- AdventureX 2026 黑客松参赛作品（团队项目，已开源：github.com/xiaoaojianghu6/SYNA）。Syna 是一款基于 AI 智能眼镜的生活日志 + 社交产品：眼镜替你无感记录，AI 替你整理与回想，然后让走过相似一天的人自然相遇。它想服务的是一类「半记录者」——拍了但从不整理，想表达但不知从何说起。
+- 在黑客松的有限时间里，我主导了产品设计与核心开发（基于 Rokid 乐奇开发者 SDK）：从用户画像、功能边界、交互设计，到眼镜端—手机端数据流与 AI 处理链路，全部一次成型、现场可演示。
 sections:
 - type: text
   tag: 产品定义

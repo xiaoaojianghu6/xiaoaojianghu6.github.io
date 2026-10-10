@@ -8,7 +8,7 @@ order: 4
 title: 图像/视频分割
 subtitle: VIDEO STREAM SEGMENTATION
 role: RESEARCH INTERN
-date: 2025.09至今
+date: 2025.09–2026.06
 hero: /projects/image-segmentation/media/tim-segmentation.jpg
 hero_alt: image-segmentation 主视觉图
 overview:
@@ -49,7 +49,7 @@ sections:
   - 在此基础上，我实现了完整的 PEFT 微调方案：CLIP 高层解冻（释放语义编码器的适应性），object_score 损失加权（加大误分类样本的惩罚），以及 SAM3 风格的 Existence
     Token（让模型学会「这个目标是否还在画面中」）。首次微调因多变量耦合导致性能不升反降——这恰好验证了缺陷定位的准确性：三个改进维度必须独立调优。目前正在搭建基于 DDP 的多卡分布式训练，设计覆盖学习率、解冻层数、损失权重等维度的
     Grid Search 消融实验，系统验证各组件的收敛特征。
-  - 'GitHub: xiaoaojianghu6/rss2。HUST | WNLO 算法研究实习生（2025.09至今）。'
+  - 'GitHub: xiaoaojianghu6/experiments-on-resurgsam2。HUST | WNLO 算法研究实习生（2025.09–2026.06）。'
 year: '2025'
 categories:
 - INTERNSHIP
